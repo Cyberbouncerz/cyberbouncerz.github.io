@@ -103,32 +103,38 @@ h3 {
 <div class="services-container">
     <div class="services-wrapper">
         <div class="service-item">
+            <!-- Change the image source below -->
             <img src="your-expert-panel-image.jpg" alt="Expert Panel">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
         <div class="service-item">
+            <!-- Change the image source below -->
             <img src="your-user-friendly-interface-image.jpg" alt="User Friendly Interface">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
         <div class="service-item">
+            <!-- Change the image source below -->
             <img src="your-user-friendly-terms-image.jpg" alt="User Friendly Terms">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for straight forward and inclusive experience.</p>
         </div>
         <div class="service-item">
-            <img src="your-expert-panel-image.jpg" alt="Expert Panel">
+            <!-- Change the image source below -->
+            <img src="1742496723906.jpg" alt="Expert Panel">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
         <div class="service-item">
-            <img src="your-user-friendly-interface-image.jpg" alt="User Friendly Interface">
+            <!-- Change the image source below -->
+            <img src="1742498458560.jpg" alt="User Friendly Interface">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
         <div class="service-item">
-            <img src="your-user-friendly-terms-image.jpg" alt="User Friendly Terms">
+            <!-- Change the image source below -->
+            <img src="1742497812008.jpg" alt="User Friendly Terms">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for straight forward and inclusive experience.</p>
         </div>
@@ -161,3 +167,6 @@ h3 {
 
 </body>
 </html>
+
+    
+            
