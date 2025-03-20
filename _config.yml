@@ -15,7 +15,7 @@ timezone:
 
 title: Cyber Bouncerz # the main title
 
-tagline: hbjbkj # it will display as the subtitle
+tagline: A cybersecurity consultant for you # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Cyber Security Consulting
@@ -97,7 +97,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar:https://lh4.googleusercontent.com/2HskQXH8eMb_k5Kj4OeN7KIMBgop8R5sJFVwZLuI9LZ8EDaisrtPbLkUCH-MfG0noU0PZiQ5ihEU87LHCW_MHA
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -149,7 +149,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: ""
+baseurl: "https://cyberbouncerz.com"
 
 # ------------ The following options are not recommended to be modified ------------------
 
