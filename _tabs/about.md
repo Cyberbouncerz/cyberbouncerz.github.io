@@ -42,7 +42,6 @@ order: 4
         }
         .section h2 {
             font-size: 2rem;
-            position: relative;
         }
         p {
             font-size: 1.1rem;
@@ -62,7 +61,8 @@ order: 4
             transform: translateY(-5px);
             transition: all 0.3s ease;
         }
-        /* Button style */
+
+        /* Removed Button Style */
         .cta-button {
             display: none; /* Removed visibility of the button */
         }
@@ -119,4 +119,3 @@ order: 4
 
 </body>
 </html>
-                
