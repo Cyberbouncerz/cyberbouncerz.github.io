@@ -52,12 +52,6 @@ order: 1
             margin-right: 0;
         }
 
-        .service-item img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
         h2 {
             font-size: 1.5em;
             margin-bottom: 10px;
@@ -103,24 +97,17 @@ order: 1
 <div class="services-container">
     <div class="services-wrapper">
         <div class="service-item">
-            <!-- Change the image source below to your image path -->
-            <img src="images/expert-panel.jpg" alt="Expert Panel">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
         <div class="service-item">
-            <!-- Change the image source below to your image path -->
-            <img src="images/user-friendly-interface.jpg" alt="User Friendly Interface">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
         <div class="service-item">
-            <!-- Change the image source below to your image path -->
-            <img src="images/user-friendly-terms.jpg" alt="User Friendly Terms">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
-        <!-- Add more service items as necessary -->
     </div>
 </div>
 
