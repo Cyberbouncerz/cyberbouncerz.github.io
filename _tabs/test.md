@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /contact/
+permalink: /test/
 ---
 
 <html lang="en">
