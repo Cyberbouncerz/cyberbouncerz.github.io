@@ -4,7 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,36 +43,12 @@ order: 4
         .section h2 {
             font-size: 2rem;
             position: relative;
-            padding-left: 40px;
-        }
-        .section h2::before {
-            content: "\f05a"; /* Info circle icon */
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: #3498db;
         }
         p {
             font-size: 1.1rem;
             color: #7f8c8d;
             line-height: 1.8;
             margin-bottom: 20px;
-        }
-        .icon-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .icon-container i {
-            font-size: 6rem;
-            color: #3498db;
-            transition: transform 0.3s ease;
-        }
-        .icon-container i:hover {
-            transform: scale(1.2);
         }
         .mission {
             background-color: #f4f6f9;
@@ -89,19 +64,7 @@ order: 4
         }
         /* Button style */
         .cta-button {
-            display: inline-block;
-            padding: 12px 25px;
-            margin-top: 20px;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #2980b9;
+            display: none; /* Removed visibility of the button */
         }
 
         /* Responsive Design */
@@ -116,9 +79,6 @@ order: 4
             }
             h1, h2 {
                 font-size: 1.5rem;
-            }
-            .icon-container i {
-                font-size: 4rem;
             }
             p {
                 font-size: 1rem;
@@ -137,9 +97,6 @@ order: 4
                 margin-bottom: 25px;
                 padding: 10px;
             }
-            .icon-container i {
-                font-size: 3rem;
-            }
             p {
                 font-size: 0.9rem;
             }
@@ -149,10 +106,6 @@ order: 4
 <body>
 
     <div class="container">
-        <div class="section icon-container">
-            <i class="fas fa-info-circle"></i>
-        </div>
-        
         <div class="section">
             <h2>Who We Are?</h2>
             <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
@@ -161,10 +114,9 @@ order: 4
         <div class="section mission">
             <h2>What Is Our Mission?</h2>
             <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
-            <a href="#" class="cta-button">Learn More</a>
         </div>
     </div>
 
 </body>
 </html>
-
+                
