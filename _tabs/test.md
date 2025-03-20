@@ -3,7 +3,6 @@ layout: page
 permalink: /test/
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,11 +28,13 @@ permalink: /test/
             width: 95%;
             margin-bottom: 30px;
             overflow: hidden;
+            position: relative; /* Ensures smooth scrolling */
         }
 
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
+            width: calc(100% * 2); /* Double width for seamless looping */
         }
 
         .service-item {
@@ -88,8 +89,9 @@ permalink: /test/
             100% { transform: translateX(-100%); }
         }
 
-        /* This ensures a seamless loop of the images */
+        /* Adjust scrolling for smooth looping */
         .services-wrapper {
+            display: flex;
             animation: scroll 15s linear infinite;
         }
 
@@ -108,15 +110,13 @@ permalink: /test/
 <div class="services-container">
     <div class="services-wrapper">
         <!-- Service 1: Expert Panel Image -->
-        <!-- Replace the image source below with your own image file path -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
-        
+
         <!-- Service 2: User Friendly Interface Image -->
-        <!-- Replace the image source below with your own image file path -->
         <div class="service-item">
             <img src="1742498458560.jpg" alt="Simple and clean user interface design">
             <h2>User Friendly Interface</h2>
@@ -124,20 +124,30 @@ permalink: /test/
         </div>
 
         <!-- Service 3: User Friendly Terms Image -->
-        <!-- Replace the image source below with your own image file path -->
         <div class="service-item">
             <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
 
-        <!-- Add more service items if needed -->
-        <!-- Example additional item -->
-        <!-- <div class="service-item">
-            <img src="images/your-image.jpg" alt="Additional image description">
-            <h2>Your Service Title</h2>
-            <p>Description of the additional service goes here.</p>
-        </div> -->
+        <!-- Repeat the items to ensure smooth loop -->
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
     </div>
 </div>
 
@@ -161,7 +171,7 @@ permalink: /test/
 
     <div class="faq-item">
         <p class="faq-question">How can I contact Cyber Bouncerz?</p>
-        <p class="faq-answer">You can reach out to Cyberbouncerz by clicking on the "contact us" tab on our website.</p>
+        <p class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</p>
     </div>
 </div>
 
