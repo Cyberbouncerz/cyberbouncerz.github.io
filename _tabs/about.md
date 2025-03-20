@@ -4,6 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,10 +63,6 @@ order: 4
             line-height: 1.8;
             margin-bottom: 20px;
         }
-        .highlight {
-            color: #3498db;
-            font-weight: bold;
-        }
         .icon-container {
             text-align: center;
             margin-bottom: 30px;
@@ -106,6 +103,47 @@ order: 4
         .cta-button:hover {
             background-color: #2980b9;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            .section {
+                margin-bottom: 30px;
+                padding: 15px;
+            }
+            h1, h2 {
+                font-size: 1.5rem;
+            }
+            .icon-container i {
+                font-size: 4rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            h1, h2 {
+                font-size: 1.2rem;
+            }
+            .section {
+                margin-bottom: 25px;
+                padding: 10px;
+            }
+            .icon-container i {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -117,12 +155,12 @@ order: 4
         
         <div class="section">
             <h2>Who We Are?</h2>
-            <p>At <span class="highlight">Cyber Bouncerz</span>, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
+            <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
         </div>
 
         <div class="section mission">
             <h2>What Is Our Mission?</h2>
-            <p>Our mission is to empower businesses with <span class="highlight">proactive cybersecurity strategies</span> that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
+            <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
             <a href="#" class="cta-button">Learn More</a>
         </div>
     </div>
@@ -130,4 +168,3 @@ order: 4
 </body>
 </html>
 
-        
