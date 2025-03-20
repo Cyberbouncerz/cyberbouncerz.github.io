@@ -34,7 +34,7 @@ permalink: /test/
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
-            width: calc(100% * 2); /* Double width for seamless looping */
+            width: 200%; /* Double the width to allow looping images */
         }
 
         .service-item {
@@ -86,13 +86,14 @@ permalink: /test/
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-50%); } /* Move to half of the width */
         }
 
         /* Adjust scrolling for smooth looping */
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
+            width: 200%; /* Ensures smooth looping */
         }
 
         @media (max-width: 768px) {
@@ -177,3 +178,4 @@ permalink: /test/
 
 </body>
 </html>
+
