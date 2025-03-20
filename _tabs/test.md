@@ -18,6 +18,18 @@ permalink: /test/
             align-items: center;
         }
 
+        /* Logo Container */
+        .logo-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 150px; /* Adjust the size as needed */
+            height: auto;
+        }
+
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
@@ -106,6 +118,13 @@ permalink: /test/
 </head>
 <body>
 
+<!-- Logo Section -->
+<div class="logo-container">
+    <!-- Add your logo image here -->
+    <!-- Replace the "logo.png" with the path to your logo image file -->
+    <img src="PNG file-2.png" alt="Logo"> 
+</div>
+
 <h1>Our Services</h1>
 
 <div class="services-container">
@@ -178,4 +197,3 @@ permalink: /test/
 
 </body>
 </html>
-
