@@ -29,12 +29,12 @@ order: 1
         .services-container {
             width: 95%;
             margin-bottom: 30px;
-            overflow: hidden; /* Important for looping */
+            overflow: hidden;
         }
 
         .services-wrapper {
             display: flex;
-            animation: scroll 15s linear infinite; /* Animation for looping */
+            animation: scroll 15s linear infinite;
         }
 
         .service-item {
@@ -45,11 +45,11 @@ order: 1
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background-color: #f9f9f9;
             box-sizing: border-box;
-            margin-right: 15px; /* Spacing between items */
+            margin-right: 15px;
         }
 
         .service-item:last-child {
-            margin-right: 0; /* Remove right margin from last item */
+            margin-right: 0;
         }
 
         .service-item img {
@@ -85,10 +85,9 @@ order: 1
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); } /* Move all items to the left */
+            100% { transform: translateX(-100%); }
         }
 
-        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .service-item {
                 flex: 0 0 80%;
@@ -105,40 +104,23 @@ order: 1
     <div class="services-wrapper">
         <div class="service-item">
             <!-- Change the image source below to your image path -->
-            <img src="your-expert-panel-image.jpg" alt="Expert Panel">
+            <img src="images/expert-panel.jpg" alt="Expert Panel">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
         <div class="service-item">
             <!-- Change the image source below to your image path -->
-            <img src="your-user-friendly-interface-image.jpg" alt="User Friendly Interface">
+            <img src="images/user-friendly-interface.jpg" alt="User Friendly Interface">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
         <div class="service-item">
             <!-- Change the image source below to your image path -->
-            <img src="your-user-friendly-terms-image.jpg" alt="User Friendly Terms">
+            <img src="images/user-friendly-terms.jpg" alt="User Friendly Terms">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
-        <div class="service-item">
-            <!-- Example image with a local file, change the image source accordingly -->
-            <img src="1742496723906.jpg" alt="Expert Panel">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-        <div class="service-item">
-            <!-- Example image with a local file, change the image source accordingly -->
-            <img src="1742498458560.jpg" alt="User Friendly Interface">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-        <div class="service-item">
-            <!-- Example image with a local file, change the image source accordingly -->
-            <img src="1742497812008.jpg" alt="User Friendly Terms">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
+        <!-- Add more service items as necessary -->
     </div>
 </div>
 
@@ -168,4 +150,3 @@ order: 1
 
 </body>
 </html>
-
