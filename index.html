@@ -54,7 +54,8 @@ title: Home
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
-            width: 200%;
+            width: max-content;
+            /* Ensures the content stretches infinitely */
         }
 
         .service-item {
@@ -105,13 +106,7 @@ title: Home
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .services-wrapper {
-            display: flex;
-            animation: scroll 15s linear infinite;
-            width: 200%;
+            100% { transform: translateX(-100%); }
         }
 
         @media (max-width: 768px) {
@@ -170,6 +165,25 @@ title: Home
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
+
+        <!-- Repeat items if you want them to appear more frequently and scroll seamlessly -->
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
     </div>
 </section>
 
@@ -192,3 +206,4 @@ title: Home
 
 </body>
 </html>
+
