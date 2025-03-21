@@ -55,11 +55,11 @@ title: Home
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
-            width: calc(300px * 6); /* Ensures enough space for multiple items */
+            width: max-content; /* Allows the wrapper to grow dynamically */
         }
 
         .service-item {
-            flex: 0 0 300px;
+            flex: 0 0 300px; /* Adjust to match the desired width of each item */
             border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
@@ -104,12 +104,17 @@ title: Home
             margin-bottom: 15px;
         }
 
+        /* Keyframes to create continuous scrolling effect */
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
-        /* Media Queries for Mobile Optimization */
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .logo-container {
                 width: 200px;
@@ -121,14 +126,14 @@ title: Home
             }
 
             .service-item {
-                flex: 0 0 80%; /* Increase item width for smaller screens */
+                flex: 0 0 80%; /* Adjust items for smaller screens */
                 min-width: 250px;
                 margin-right: 0;
                 margin-bottom: 15px;
             }
 
             .services-wrapper {
-                width: calc(80% * 6); /* Adjusted for smaller screens */
+                width: max-content; /* Ensure flexibility on mobile */
             }
 
             .faq-container {
@@ -147,7 +152,7 @@ title: Home
 
 <section class="services-container">
     <div class="services-wrapper">
-        <!-- Service Items -->
+        <!-- Service Items (Repeated for seamless scrolling) -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -166,7 +171,7 @@ title: Home
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
 
-        <!-- Repeat the service items for continuous scrolling effect -->
+        <!-- Duplicate the service items for continuous scrolling effect -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -206,5 +211,6 @@ title: Home
 
 </body>
 </html>
+
 
 
