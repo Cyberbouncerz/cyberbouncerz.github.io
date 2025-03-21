@@ -1,6 +1,7 @@
 ---
 layout: page
 permalink: /contact/
+icon: fas fa-contact-icon
 ---
 
 <html lang="en">
