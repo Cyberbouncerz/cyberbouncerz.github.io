@@ -4,6 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -27,7 +28,7 @@ order: 4
         .container {
             width: 100%;
             height: 100vh;
-            padding: 40px;
+            padding: 20px; /* Adjusted padding for better mobile view */
             background-color: #fff;
             border-radius: 0;
             box-shadow: none;
@@ -48,67 +49,52 @@ order: 4
         }
 
         .section {
-            padding: 20px;
+            padding: 15px; /* Adjusted padding for better mobile view */
             background-color: #ecf0f1;
             text-align: center;
             margin: 10px;
         }
 
         .section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem; /* Adjusted font size for better mobile view */
             text-align: center;
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #7f8c8d;
-            line-height: 1.8;
+            line-height: 1.6; /* Adjusted line height for better readability */
             margin-bottom: 20px;
             text-align: center;
         }
 
         .mission {
             background-color: #f4f6f9;
-            padding: 20px;
+            padding: 15px; /* Adjusted padding for better mobile view */
             text-align: center;
             margin: 10px;
         }
 
-        @media (max-width: 768px) {
+        @media (min-width: 768px) { /* Changed to min-width for desktop first approach */
             .container {
+                padding: 40px;
+            }
+
+            .section {
                 padding: 20px;
             }
 
-            .section {
-                padding: 15px;
-            }
-
-            h1,
-            h2 {
-                font-size: 1.5rem;
+            .section h2 {
+                font-size: 2rem;
             }
 
             p {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
+                font-size: 1.1rem;
+                line-height: 1.8;
             }
 
-            h1,
-            h2 {
-                font-size: 1.2rem;
-            }
-
-            .section {
-                padding: 10px;
-            }
-
-            p {
-                font-size: 0.9rem;
+            .mission {
+                padding: 20px;
             }
         }
     </style>
