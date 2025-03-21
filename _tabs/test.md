@@ -3,7 +3,6 @@ layout: page
 permalink: /test/
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,23 +18,27 @@ permalink: /test/
             align-items: center;
         }
 
-        /* Logo Container with Border */
+        /* Logo Container with Rounded, Centered Border */
         .logo-container {
-            width: 100%;
+            width: auto; /* Allow the container to size based on the logo */
             text-align: center;
             margin-bottom: 20px;
-            padding: 15px; /* Adding padding inside the border */
+            padding: 20px; /* Added padding for spacing inside the border */
             border: 5px solid #4CAF50; /* Green border around the logo */
-            border-radius: 10px; /* Rounded corners for the border */
+            border-radius: 50%; /* Makes the border circular or elliptical */
             background-color: #f1f1f1; /* Light background behind the logo */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-            max-width: 350px; /* Optional: Set a max width to control logo size */
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 350px; /* Fixed width for the logo container */
+            height: 350px; /* Make the height equal to width for a circular look */
         }
 
         .logo-container img {
-            max-width: 100%; /* Make sure the logo doesn't exceed the container width */
+            max-width: 100%;
             height: auto;
+            border-radius: 50%; /* Makes the logo image itself round */
         }
 
         h1 {
@@ -126,7 +129,7 @@ permalink: /test/
 </head>
 <body>
 
-<!-- Logo Section with Border -->
+<!-- Logo Section with Rounded Border -->
 <div class="logo-container">
     <!-- Add your logo image here -->
     <!-- Replace the "PNG file-2.png" with the actual file path -->
