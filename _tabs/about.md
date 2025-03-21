@@ -18,7 +18,7 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            min-height: 100vh;
+            min-height: 100vh; /* Ensure body takes full height */
         }
 
         /* Sidebar */
@@ -28,7 +28,7 @@ order: 4
             padding: 20px;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             color: #fff;
-            height: 100vh; /* Ensure sidebar takes full height */
+            height: 100vh; /* Ensure sidebar takes full height of the screen */
         }
 
         /* Main Content */
@@ -40,7 +40,8 @@ order: 4
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin-left: 250px; /* Aligns content next to the sidebar */
+            margin-left: 250px; /* Align content next to the sidebar */
+            min-height: 100vh; /* Ensure main content takes full height */
         }
 
         h2 {
@@ -140,3 +141,4 @@ order: 4
 
 </body>
 </html>
+
