@@ -18,7 +18,7 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            min-height: 100vh; /* Ensures body takes full height */
+            min-height: 100vh; /* Ensure full height for the body */
         }
 
         /* Sidebar */
@@ -28,8 +28,8 @@ order: 4
             padding: 20px;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             color: #fff;
-            height: 100vh; /* Sidebar takes full height of the screen */
-            position: fixed; /* Ensures sidebar stays fixed on the left */
+            height: 100vh; /* Sidebar takes full height */
+            position: fixed; /* Fixes sidebar to the left */
             top: 0;
             left: 0;
         }
@@ -43,8 +43,7 @@ order: 4
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin-left: 250px; /* Aligns content next to the sidebar */
-            min-height: 100vh; /* Ensures main content takes full height */
+            margin-left: 250px; /* Adjust content position next to the sidebar */
         }
 
         h2 {
@@ -125,9 +124,9 @@ order: 4
 </head>
 <body>
 
-    <!-- Sidebar (no header now) -->
+    <!-- Sidebar (Header Removed) -->
     <div class="sidebar">
-        <!-- Sidebar content can go here if needed -->
+        <!-- Sidebar content goes here if needed -->
     </div>
 
     <!-- Main Content -->
