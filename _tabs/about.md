@@ -4,7 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,24 +19,23 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            height: 100vh;
-            padding: 20px; /* Adjusted padding for better mobile view */
+            padding: 20px;
             background-color: #fff;
             border-radius: 0;
             box-shadow: none;
             color: #2c3e50;
-            margin: 0;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
         h1,
@@ -49,33 +47,33 @@ order: 4
         }
 
         .section {
-            padding: 15px; /* Adjusted padding for better mobile view */
+            padding: 15px;
             background-color: #ecf0f1;
             text-align: center;
             margin: 10px;
         }
 
         .section h2 {
-            font-size: 1.8rem; /* Adjusted font size for better mobile view */
+            font-size: 1.8rem;
             text-align: center;
         }
 
         p {
             font-size: 1rem;
             color: #7f8c8d;
-            line-height: 1.6; /* Adjusted line height for better readability */
+            line-height: 1.6;
             margin-bottom: 20px;
             text-align: center;
         }
 
         .mission {
             background-color: #f4f6f9;
-            padding: 15px; /* Adjusted padding for better mobile view */
+            padding: 15px;
             text-align: center;
             margin: 10px;
         }
 
-        @media (min-width: 768px) { /* Changed to min-width for desktop first approach */
+        @media (min-width: 768px) {
             .container {
                 padding: 40px;
             }
