@@ -54,8 +54,8 @@ title: Home
 
         .services-wrapper {
             display: flex;
-            animation: scroll 300s linear infinite; /* Slower scroll speed */
-            width: max-content;
+            animation: bounce 6s ease-in-out infinite; /* New bounce animation */
+            justify-content: space-evenly;
         }
 
         .service-item {
@@ -67,6 +67,7 @@ title: Home
             background-color: #f9f9f9;
             box-sizing: border-box;
             margin-right: 15px;
+            animation: bounce 6s ease-in-out infinite; /* Bounce animation for each item */
         }
 
         .service-item:last-child {
@@ -104,13 +105,16 @@ title: Home
             margin-bottom: 15px;
         }
 
-        /* Keyframes to create continuous scrolling effect */
-        @keyframes scroll {
+        /* Keyframes for bouncing animation */
+        @keyframes bounce {
             0% {
-                transform: translateX(0);
+                transform: translateY(0); /* Starting position */
+            }
+            50% {
+                transform: translateY(-20px); /* Move upwards */
             }
             100% {
-                transform: translateX(-100%); /* Ensure it moves enough to complete the loop */
+                transform: translateY(0); /* Return to starting position */
             }
         }
 
@@ -132,10 +136,6 @@ title: Home
                 margin-bottom: 15px;
             }
 
-            .services-wrapper {
-                width: max-content; /* Ensure flexibility on mobile */
-            }
-
             .faq-container {
                 padding: 0 10px;
             }
@@ -152,7 +152,7 @@ title: Home
 
 <section class="services-container">
     <div class="services-wrapper">
-        <!-- Service Items (Repeated for seamless scrolling) -->
+        <!-- Service Items -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -171,7 +171,7 @@ title: Home
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
 
-        <!-- Duplicate the service items for continuous scrolling effect -->
+        <!-- Duplicate the service items for continuous bouncing effect -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -211,3 +211,4 @@ title: Home
 
 </body>
 </html>
+
