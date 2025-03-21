@@ -30,12 +30,6 @@ order: 4
             color: #fff;
         }
 
-        .sidebar h1 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #ecf0f1;
-        }
-
         /* Main Content */
         .main-content {
             flex: 1;
@@ -126,10 +120,9 @@ order: 4
 </head>
 <body>
 
-    <!-- Sidebar (Header on the side) -->
+    <!-- Sidebar (no header now) -->
     <div class="sidebar">
-        <h1>Cyber Bouncerz</h1>
-        <!-- Add any sidebar content here if needed -->
+        <!-- Sidebar content can go here if needed -->
     </div>
 
     <!-- Main Content -->
@@ -146,3 +139,4 @@ order: 4
 
 </body>
 </html>
+
