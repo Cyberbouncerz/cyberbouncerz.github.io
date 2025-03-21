@@ -18,47 +18,39 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            min-height: 100vh; /* Full height for body */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-
-        /* Sidebar */
+        .main-container {
+            display: flex;
+            width: 90%; /* Adjust as needed */
+            max-width: 1200px; /* Optional max width */
+            margin: auto; /* Center the entire layout */
+        }
         .sidebar {
-            width: 250px;
-            background-color: #2c3e50;
+            width: 250px; /* Adjust sidebar width */
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 20px;
-            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-            color: #fff;
-            height: 100vh; /* Sidebar takes full height */
-            position: fixed; /* Fix sidebar to left */
-            top: 0;
-            left: 0;
+            border-radius: 12px;
+            margin-right: 20px; /* Spacing between sidebar and content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .sidebar h1 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #ecf0f1;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
+        .container {
+            flex: 1; /* Allow content to take remaining space */
             padding: 40px;
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin-left: 250px; /* Content positioned next to the sidebar */
         }
-
-        h2 {
+        h1, h2 {
             color: #2c3e50;
             text-align: center;
             font-weight: 700;
             margin-bottom: 20px;
         }
-
         .section {
             margin-bottom: 40px;
             padding: 20px;
@@ -66,12 +58,10 @@ order: 4
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
         .section h2 {
             font-size: 2rem;
             text-align: center;
         }
-
         p {
             font-size: 1.1rem;
             color: #7f8c8d;
@@ -79,23 +69,31 @@ order: 4
             margin-bottom: 20px;
             text-align: center;
         }
-
         .mission {
             background-color: #f4f6f9;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
         .section:hover {
             background-color: #dfe6e9;
             transform: translateY(-5px);
             transition: all 0.3s ease;
         }
-
+        .cta-button {
+            display: none;
+        }
         @media (max-width: 768px) {
-            .main-content {
-                margin-left: 0;
+            .main-container {
+                flex-direction: column; /* Stack sidebar and content */
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px; /* Spacing between sidebar and content */
+            }
+            .container {
+                width: 90%;
                 padding: 20px;
             }
             .section {
@@ -109,10 +107,9 @@ order: 4
                 font-size: 1rem;
             }
         }
-
         @media (max-width: 480px) {
-            .main-content {
-                margin-left: 0;
+            .container {
+                width: 95%;
                 padding: 15px;
             }
             h1, h2 {
@@ -129,25 +126,21 @@ order: 4
     </style>
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h1>Cyber Bouncerz</h1>
-        <!-- Sidebar content can go here -->
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="section">
-            <h2>Who We Are?</h2>
-            <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
-        </div>
-        <div class="section mission">
-            <h2>What Is Our Mission?</h2>
-            <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
+    <div class="main-container">
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <p>This is a placeholder for sidebar content. You can add navigation links, contact info, or other relevant information here.</p>
+            </div>
+        <div class="container">
+            <div class="section">
+                <h2>Who We Are?</h2>
+                <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
+            </div>
+            <div class="section mission">
+                <h2>What Is Our Mission?</h2>
+                <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
-
