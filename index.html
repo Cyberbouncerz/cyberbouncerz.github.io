@@ -15,6 +15,7 @@ title: Home
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden; /* Prevent horizontal scroll bar */
         }
 
         .logo-container {
@@ -45,7 +46,7 @@ title: Home
         }
 
         .services-container {
-            width: 95%;
+            width: 100%;
             margin-bottom: 30px;
             overflow: hidden;
             position: relative;
@@ -54,8 +55,7 @@ title: Home
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
-            width: max-content;
-            /* Ensures the content stretches infinitely */
+            width: calc(300px * 6); /* Ensures enough space for multiple items */
         }
 
         .service-item {
@@ -109,6 +109,7 @@ title: Home
             100% { transform: translateX(-100%); }
         }
 
+        /* Media Queries for Mobile Optimization */
         @media (max-width: 768px) {
             .logo-container {
                 width: 200px;
@@ -120,16 +121,14 @@ title: Home
             }
 
             .service-item {
-                flex: 0 0 90%;
+                flex: 0 0 80%; /* Increase item width for smaller screens */
                 min-width: 250px;
                 margin-right: 0;
                 margin-bottom: 15px;
             }
 
             .services-wrapper {
-                flex-direction: column;
-                animation: none;
-                width: 100%;
+                width: calc(80% * 6); /* Adjusted for smaller screens */
             }
 
             .faq-container {
@@ -148,6 +147,7 @@ title: Home
 
 <section class="services-container">
     <div class="services-wrapper">
+        <!-- Service Items -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -166,7 +166,7 @@ title: Home
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
 
-        <!-- Repeat items if you want them to appear more frequently and scroll seamlessly -->
+        <!-- Repeat the service items for continuous scrolling effect -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -206,4 +206,5 @@ title: Home
 
 </body>
 </html>
+
 
