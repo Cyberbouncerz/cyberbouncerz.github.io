@@ -19,10 +19,10 @@ permalink: /test/
         }
 
         .logo-container {
-            width: 350px;
-            height: 350px;
+            width: 250px;
+            height: 250px;
             text-align: center;
-            margin: 20px auto; /* Centered horizontally */
+            margin: 20px auto;
             padding: 20px;
             border: 5px solid #4CAF50;
             border-radius: 50%;
@@ -40,7 +40,7 @@ permalink: /test/
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -80,7 +80,7 @@ permalink: /test/
         }
 
         h2 {
-            font-size: 1.5em;
+            font-size: 1.3em;
             margin-bottom: 10px;
         }
 
@@ -90,7 +90,7 @@ permalink: /test/
         }
 
         h3 {
-            font-size: 2em;
+            font-size: 1.8em;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -116,9 +116,30 @@ permalink: /test/
         }
 
         @media (max-width: 768px) {
+            .logo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
             .service-item {
-                flex: 0 0 80%;
+                flex: 0 0 90%;
                 min-width: 250px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .services-wrapper {
+                flex-direction: column;
+                animation: none;
+                width: 100%;
+            }
+
+            .faq-container {
+                padding: 0 10px;
             }
         }
     </style>
@@ -131,7 +152,7 @@ permalink: /test/
 
 <h1>Our Services</h1>
 
-<div class="services-container">
+<section class="services-container">
     <div class="services-wrapper">
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
@@ -150,26 +171,8 @@ permalink: /test/
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
-
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
     </div>
-</div>
+</section>
 
 <div class="faq-container">
     <h3>Frequently Asked Questions</h3>
