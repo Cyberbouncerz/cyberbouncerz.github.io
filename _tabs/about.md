@@ -11,34 +11,44 @@ order: 4
     <title>Cyber Bouncerz</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        html, body {
-            height: 100%; /* Ensure the full height is available */
-            margin: 0; /* Remove any default margin */
-            padding: 0; /* Remove any default padding */
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom right, #3498db, #8e44ad);
+            margin: 0;
+            padding: 0;
             color: #fff;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            min-height: 100vh; /* Full viewport height */
+            min-height: 100vh;
         }
 
-        .container {
-            width: 80%;
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            padding: 20px;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
             padding: 40px;
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin: 0 auto; /* Center the container */
+            margin-left: 250px; /* Aligns content next to the sidebar */
         }
 
-        h1, h2 {
+        h2 {
             color: #2c3e50;
             text-align: center;
             font-weight: 700;
@@ -79,13 +89,9 @@ order: 4
             transition: all 0.3s ease;
         }
 
-        .cta-button {
-            display: none;
-        }
-
         @media (max-width: 768px) {
-            .container {
-                width: 90%;
+            .main-content {
+                margin-left: 0;
                 padding: 20px;
             }
             .section {
@@ -101,8 +107,8 @@ order: 4
         }
 
         @media (max-width: 480px) {
-            .container {
-                width: 95%;
+            .main-content {
+                margin-left: 0;
                 padding: 15px;
             }
             h1, h2 {
@@ -119,7 +125,15 @@ order: 4
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <!-- Sidebar (Header on the side) -->
+    <div class="sidebar">
+        <h1>Cyber Bouncerz</h1>
+        <!-- Add any sidebar content here if needed -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
         <div class="section">
             <h2>Who We Are?</h2>
             <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
@@ -129,6 +143,6 @@ order: 4
             <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
         </div>
     </div>
+
 </body>
 </html>
-
