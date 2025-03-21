@@ -16,12 +16,13 @@ title: Home
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden; /* Prevent horizontal scroll bar */
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+            background-color: #f0f0f0;
         }
 
         .logo-container {
-            width: 250px;
-            height: 250px;
+            width: 150px;
+            height: 150px;
             text-align: center;
             margin: 20px auto;
             padding: 20px;
@@ -61,22 +62,22 @@ title: Home
         }
 
         .service-item {
-            flex: 0 0 300px; /* Set width to ensure proper space for the images */
+            flex: 0 0 100vw; /* Set width to 100% of viewport */
+            max-width: 100%;  /* Ensure image fits within container */
             border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background-color: #f9f9f9;
             box-sizing: border-box;
-            margin-right: 15px;
-        }
-
-        .service-item:last-child {
-            margin-right: 0;
+            margin-right: 0; /* No margin between items */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .service-item img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             margin-bottom: 15px;
         }
@@ -87,8 +88,9 @@ title: Home
         }
 
         .faq-container {
-            width: 95%;
+            width: 100%;
             box-sizing: border-box;
+            margin-top: 30px;
         }
 
         h3 {
@@ -158,12 +160,8 @@ title: Home
 
         /* Duplicate the service items for continuous bouncing effect */
         .services-wrapper {
-            width: auto;
+            width: 300%; /* Make wrapper three times the size of one item */
             animation: scroll 12s linear infinite;
-        }
-
-        .service-item {
-            flex-shrink: 0; /* Prevent the images from shrinking */
         }
 
         @keyframes scroll {
@@ -174,8 +172,8 @@ title: Home
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .logo-container {
-                width: 200px;
-                height: 200px;
+                width: 120px;
+                height: 120px;
             }
 
             h1 {
@@ -183,14 +181,8 @@ title: Home
             }
 
             .service-item {
-                flex: 0 0 80%; /* Adjust items for smaller screens */
-                min-width: 250px;
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .services-wrapper {
-                justify-content: center;
+                flex: 0 0 100vw; /* Make the item take full width of the screen */
+                min-width: 100vw; /* Ensure images scale properly */
             }
 
             .faq-container {
@@ -268,5 +260,6 @@ title: Home
 
 </body>
 </html>
+
 
 
