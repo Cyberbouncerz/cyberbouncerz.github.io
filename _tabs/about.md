@@ -23,7 +23,8 @@ order: 4
             min-height: 100vh;
         }
         .container {
-            width: 80%;
+            width: 90%; /* Increased container width */
+            max-width: 1000px; /* added max width for larger screens */
             padding: 40px;
             background-color: #fff;
             border-radius: 12px;
@@ -43,6 +44,9 @@ order: 4
             background-color: #ecf0f1;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 80%; /* Increased section width */
+            margin-left: auto;
+            margin-right: auto;
         }
         .section h2 {
             font-size: 2rem;
@@ -53,7 +57,7 @@ order: 4
             color: #7f8c8d;
             line-height: 1.8;
             margin-bottom: 20px;
-            text-align: center; /* Center paragraph text */
+            text-align: center;
         }
         .mission {
             background-color: #f4f6f9;
@@ -71,10 +75,11 @@ order: 4
         }
         @media (max-width: 768px) {
             .container {
-                width: 90%;
+                width: 95%;
                 padding: 20px;
             }
             .section {
+                width: 90%;
                 margin-bottom: 30px;
                 padding: 15px;
             }
@@ -87,15 +92,16 @@ order: 4
         }
         @media (max-width: 480px) {
             .container {
-                width: 95%;
+                width: 98%;
                 padding: 15px;
+            }
+            .section {
+                width: 95%;
+                margin-bottom: 25px;
+                padding: 10px;
             }
             h1, h2 {
                 font-size: 1.2rem;
-            }
-            .section {
-                margin-bottom: 25px;
-                padding: 10px;
             }
             p {
                 font-size: 0.9rem;
