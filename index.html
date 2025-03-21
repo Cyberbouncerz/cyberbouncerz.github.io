@@ -2,6 +2,7 @@
 layout: page
 title: Home
 ---
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,12 +55,12 @@ title: Home
 
         .services-wrapper {
             display: flex;
-            animation: bounce 6s ease-in-out infinite; /* New bounce animation */
             justify-content: space-evenly;
+            animation: bounce 6s ease-in-out infinite;
         }
 
         .service-item {
-            flex: 0 0 300px; /* Adjust to match the desired width of each item */
+            flex: 0 0 300px; /* Set width to ensure proper space for the images */
             border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
@@ -67,7 +68,6 @@ title: Home
             background-color: #f9f9f9;
             box-sizing: border-box;
             margin-right: 15px;
-            animation: bounce 6s ease-in-out infinite; /* Bounce animation for each item */
         }
 
         .service-item:last-child {
@@ -105,17 +105,54 @@ title: Home
             margin-bottom: 15px;
         }
 
-        /* Keyframes for bouncing animation */
-        @keyframes bounce {
+        /* Bouncing animations for left, center, and right items */
+        @keyframes bounce-left {
             0% {
-                transform: translateY(0); /* Starting position */
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-20px); /* Move upwards */
+                transform: translateY(-20px);
             }
             100% {
-                transform: translateY(0); /* Return to starting position */
+                transform: translateY(0);
             }
+        }
+
+        @keyframes bounce-center {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce-right {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Applying different animations to left, center, and right images */
+        .service-item:nth-child(1) {
+            animation: bounce-left 6s ease-in-out infinite;
+        }
+
+        .service-item:nth-child(2) {
+            animation: bounce-center 6s ease-in-out infinite;
+        }
+
+        .service-item:nth-child(3) {
+            animation: bounce-right 6s ease-in-out infinite;
         }
 
         /* Mobile responsiveness */
@@ -134,6 +171,10 @@ title: Home
                 min-width: 250px;
                 margin-right: 0;
                 margin-bottom: 15px;
+            }
+
+            .services-wrapper {
+                justify-content: center;
             }
 
             .faq-container {
@@ -211,4 +252,3 @@ title: Home
 
 </body>
 </html>
-
