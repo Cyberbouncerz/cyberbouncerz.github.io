@@ -10,30 +10,32 @@ permalink: /contact/
     <title>Contact Us</title>
     <style>
         body {
-            background-image: url('https://example.com/waterfall.jpg'); /* Replace with your waterfall image URL */
+            background-image: url('https://source.unsplash.com/1600x900/?waterfall'); /* Replace with your waterfall image URL */
             background-size: cover;
             background-position: center;
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0; /* Remove default body padding */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full viewport height */
         }
         .container {
-            max-width: 600px; /* Increased width */
-            margin: auto;
-            background: rgba(255, 255, 255, 0.9); /* White with slight transparency */
-            padding: 40px; /* Increased padding */
+            max-width: 600px;
+            margin: 40px auto; /* Adjust top margin and center */
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px; /* Space below the container */
         }
         h1 {
             text-align: center;
-            color: #007bff; /* Blue text */
-            margin-bottom: 30px; /* Increased bottom margin */
+            color: #007bff;
+            margin-bottom: 30px;
         }
         label {
             display: block;
-            margin: 20px 0 5px; /* Increased margin for labels */
+            margin: 20px 0 5px;
             font-weight: bold;
         }
         input[type="text"], input[type="email"], textarea {
@@ -41,11 +43,11 @@ permalink: /contact/
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 20px; /* Increased margin for inputs */
+            margin-bottom: 20px;
             transition: border-color 0.3s;
         }
         input:focus, textarea:focus {
-            border-color: #007bff; /* Focus color */
+            border-color: #007bff;
             outline: none;
         }
         button {
@@ -60,7 +62,7 @@ permalink: /contact/
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #0056b3;
         }
         #response {
             display: none;
@@ -69,11 +71,18 @@ permalink: /contact/
             font-size: 16px;
         }
         .thank-you {
-            background-color: #f0f0f0; /* Grey background for the thank you message */
-            padding: 20px; /* Padding for the thank you section */
-            border-radius: 5px; /* Rounded corners */
-            text-align: center; /* Centered text */
-            margin-top: 20px; /* Space above thank you section */
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: auto; /* Push footer to bottom */
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            width: 100%;
         }
     </style>
 </head>
@@ -95,17 +104,32 @@ permalink: /contact/
 
             <button type="submit">Submit</button>
         </form>
-        <div id="response" class="thank-you"></div> <!-- Moved the thank you message into this div -->
+        <div id="response" class="thank-you"></div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
 
     <script>
         const form = document.getElementById('contactForm');
         const responseDiv = document.getElementById('response');
+        const emailInput = document.getElementById('email');
+        const submitButton = document.querySelector('button[type="submit"]');
 
         form.onsubmit = function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
 
-            // Send form data using Fetch API
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                responseDiv.innerText = 'Please enter a valid email address.';
+                responseDiv.style.display = 'block';
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.innerText = "Submitting...";
+
             fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
@@ -117,7 +141,7 @@ permalink: /contact/
                 if (response.ok) {
                     responseDiv.innerText = 'Thank you for reaching out to us! We will get back to you as soon as possible.';
                     responseDiv.style.display = 'block';
-                    form.reset(); // Reset form fields
+                    form.reset();
                 } else {
                     responseDiv.innerText = 'There was a problem sending your message.';
                     responseDiv.style.display = 'block';
@@ -126,6 +150,10 @@ permalink: /contact/
             .catch(error => {
                 responseDiv.innerText = 'There was a problem sending your message.';
                 responseDiv.style.display = 'block';
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.innerText = "Submit";
             });
         };
     </script>
