@@ -4,7 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,19 +21,23 @@ order: 4
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* This ensures the body takes up at least the full viewport height */
+            min-height: 100vh;
         }
 
         .container {
-            width: 80%;
-            max-width: 900px;
+            width: 100%; /* Fill the whole width */
+            max-width: none; /* remove max width */
+            height: 100vh; /* Fill the whole height */
             padding: 40px;
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 0; /* remove border radius */
+            box-shadow: none; /* remove shadow */
             color: #2c3e50;
-            margin: auto; /* Removed top and bottom margins */
+            margin: 0; /* Remove margins */
             text-align: center;
+            display: flex; /* use flex box to center content */
+            flex-direction: column; /* stack content vertically */
+            justify-content: center; /* center vertically */
         }
 
         h1,
@@ -46,12 +49,10 @@ order: 4
         }
 
         .section {
-            margin-bottom: 40px;
             padding: 20px;
             background-color: #ecf0f1;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
+            margin: 10px; /* add small margin to sections */
         }
 
         .section h2 {
@@ -70,15 +71,8 @@ order: 4
         .mission {
             background-color: #f4f6f9;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
-        }
-
-        .section:hover {
-            background-color: #dfe6e9;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            margin:10px;
         }
 
         .cta-button {
@@ -94,12 +88,10 @@ order: 4
 
         @media (max-width: 768px) {
             .container {
-                width: 90%;
                 padding: 20px;
             }
 
             .section {
-                margin-bottom: 30px;
                 padding: 15px;
             }
 
@@ -115,7 +107,6 @@ order: 4
 
         @media (max-width: 480px) {
             .container {
-                width: 95%;
                 padding: 15px;
             }
 
@@ -125,7 +116,6 @@ order: 4
             }
 
             .section {
-                margin-bottom: 25px;
                 padding: 10px;
             }
 
