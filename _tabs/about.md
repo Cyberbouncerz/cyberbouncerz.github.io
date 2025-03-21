@@ -21,6 +21,7 @@ order: 4
       min-height: 100vh;
     }
 
+    /* Assuming the sidebar (header on the side) is already present */
     .sidebar {
       width: 250px;
       background-color: #2c3e50;
@@ -33,24 +34,18 @@ order: 4
       height: 100%;
     }
 
-    .sidebar h1 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
+    /* Main content is to the right of the sidebar */
     .main-content {
       margin-left: 250px; /* Align the content after the sidebar */
       width: 100%;
       display: flex;
-      justify-content: center;
-      align-items: flex-start; /* Adjust alignment based on your needs */
+      justify-content: center; /* Center content relative to the remaining space */
       padding: 40px;
       text-align: center;
     }
 
     .container {
-      width: 80%;
+      width: 80%; /* You can adjust the width as needed */
       padding: 40px;
       background-color: #fff;
       border-radius: 12px;
@@ -86,11 +81,8 @@ order: 4
       transition: all 0.3s ease;
     }
 
+    /* Responsive Styles */
     @media (max-width: 768px) {
-      .sidebar {
-        width: 200px;
-      }
-
       .main-content {
         margin-left: 200px;
       }
@@ -110,10 +102,6 @@ order: 4
     }
 
     @media (max-width: 480px) {
-      .sidebar {
-        width: 150px;
-      }
-
       .main-content {
         margin-left: 150px;
       }
@@ -136,10 +124,10 @@ order: 4
 
 <body>
 
-  <!-- Sidebar -->
+  <!-- Assuming the sidebar (header on the side) exists already -->
   <div class="sidebar">
     <h1>Cyber Bouncerz</h1>
-    <!-- You can add navigation links here -->
+    <!-- Sidebar content such as navigation can go here -->
   </div>
 
   <!-- Main content -->
