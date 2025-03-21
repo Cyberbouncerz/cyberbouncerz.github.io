@@ -55,8 +55,9 @@ title: Home
 
         .services-wrapper {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: flex-start;
             animation: bounce 4s ease-in-out infinite; /* Speed up the bounce */
+            width: 100%;
         }
 
         .service-item {
@@ -153,6 +154,21 @@ title: Home
 
         .service-item:nth-child(3) {
             animation: bounce-right 4s ease-in-out infinite;
+        }
+
+        /* Duplicate the service items for continuous bouncing effect */
+        .services-wrapper {
+            width: auto;
+            animation: scroll 12s linear infinite;
+        }
+
+        .service-item {
+            flex-shrink: 0; /* Prevent the images from shrinking */
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
         /* Mobile responsiveness */
@@ -252,4 +268,5 @@ title: Home
 
 </body>
 </html>
+
 
