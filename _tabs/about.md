@@ -8,207 +8,111 @@ order: 4
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services</title>
+    <title>Cyber Bouncerz</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #3498db, #8e44ad);
             margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .logo-container {
-            width: 250px; /* Adjusted for smaller screens */
-            height: 250px; /* Adjusted for smaller screens */
-            text-align: center;
-            margin: 20px auto;
-            padding: 20px;
-            border: 5px solid #4CAF50;
-            border-radius: 50%;
-            background-color: #f1f1f1;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
         }
-
-        .logo-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 50%;
-        }
-
-        h1 {
-            font-size: 2.5em; /* Adjusted for smaller screens */
-            margin-bottom: 20px;
+        .container {
+            width: 80%;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: #2c3e50;
             text-align: center;
         }
-
-        .services-container {
-            width: 95%;
-            margin-bottom: 30px;
-            overflow: hidden;
-            position: relative;
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
-
-        .services-wrapper {
-            display: flex;
-            animation: scroll 15s linear infinite;
-            width: 200%;
-        }
-
-        .service-item {
-            flex: 0 0 300px;
-            border: 1px solid #ddd;
+        .section {
+            margin-bottom: 40px;
             padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 2rem;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-            box-sizing: border-box;
-            margin-right: 15px;
         }
-
-        .service-item:last-child {
-            margin-right: 0;
-        }
-
-        .service-item img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            font-size: 1.3em; /* Adjusted for smaller screens */
-            margin-bottom: 10px;
-        }
-
-        .faq-container {
-            width: 95%;
-            box-sizing: border-box;
-        }
-
-        h3 {
-            font-size: 1.8em; /* Adjusted for smaller screens */
+        p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            line-height: 1.8;
             margin-bottom: 20px;
-            text-align: center;
+            text-align: center; /* Center paragraph text */
         }
-
-        .faq-question {
-            font-weight: bold;
-            margin-bottom: 5px;
+        .mission {
+            background-color: #f4f6f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
-        .faq-answer {
-            margin-bottom: 15px;
+        .section:hover {
+            background-color: #dfe6e9;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
         }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .cta-button {
+            display: none;
         }
-
-        .services-wrapper {
-            display: flex;
-            animation: scroll 15s linear infinite;
-            width: 200%;
-        }
-
         @media (max-width: 768px) {
-            .logo-container {
-                width: 200px;
-                height: 200px;
+            .container {
+                width: 90%;
+                padding: 20px;
             }
-
-            h1 {
-                font-size: 2em;
+            .section {
+                margin-bottom: 30px;
+                padding: 15px;
             }
-
-            .service-item {
-                flex: 0 0 90%; /* Adjusted for better phone display */
-                min-width: 250px;
-                margin-right: 0; /* Remove right margin on mobile */
-                margin-bottom: 15px; /* Add bottom margin for spacing */
+            h1, h2 {
+                font-size: 1.5rem;
             }
-
-            .services-wrapper {
-                flex-direction: column; /* Stack services vertically on mobile */
-                animation: none; /* Disable animation on mobile */
-                width: 100%;
+            p {
+                font-size: 1rem;
             }
-
-            .faq-container {
-                padding: 0 10px; /* Add padding for mobile */
+        }
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            h1, h2 {
+                font-size: 1.2rem;
+            }
+            .section {
+                margin-bottom: 25px;
+                padding: 10px;
+            }
+            p {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-
-<div class="logo-container">
-    <img src="PNG file-2.png" alt="Logo">
-</div>
-
-<h1>Our Services</h1>
-
-<section class="services-container">
-    <div class="services-wrapper">
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+    <div class="container">
+        <div class="section">
+            <h2>Who We Are?</h2>
+            <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
         </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        <div class="section mission">
+            <h2>What Is Our Mission?</h2>
+            <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
         </div>
     </div>
-</section>
-
-<div class="faq-container">
-    <h3>Frequently Asked Questions</h3>
-    <dl>
-        <dt class="faq-question">What is Cyber Bouncerz?</dt>
-        <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
-
-        <dt class="faq-question">Is Cyber Bouncerz free?</dt>
-        <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
-
-        <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
-        <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
-
-        <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
-        <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
-    </dl>
-</div>
-
 </body>
 </html>
