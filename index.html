@@ -16,13 +16,12 @@ title: Home
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
-            background-color: #f0f0f0;
+            overflow-x: hidden; /* Prevent horizontal scroll bar */
         }
 
         .logo-container {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             text-align: center;
             margin: 20px auto;
             padding: 20px;
@@ -57,27 +56,27 @@ title: Home
         .services-wrapper {
             display: flex;
             justify-content: flex-start;
-            animation: scroll 12s linear infinite;
-            width: 300%; /* Make wrapper three times the size of one item */
+            animation: bounce 4s ease-in-out infinite; /* Speed up the bounce */
+            width: 100%;
         }
 
         .service-item {
-            flex: 0 0 100vw; /* Set width to 100% of viewport */
-            max-width: 100%;
+            flex: 0 0 300px; /* Set width to ensure proper space for the images */
             border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background-color: #f9f9f9;
             box-sizing: border-box;
+            margin-right: 15px;
+        }
+
+        .service-item:last-child {
             margin-right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .service-item img {
-            max-width: 100%; /* Ensure image fits within container */
+            max-width: 100%;
             height: auto;
             margin-bottom: 15px;
         }
@@ -88,9 +87,8 @@ title: Home
         }
 
         .faq-container {
-            width: 100%;
+            width: 95%;
             box-sizing: border-box;
-            margin-top: 30px;
         }
 
         h3 {
@@ -108,15 +106,76 @@ title: Home
             margin-bottom: 15px;
         }
 
+        /* Bouncing animations for left, center, and right items */
+        @keyframes bounce-left {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce-center {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce-right {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Applying different animations to left, center, and right images */
+        .service-item:nth-child(1) {
+            animation: bounce-left 4s ease-in-out infinite;
+        }
+
+        .service-item:nth-child(2) {
+            animation: bounce-center 4s ease-in-out infinite;
+        }
+
+        .service-item:nth-child(3) {
+            animation: bounce-right 4s ease-in-out infinite;
+        }
+
+        /* Duplicate the service items for continuous bouncing effect */
+        .services-wrapper {
+            width: auto;
+            animation: scroll 12s linear infinite;
+        }
+
+        .service-item {
+            flex-shrink: 0; /* Prevent the images from shrinking */
+        }
+
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
         }
 
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
             .logo-container {
-                width: 120px;
-                height: 120px;
+                width: 200px;
+                height: 200px;
             }
 
             h1 {
@@ -124,8 +183,14 @@ title: Home
             }
 
             .service-item {
-                flex: 0 0 100vw;
-                min-width: 100vw;
+                flex: 0 0 80%; /* Adjust items for smaller screens */
+                min-width: 250px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .services-wrapper {
+                justify-content: center;
             }
 
             .faq-container {
@@ -144,6 +209,7 @@ title: Home
 
 <section class="services-container">
     <div class="services-wrapper">
+        <!-- Service Items -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -162,6 +228,7 @@ title: Home
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
 
+        <!-- Duplicate the service items for continuous bouncing effect -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -201,5 +268,6 @@ title: Home
 
 </body>
 </html>
+
 
 
