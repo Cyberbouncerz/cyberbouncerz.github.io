@@ -11,7 +11,7 @@ icon: fas fa-stream
     <title>Contact Us</title>
     <style>
         body {
-            background: linear-gradient(135deg, #e0f7fa, #c2e9f2); /* Gradient background */
+            background: linear-gradient(to bottom right, #2c3e50, #34495e); /* Darker, more muted gradient */
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -19,14 +19,14 @@ icon: fas fa-stream
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #333;
+            color: #ecf0f1; /* Light text on dark background */
         }
 
         .form-container {
-            background: white;
+            background: #34495e; /* Darker container background */
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 600px;
             text-align: left;
@@ -38,7 +38,7 @@ icon: fas fa-stream
         }
 
         h2 {
-            color: #007bff;
+            color: #ecf0f1; /* Light headings */
             text-align: center;
             margin-bottom: 30px;
             font-size: 2em;
@@ -52,17 +52,19 @@ icon: fas fa-stream
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #555;
+            color: #bdc3c7; /* Slightly darker light text for labels */
         }
 
         input[type="text"],
         input[type="email"],
         textarea {
-            width: calc(100% - 22px); /* Account for padding */
+            width: calc(100% - 22px);
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #2c3e50; /* Darker border */
             border-radius: 8px;
             font-size: 16px;
+            background-color: #2c3e50; /* Darker input background */
+            color: #ecf0f1; /* Light text in inputs */
             transition: border-color 0.3s ease;
         }
 
@@ -103,10 +105,10 @@ icon: fas fa-stream
         }
 
         .thank-you {
-            background-color: #f0f8ff;
+            background-color: #2c3e50; /* Darker thank you background */
             padding: 20px;
             border-radius: 8px;
-            color: #333;
+            color: #ecf0f1;
         }
     </style>
 </head>
@@ -145,6 +147,22 @@ icon: fas fa-stream
             event.preventDefault();
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const nameRegex = /^[A-Za-z]+$/; // Regex for letters only
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+
+            if (!nameRegex.test(firstName)) {
+                responseDiv.innerText = 'Please enter a valid first name (letters only).';
+                responseDiv.style.display = 'block';
+                return;
+            }
+
+            if (lastName && !nameRegex.test(lastName)) {
+                responseDiv.innerText = 'Please enter a valid last name (letters only).';
+                responseDiv.style.display = 'block';
+                return;
+            }
+
             if (!emailRegex.test(emailInput.value)) {
                 responseDiv.innerText = 'Please enter a valid email address.';
                 responseDiv.style.display = 'block';
