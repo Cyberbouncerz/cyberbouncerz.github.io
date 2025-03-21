@@ -18,27 +18,25 @@ permalink: /test/
             align-items: center;
         }
 
-        /* Logo Container with Rounded, Centered Border */
         .logo-container {
-            width: auto; /* Allow the container to size based on the logo */
+            width: 350px;
+            height: 350px;
             text-align: center;
-            margin-bottom: 20px;
-            padding: 20px; /* Added padding for spacing inside the border */
-            border: 5px solid #4CAF50; /* Green border around the logo */
-            border-radius: 50%; /* Makes the border circular or elliptical */
-            background-color: #f1f1f1; /* Light background behind the logo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+            margin: 20px auto; /* Centered horizontally */
+            padding: 20px;
+            border: 5px solid #4CAF50;
+            border-radius: 50%;
+            background-color: #f1f1f1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 350px; /* Fixed width for the logo container */
-            height: 350px; /* Make the height equal to width for a circular look */
         }
 
         .logo-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 50%; /* Makes the logo image itself round */
+            border-radius: 50%;
         }
 
         h1 {
@@ -51,13 +49,13 @@ permalink: /test/
             width: 95%;
             margin-bottom: 30px;
             overflow: hidden;
-            position: relative; /* Ensures smooth scrolling */
+            position: relative;
         }
 
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
-            width: 200%; /* Double the width to allow looping images */
+            width: 200%;
         }
 
         .service-item {
@@ -75,7 +73,6 @@ permalink: /test/
             margin-right: 0;
         }
 
-        /* Ensure images are responsive */
         .service-item img {
             max-width: 100%;
             height: auto;
@@ -109,14 +106,13 @@ permalink: /test/
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Move to half of the width */
+            100% { transform: translateX(-50%); }
         }
 
-        /* Adjust scrolling for smooth looping */
         .services-wrapper {
             display: flex;
             animation: scroll 15s linear infinite;
-            width: 200%; /* Ensures smooth looping */
+            width: 200%;
         }
 
         @media (max-width: 768px) {
@@ -129,10 +125,7 @@ permalink: /test/
 </head>
 <body>
 
-<!-- Logo Section with Rounded Border -->
 <div class="logo-container">
-    <!-- Add your logo image here -->
-    <!-- Replace the "PNG file-2.png" with the actual file path -->
     <img src="PNG file-2.png" alt="Logo">
 </div>
 
@@ -140,28 +133,24 @@ permalink: /test/
 
 <div class="services-container">
     <div class="services-wrapper">
-        <!-- Service 1: Expert Panel Image -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
 
-        <!-- Service 2: User Friendly Interface Image -->
         <div class="service-item">
             <img src="1742498458560.jpg" alt="Simple and clean user interface design">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
 
-        <!-- Service 3: User Friendly Terms Image -->
         <div class="service-item">
             <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
 
-        <!-- Repeat the items to ensure smooth loop -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -184,26 +173,19 @@ permalink: /test/
 
 <div class="faq-container">
     <h3>Frequently Asked Questions</h3>
+    <dl>
+        <dt class="faq-question">What is Cyber Bouncerz?</dt>
+        <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
 
-    <div class="faq-item">
-        <p class="faq-question">What is Cyber Bouncerz?</p>
-        <p class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</p>
-    </div>
+        <dt class="faq-question">Is Cyber Bouncerz free?</dt>
+        <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
 
-    <div class="faq-item">
-        <p class="faq-question">Is Cyber Bouncerz free?</p>
-        <p class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</p>
-    </div>
+        <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
+        <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
 
-    <div class="faq-item">
-        <p class="faq-question">Who is Cyber Bouncerz aimed to help?</p>
-        <p class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</p>
-    </div>
-
-    <div class="faq-item">
-        <p class="faq-question">How can I contact Cyber Bouncerz?</p>
-        <p class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</p>
-    </div>
+        <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
+        <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
+    </dl>
 </div>
 
 </body>
