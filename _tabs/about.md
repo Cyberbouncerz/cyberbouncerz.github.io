@@ -14,10 +14,10 @@ order: 4
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom right, #3498db, #8e44ad);
+            background: linear-gradient(to bottom right, #2c3e50, #34495e); /* Darker, more muted gradient */
             margin: 0;
             padding: 0;
-            color: #fff;
+            color: #ecf0f1; /* Light text on dark background */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -25,11 +25,13 @@ order: 4
 
         .container {
             width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 0;
-            box-shadow: none;
-            color: #2c3e50;
+            background-color: #34495e; /* Darker container background */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            color: #ecf0f1;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -40,17 +42,18 @@ order: 4
 
         h1,
         h2 {
-            color: #2c3e50;
+            color: #ecf0f1; /* Light headings */
             text-align: center;
             font-weight: 700;
             margin-bottom: 20px;
         }
 
         .section {
-            padding: 15px;
-            background-color: #ecf0f1;
+            padding: 20px;
+            background-color: #2c3e50; /* Darker section background */
             text-align: center;
             margin: 10px;
+            border-radius: 5px;
         }
 
         .section h2 {
@@ -60,17 +63,14 @@ order: 4
 
         p {
             font-size: 1rem;
-            color: #7f8c8d;
+            color: #bdc3c7; /* Slightly darker light text for paragraphs */
             line-height: 1.6;
             margin-bottom: 20px;
             text-align: center;
         }
 
         .mission {
-            background-color: #f4f6f9;
-            padding: 15px;
-            text-align: center;
-            margin: 10px;
+            background-color: #34495e; /* Darker mission background */
         }
 
         @media (min-width: 768px) {
@@ -79,7 +79,7 @@ order: 4
             }
 
             .section {
-                padding: 20px;
+                padding: 25px;
             }
 
             .section h2 {
@@ -92,7 +92,7 @@ order: 4
             }
 
             .mission {
-                padding: 20px;
+                padding: 25px;
             }
         }
     </style>
@@ -101,11 +101,11 @@ order: 4
 <body>
     <div class="container">
         <div class="section">
-            <h2>Who We Are?</h2>
+            <h2><i class="fas fa-shield-alt"></i> Who We Are?</h2>
             <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
         </div>
         <div class="section mission">
-            <h2>What Is Our Mission?</h2>
+            <h2><i class="fas fa-bullseye"></i> What Is Our Mission?</h2>
             <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
         </div>
     </div>
