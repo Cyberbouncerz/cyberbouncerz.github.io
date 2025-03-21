@@ -26,7 +26,7 @@ permalink: /test/
         }
 
         .logo-container img {
-            max-width: 150px; /* Adjust the size as needed */
+            max-width: 300px; /* Adjust the size to make the logo bigger */
             height: auto;
         }
 
@@ -121,7 +121,7 @@ permalink: /test/
 <!-- Logo Section -->
 <div class="logo-container">
     <!-- Add your logo image here -->
-    <!-- Replace the "logo.png" with the path to your logo image file -->
+    <!-- Replace the "PNG file-2.png" with the actual file path -->
     <img src="PNG file-2.png" alt="Logo"> 
 </div>
 
