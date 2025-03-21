@@ -18,7 +18,7 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
         }
@@ -30,6 +30,7 @@ order: 4
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
+            margin-left: 10%;
         }
         h1, h2 {
             color: #2c3e50;
@@ -53,7 +54,7 @@ order: 4
             color: #7f8c8d;
             line-height: 1.8;
             margin-bottom: 20px;
-            text-align: center; /* Center paragraph text */
+            text-align: center;
         }
         .mission {
             background-color: #f4f6f9;
