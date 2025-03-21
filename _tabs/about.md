@@ -18,7 +18,7 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            min-height: 100vh; /* Ensure full height for the body */
+            min-height: 100vh; /* Full height for body */
         }
 
         /* Sidebar */
@@ -29,7 +29,7 @@ order: 4
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             color: #fff;
             height: 100vh; /* Sidebar takes full height */
-            position: fixed; /* Fixes sidebar to the left */
+            position: fixed; /* Sidebar stays fixed */
             top: 0;
             left: 0;
         }
@@ -43,7 +43,7 @@ order: 4
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin-left: 250px; /* Adjust content position next to the sidebar */
+            margin-left: 250px; /* Content aligned to the right of the sidebar */
         }
 
         h2 {
@@ -124,9 +124,9 @@ order: 4
 </head>
 <body>
 
-    <!-- Sidebar (Header Removed) -->
+    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar content goes here if needed -->
+        <!-- Sidebar content can be added here if needed -->
     </div>
 
     <!-- Main Content -->
@@ -143,3 +143,4 @@ order: 4
 
 </body>
 </html>
+
