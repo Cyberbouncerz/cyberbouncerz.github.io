@@ -3,6 +3,7 @@ layout: page
 permalink: /test/
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,15 +19,22 @@ permalink: /test/
             align-items: center;
         }
 
-        /* Logo Container */
+        /* Logo Container with Border */
         .logo-container {
             width: 100%;
             text-align: center;
             margin-bottom: 20px;
+            padding: 15px; /* Adding padding inside the border */
+            border: 5px solid #4CAF50; /* Green border around the logo */
+            border-radius: 10px; /* Rounded corners for the border */
+            background-color: #f1f1f1; /* Light background behind the logo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+            max-width: 350px; /* Optional: Set a max width to control logo size */
+            margin-top: 20px;
         }
 
         .logo-container img {
-            max-width: 300px; /* Adjust the size to make the logo bigger */
+            max-width: 100%; /* Make sure the logo doesn't exceed the container width */
             height: auto;
         }
 
@@ -118,11 +126,11 @@ permalink: /test/
 </head>
 <body>
 
-<!-- Logo Section -->
+<!-- Logo Section with Border -->
 <div class="logo-container">
     <!-- Add your logo image here -->
     <!-- Replace the "PNG file-2.png" with the actual file path -->
-    <img src="PNG file-2.png" alt="Logo"> 
+    <img src="PNG file-2.png" alt="Logo">
 </div>
 
 <h1>Our Services</h1>
@@ -197,3 +205,4 @@ permalink: /test/
 
 </body>
 </html>
+
