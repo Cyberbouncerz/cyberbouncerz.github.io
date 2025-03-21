@@ -29,9 +29,15 @@ order: 4
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             color: #fff;
             height: 100vh; /* Sidebar takes full height */
-            position: fixed; /* Sidebar stays fixed */
+            position: fixed; /* Fix sidebar to left */
             top: 0;
             left: 0;
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ecf0f1;
         }
 
         /* Main Content */
@@ -43,7 +49,7 @@ order: 4
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin-left: 250px; /* Content aligned to the right of the sidebar */
+            margin-left: 250px; /* Content positioned next to the sidebar */
         }
 
         h2 {
@@ -126,7 +132,8 @@ order: 4
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar content can be added here if needed -->
+        <h1>Cyber Bouncerz</h1>
+        <!-- Sidebar content can go here -->
     </div>
 
     <!-- Main Content -->
