@@ -30,7 +30,7 @@ order: 4
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
             text-align: center;
-            margin-left: 60%; /* Adjusted margin-left */
+            margin-left: 10%;
         }
         h1, h2 {
             color: #2c3e50;
