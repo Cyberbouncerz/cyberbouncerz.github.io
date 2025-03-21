@@ -17,10 +17,10 @@ order: 4
             margin: 0;
             padding: 0;
             color: #fff;
-            display: flex; /* Use flexbox to center content */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            min-height: 100vh; /* Ensure full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
             width: 80%;
@@ -29,7 +29,7 @@ order: 4
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
-            text-align: center; /* Center text within container */
+            text-align: center;
         }
         h1, h2 {
             color: #2c3e50;
@@ -43,17 +43,17 @@ order: 4
             background-color: #ecf0f1;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: left;/*align text inside section to the left*/
         }
         .section h2 {
             font-size: 2rem;
-            text-align: center; /*center the h2 inside section*/
+            text-align: center;
         }
         p {
             font-size: 1.1rem;
             color: #7f8c8d;
             line-height: 1.8;
             margin-bottom: 20px;
+            text-align: center; /* Center paragraph text */
         }
         .mission {
             background-color: #f4f6f9;
