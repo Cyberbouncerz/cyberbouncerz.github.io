@@ -33,7 +33,9 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  #name: Cyber Bouncerz
+  footer:
+  copyright: "© 2025 Your Site. Powered by Jekyll and Chirpy."
+  name: Cyber Bouncerz
   email: Info@cyberbouncerz.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -223,5 +225,4 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-footer:
-  copyright: "© 2025 Your Site. Powered by Jekyll and bob."
+
