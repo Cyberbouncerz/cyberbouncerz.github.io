@@ -8,49 +8,127 @@ order: 4
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Content</title>
+    <title>Cyber Bouncerz</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, lightblue, purple); /* Example gradient */
+        html, body {
+            height: 100%; /* Ensure the full height is available */
+            margin: 0; /* Remove any default margin */
+            padding: 0; /* Remove any default padding */
         }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #3498db, #8e44ad);
+            color: #fff;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Full viewport height */
+        }
+
         .container {
-            width: 80%; /* Adjust as needed */
-            max-width: 800px; /* Optional: set a max width */
-            background-color: white;
+            width: 80%;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: #2c3e50;
+            text-align: center;
+            margin: 0 auto; /* Center the container */
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ecf0f1;
             border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2rem;
             text-align: center;
         }
-        .section {
-            background-color: #f0f0f0;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
+
+        p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
         }
-        .section h2 {
-            margin-top: 0;
+
+        .mission {
+            background-color: #f4f6f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section:hover {
+            background-color: #dfe6e9;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            .section {
+                margin-bottom: 30px;
+                padding: 15px;
+            }
+            h1, h2 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            h1, h2 {
+                font-size: 1.2rem;
+            }
+            .section {
+                margin-bottom: 25px;
+                padding: 10px;
+            }
+            p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>About</h1>
-
         <div class="section">
             <h2>Who We Are?</h2>
             <p>At Cyber Bouncerz, we are a team of accredited cybersecurity consultants dedicated to protecting your digital assets. Our diverse expertise allows us to address a wide range of cybersecurity concerns, from risk assessments to incident response planning.</p>
         </div>
-
-        <div class="section">
+        <div class="section mission">
             <h2>What Is Our Mission?</h2>
             <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
         </div>
     </div>
 </body>
 </html>
+
