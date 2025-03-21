@@ -191,10 +191,17 @@ title: Home
 
             .services-wrapper {
                 justify-content: center;
+                animation: none; /* Stop scrolling animation on mobile */
+                flex-wrap: wrap; /* Ensure items are neatly stacked */
             }
 
             .faq-container {
                 padding: 0 10px;
+            }
+
+            /* Ensure only one of each service item is visible on mobile */
+            .services-wrapper .service-item:nth-child(n+4) {
+                display: none; /* Hide the duplicate service items */
             }
         }
     </style>
@@ -209,7 +216,7 @@ title: Home
 
 <section class="services-container">
     <div class="services-wrapper">
-        <!-- Service Items -->
+        <!-- Service Items (First Set) -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
