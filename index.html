@@ -16,7 +16,7 @@ title: Home
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden; /* Prevent horizontal scrollbar */
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
             background-color: #f0f0f0;
         }
 
@@ -56,27 +56,30 @@ title: Home
 
         .services-wrapper {
             display: flex;
-            justify-content: center;
-            gap: 20px; /* Spacing between images */
+            justify-content: flex-start;
+            animation: bounce 6s ease-in-out infinite; /* Adjusted speed */
+            width: 300%; /* Ensure wrapper is wide enough for 3 items */
         }
 
         .service-item {
             flex: 0 0 100vw; /* Each item takes up the full width of the viewport */
             max-width: 100%;  /* Ensure images fit within container */
+            border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background-color: #f9f9f9;
             box-sizing: border-box;
+            margin-right: 0; /* No margin between items */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Ensure each service item takes up full viewport height */
         }
 
         .service-item img {
-            width: 80%; /* Adjust image width */
+            width: 100%;
             height: auto;
+            margin-bottom: 15px;
             object-fit: cover; /* Ensures images are fully contained */
         }
 
@@ -145,15 +148,26 @@ title: Home
 
         /* Applying different animations to left, center, and right images */
         .service-item:nth-child(1) {
-            animation: bounce-left 3s ease-in-out infinite;
+            animation: bounce-left 6s ease-in-out infinite;
         }
 
         .service-item:nth-child(2) {
-            animation: bounce-center 3s ease-in-out infinite;
+            animation: bounce-center 6s ease-in-out infinite;
         }
 
         .service-item:nth-child(3) {
-            animation: bounce-right 3s ease-in-out infinite;
+            animation: bounce-right 6s ease-in-out infinite;
+        }
+
+        /* Duplicate the service items for continuous bouncing effect */
+        .services-wrapper {
+            width: 300%; /* Make wrapper three times the size of one item */
+            animation: scroll 12s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
         /* Mobile responsiveness */
@@ -206,6 +220,25 @@ title: Home
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
+
+        <!-- Duplicate the service items for continuous bouncing effect -->
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
     </div>
 </section>
 
@@ -228,6 +261,7 @@ title: Home
 
 </body>
 </html>
+
 
 
 
