@@ -22,7 +22,7 @@ order: 4
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100vh; /* This ensures the body takes up at least the full viewport height */
         }
 
         .container {
@@ -33,7 +33,7 @@ order: 4
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
-            margin: 20px auto;
+            margin: auto; /* Removed top and bottom margins */
             text-align: center;
         }
 
