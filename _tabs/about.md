@@ -25,19 +25,18 @@ order: 4
         }
 
         .container {
-            width: 100%; /* Fill the whole width */
-            max-width: none; /* remove max width */
-            height: 100vh; /* Fill the whole height */
+            width: 100%;
+            height: 100vh;
             padding: 40px;
             background-color: #fff;
-            border-radius: 0; /* remove border radius */
-            box-shadow: none; /* remove shadow */
+            border-radius: 0;
+            box-shadow: none;
             color: #2c3e50;
-            margin: 0; /* Remove margins */
+            margin: 0;
             text-align: center;
-            display: flex; /* use flex box to center content */
-            flex-direction: column; /* stack content vertically */
-            justify-content: center; /* center vertically */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         h1,
@@ -52,7 +51,7 @@ order: 4
             padding: 20px;
             background-color: #ecf0f1;
             text-align: center;
-            margin: 10px; /* add small margin to sections */
+            margin: 10px;
         }
 
         .section h2 {
@@ -72,18 +71,7 @@ order: 4
             background-color: #f4f6f9;
             padding: 20px;
             text-align: center;
-            margin:10px;
-        }
-
-        .cta-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            margin: 10px;
         }
 
         @media (max-width: 768px) {
@@ -136,7 +124,6 @@ order: 4
             <h2>What Is Our Mission?</h2>
             <p>Our mission is to empower businesses with proactive cybersecurity strategies that mitigate risks and enhance resilience. We focus on understanding your unique challenges and developing customized solutions to safeguard your sensitive information, enabling you to concentrate on what you do best.</p>
         </div>
-        <button class="cta-button">Contact Us</button>
     </div>
 </body>
 
