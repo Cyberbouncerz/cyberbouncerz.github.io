@@ -4,6 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,21 +20,21 @@ order: 4
             padding: 0;
             color: #fff;
             display: flex;
-            justify-content: center; /* Center horizontally */
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
         .container {
-            width: 80%; /* Adjust as needed */
-            max-width: 900px; /* Limit maximum width */
+            width: 80%;
+            max-width: 900px;
             padding: 40px;
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             color: #2c3e50;
-            margin: 20px auto; /* Add top/bottom margin, center horizontally */
-            text-align: center; /* Center text within container */
+            margin: 20px auto;
+            text-align: center;
         }
 
         h1,
@@ -50,6 +51,7 @@ order: 4
             background-color: #ecf0f1;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .section h2 {
@@ -70,6 +72,7 @@ order: 4
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .section:hover {
@@ -79,7 +82,7 @@ order: 4
         }
 
         .cta-button {
-            display: block; /* Make it visible */
+            display: block;
             margin: 20px auto;
             padding: 10px 20px;
             background-color: #3498db;
