@@ -54,8 +54,8 @@ title: Home
 
         .services-wrapper {
             display: flex;
-            animation: scroll 15s linear infinite;
-            width: max-content; /* Allows the wrapper to grow dynamically */
+            animation: scroll 300s linear infinite; /* Slower scroll speed */
+            width: max-content;
         }
 
         .service-item {
@@ -110,7 +110,7 @@ title: Home
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateX(-100%); /* Ensure it moves enough to complete the loop */
             }
         }
 
@@ -211,6 +211,3 @@ title: Home
 
 </body>
 </html>
-
-
-
