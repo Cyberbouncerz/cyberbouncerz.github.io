@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /contact/
-icon: fas fa-contact-icon
+icon: —Pngtree—avatar icon abstract user login_6796233.png
 ---
 
 <html lang="en">
