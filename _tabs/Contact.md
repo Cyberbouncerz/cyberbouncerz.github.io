@@ -3,6 +3,7 @@ layout: page
 permalink: /contact/
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,61 +11,76 @@ permalink: /contact/
     <title>Contact Us</title>
     <style>
         body {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://source.unsplash.com/1600x900/?waterfall');
-            background-size: cover;
-            background-position: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #c2e9f2); /* Gradient background */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            color: #333; /* Darker text for better contrast */
+            color: #333;
         }
-        .container {
-            max-width: 650px; /* Slightly wider container */
-            margin: 50px auto; /* Increased top margin */
-            background: rgba(255, 255, 255, 0.95); /* Less transparency */
-            padding: 50px; /* Increased padding */
-            border-radius: 12px; /* More rounded corners */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-            transition: transform 0.3s ease; /* Smooth transition on hover */
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+            transition: transform 0.3s ease;
         }
-        .container:hover {
-            transform: translateY(-5px); /* Slight lift on hover */
+
+        .form-container:hover {
+            transform: translateY(-5px);
         }
-        h1 {
-            text-align: center;
+
+        h2 {
             color: #007bff;
-            margin-bottom: 40px; /* Increased bottom margin */
-            font-size: 2.5em; /* Larger heading */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
         }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
         label {
             display: block;
-            margin: 25px 0 8px; /* Adjusted margins */
-            font-weight: 600; /* Semi-bold font */
-            color: #555; /* Slightly lighter label color */
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
         }
-        input[type="text"], input[type="email"], textarea {
-            width: 100%;
-            padding: 15px; /* Increased padding */
-            border: 1px solid #ddd; /* Lighter border */
-            border-radius: 8px; /* More rounded corners */
-            margin-bottom: 25px; /* Adjusted margins */
-            transition: border-color 0.3s ease;
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 22px); /* Account for padding */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             font-size: 16px;
+            transition: border-color 0.3s ease;
         }
-        input:focus, textarea:focus {
+
+        input:focus,
+        textarea:focus {
             border-color: #007bff;
             outline: none;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2); /* Subtle focus shadow */
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
         }
+
         textarea {
-            resize: vertical; /* Allow vertical resizing */
+            resize: vertical;
+            min-height: 150px;
         }
+
         button {
             width: 100%;
-            padding: 15px;
+            padding: 12px 20px;
             background-color: #007bff;
             color: white;
             border: none;
@@ -73,59 +89,51 @@ permalink: /contact/
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         button:hover {
             background-color: #0056b3;
-            transform: translateY(-2px); /* Slight lift on hover */
+            transform: translateY(-2px);
         }
+
         #response {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
             display: none;
-            margin-top: 30px; /* Increased margin */
-            text-align: center;
-            font-size: 18px; /* Larger font */
         }
+
         .thank-you {
-            background-color: #f5f5f5; /* Lighter background */
-            padding: 30px; /* Increased padding */
+            background-color: #f0f8ff;
+            padding: 20px;
             border-radius: 8px;
-            text-align: center;
-            margin-top: 30px;
-            color: #444; /* Darker text */
-        }
-        footer {
-            text-align: center;
-            margin-top: auto;
-            padding: 30px 0;
-            background: rgba(255, 255, 255, 0.85); /* Adjusted transparency */
-            width: 100%;
-            font-size: 14px;
-            color: #777;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Contact Us</h1>
+    <div class="form-container">
+        <h2>Contact Us</h2>
         <form id="contactForm" action="https://formspree.io/f/xpwavqzy" method="POST">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" required>
-
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName">
-
-            <label for="email">Your Email (required)</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message (please avoid sharing sensitive health information. For sensitive inquiries, kindly email us directly.)</label>
-            <textarea id="message" name="message" rows="8" required></textarea>
-
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email (required)</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message (please avoid sharing sensitive health information. For sensitive inquiries, kindly email us directly.)</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
             <button type="submit">Submit</button>
         </form>
         <div id="response" class="thank-you"></div>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </footer>
 
     <script>
         const form = document.getElementById('contactForm');
