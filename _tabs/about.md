@@ -28,6 +28,7 @@ order: 4
             padding: 20px;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
             color: #fff;
+            height: 100vh; /* Ensure sidebar takes full height */
         }
 
         /* Main Content */
@@ -139,4 +140,3 @@ order: 4
 
 </body>
 </html>
-
