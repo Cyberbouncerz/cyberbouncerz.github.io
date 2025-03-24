@@ -58,8 +58,8 @@ title: Home
         .services-wrapper {
             display: flex;
             justify-content: flex-start;
-            animation: bounce 4s ease-in-out infinite;
-            width: 100%;
+            animation: scroll 12s linear infinite;
+            width: auto;
         }
 
         .service-item {
@@ -78,6 +78,11 @@ title: Home
             max-width: 100%;
             height: auto;
             margin-bottom: 15px;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
         .faq-container {
