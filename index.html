@@ -16,7 +16,7 @@ title: Home
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden; /* Prevent horizontal scroll bar */
+            overflow-x: hidden;
         }
 
         .logo-container {
@@ -44,6 +44,7 @@ title: Home
             font-size: 2.5em;
             margin-bottom: 20px;
             text-align: center;
+            color: #4CAF50;
         }
 
         .services-container {
@@ -56,17 +57,17 @@ title: Home
         .services-wrapper {
             display: flex;
             justify-content: flex-start;
-            animation: bounce 4s ease-in-out infinite; /* Speed up the bounce */
+            animation: bounce 4s ease-in-out infinite;
             width: 100%;
         }
 
         .service-item {
-            flex: 0 0 300px; /* Set width to ensure proper space for the images */
-            border: 1px solid #ddd;
+            flex: 0 0 300px;
+            border: 1px solid #4CAF50;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
+            background-color: #f1f1f1;
             box-sizing: border-box;
             margin-right: 15px;
         }
@@ -84,6 +85,7 @@ title: Home
         h2 {
             font-size: 1.3em;
             margin-bottom: 10px;
+            color: #4CAF50;
         }
 
         .faq-container {
@@ -95,6 +97,7 @@ title: Home
             font-size: 1.8em;
             margin-bottom: 20px;
             text-align: center;
+            color: #4CAF50;
         }
 
         .faq-question {
@@ -104,105 +107,6 @@ title: Home
 
         .faq-answer {
             margin-bottom: 15px;
-        }
-
-        /* Bouncing animations for left, center, and right items */
-        @keyframes bounce-left {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce-center {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce-right {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        /* Applying different animations to left, center, and right images */
-        .service-item:nth-child(1) {
-            animation: bounce-left 4s ease-in-out infinite;
-        }
-
-        .service-item:nth-child(2) {
-            animation: bounce-center 4s ease-in-out infinite;
-        }
-
-        .service-item:nth-child(3) {
-            animation: bounce-right 4s ease-in-out infinite;
-        }
-
-        /* Duplicate the service items for continuous bouncing effect */
-        .services-wrapper {
-            width: auto;
-            animation: scroll 12s linear infinite;
-        }
-
-        .service-item {
-            flex-shrink: 0; /* Prevent the images from shrinking */
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .logo-container {
-                width: 200px;
-                height: 200px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .service-item {
-                flex: 0 0 80%; /* Adjust items for smaller screens */
-                min-width: 250px;
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .services-wrapper {
-                justify-content: center;
-                animation: none; /* Stop scrolling animation on mobile */
-                flex-wrap: wrap; /* Ensure items are neatly stacked */
-            }
-
-            .faq-container {
-                padding: 0 10px;
-            }
-
-            /* Ensure only one of each service item is visible on mobile */
-            .services-wrapper .service-item:nth-child(n+4) {
-                display: none; /* Hide the duplicate service items */
-            }
         }
     </style>
 </head>
@@ -216,7 +120,6 @@ title: Home
 
 <section class="services-container">
     <div class="services-wrapper">
-        <!-- Service Items (First Set) -->
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -226,26 +129,7 @@ title: Home
         <div class="service-item">
             <img src="1742498458560.jpg" alt="Simple and clean user interface design">
             <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
-
-        <!-- Duplicate the service items for continuous bouncing effect -->
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+            <p>Our website features a simple and easy-to-use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories and a user-friendly layout, all presented in a visually appealing green-themed interface.</p>
         </div>
 
         <div class="service-item">
@@ -275,6 +159,3 @@ title: Home
 
 </body>
 </html>
-
-
-
