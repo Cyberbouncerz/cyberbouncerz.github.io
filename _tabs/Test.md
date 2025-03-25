@@ -30,7 +30,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     let response = await fetch('https://api.github.com/repos/YOUR_GITHUB_USERNAME/YOUR_REPO/actions/workflows/contact.yml/dispatches', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN',
+            'Authorization': 'Bearer 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',
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         },
