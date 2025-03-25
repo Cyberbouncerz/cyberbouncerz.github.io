@@ -115,7 +115,7 @@ icon: fas fa-stream
 <body>
     <div class="form-container">
         <h2>Contact Us - Support Ticket</h2>
-        <form id="contactForm">
+        <form id="contactForm" action="https://formspree.io/f/xpwavqzy" method="POST">
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" required>
@@ -173,28 +173,19 @@ icon: fas fa-stream
             // Generate unique ticket ID
             const ticketID = `TICKET-${Date.now()}`;
 
-            // Prepare email data
-            const emailData = {
-                _subject: `Support Request - ${ticketID}`,
-                message: `Ticket ID: ${ticketID}\nName: ${firstName} ${lastName}\nEmail: ${emailInput.value}\nStatus: Open\nMessage: ${message}`,
-                email: emailInput.value
-            };
+            // Prepare form submission
+            const formData = new FormData(form);
+            formData.append('ticketID', ticketID); // Add ticket ID to FormData
 
             submitButton.disabled = true;
             submitButton.innerText = "Submitting...";
 
-            // Send data using Formspree
-            fetch("https://formspree.io/f/xpwavqzy", {
+            fetch(form.action, {
                 method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(emailData)
+                body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
+            .then(response => {
+                if (response.ok) {
                     responseDiv.innerText = `Your support request has been submitted successfully! Ticket ID: ${ticketID}. You will receive an email update soon.`;
                     responseDiv.style.display = 'block';
                     form.reset();
