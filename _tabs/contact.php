@@ -5,23 +5,27 @@ icon: fas fa-stream
 ---
 
 <?php
+// Initialize success and error messages
+$success_message = '';
+$error_message = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect form data
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $comment = $_POST['comment'];
+    $fname = htmlspecialchars($_POST['fname']);
+    $lname = htmlspecialchars($_POST['lname']);
+    $email = htmlspecialchars($_POST['email']);
+    $comment = htmlspecialchars($_POST['comment']);
 
     // Generate a unique ticket number
     $ticket_number = strtoupper(bin2hex(random_bytes(6))); // Unique 12-character ticket ID
 
-    // Recipient email
+    // Recipient email (Admin's email)
     $to = "cyberbouncerz@gmail.com";
 
     // Subject for the email
     $subject = "New Contact Form Submission - Ticket #$ticket_number";
 
-    // Email message
+    // Email message (HTML formatted)
     $message = "
     <html>
     <head>
@@ -43,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
     $headers .= "From: $email" . "\r\n";
 
-    // Send email to cyberbouncerz@gmail.com
+    // Send email to admin (CyberBouncerz)
     if (mail($to, $subject, $message, $headers)) {
         // Send a confirmation email to the sender
         $sender_subject = "Your Contact Form Submission - Ticket #$ticket_number";
@@ -68,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Send the confirmation email to the sender
         mail($email, $sender_subject, $sender_message, $headers);
 
-        // Show the success message on the same page
+        // Set success message
         $success_message = "Thank you for your submission! Your ticket number is <strong>$ticket_number</strong>.";
     } else {
         $error_message = "There was an error with your submission. Please try again later.";
@@ -76,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -105,15 +108,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         button:hover {
             background-color: #45a049;
         }
+        p {
+            font-size: 16px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <h2>Contact Us</h2>
 
-    <?php if (isset($success_message)): ?>
-        <p style="color: green;"><?php echo $success_message; ?></p>
-    <?php elseif (isset($error_message)): ?>
-        <p style="color: red;"><?php echo $error_message; ?></p>
+    <!-- Display success or error message -->
+    <?php if (!empty($success_message)): ?>
+        <p class="success"><?php echo $success_message; ?></p>
+    <?php elseif (!empty($error_message)): ?>
+        <p class="error"><?php echo $error_message; ?></p>
     <?php else: ?>
         <form action="" method="POST">
             <label for="fname">First Name:</label>
@@ -133,3 +146,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 </body>
 </html>
+
