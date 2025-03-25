@@ -1,38 +1,23 @@
-name: Contact Form Submission
+name: Contact Form Proxy
 on:
   repository_dispatch:
     types: [contact-form-submission]
 
 jobs:
-  send-email:
+  forward-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Email to Admin
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "New Contact Form Submission"
-          to: "cyberbouncerz@gmail.com"
-          from: "${{ secrets.EMAIL_USERNAME }}"
-          body: |
-            Name: ${{ github.event.client_payload.name }}
-            Email: ${{ github.event.client_payload.email }}
-            Message: ${{ github.event.client_payload.message }}
-            Ticket Number: TICKET-${{ github.run_id }}
-
-      - name: Send Confirmation to User
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Your Contact Submission"
-          to: "${{ github.event.client_payload.email }}"
-          from: "${{ secrets.EMAIL_USERNAME }}"
-          body: |
-            Thank you for reaching out! Your ticket number is TICKET-${{ github.run_id }}.
-            We will get back to you soon.
+      - name: Forward Contact Data to Main Repository
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               -H "Content-Type: application/json" \
+               --data '{
+                 "event_type": "contact-form-submission",
+                 "client_payload": {
+                   "name": "${{ github.event.client_payload.name }}",
+                   "email": "${{ github.event.client_payload.email }}",
+                   "message": "${{ github.event.client_payload.message }}"
+                 }
+               }' \
+               https://api.github.com/repos/cyberbouncerz/cyberbouncerz.github.io/dispatches
