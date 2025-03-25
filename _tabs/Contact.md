@@ -8,10 +8,10 @@ icon: fas fa-stream
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Support Ticket</title>
+    <title>Contact Us</title>
     <style>
         body {
-            background: linear-gradient(to bottom right, #2c3e50, #34495e);
+            background: linear-gradient(to bottom right, #2c3e50, #34495e); /* Darker, more muted gradient */
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -19,11 +19,11 @@ icon: fas fa-stream
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #ecf0f1;
+            color: #ecf0f1; /* Light text on dark background */
         }
 
         .form-container {
-            background: #34495e;
+            background: #34495e; /* Darker container background */
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -38,7 +38,7 @@ icon: fas fa-stream
         }
 
         h2 {
-            color: #ecf0f1;
+            color: #ecf0f1; /* Light headings */
             text-align: center;
             margin-bottom: 30px;
             font-size: 2em;
@@ -52,7 +52,7 @@ icon: fas fa-stream
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #bdc3c7;
+            color: #bdc3c7; /* Slightly darker light text for labels */
         }
 
         input[type="text"],
@@ -60,11 +60,11 @@ icon: fas fa-stream
         textarea {
             width: calc(100% - 22px);
             padding: 10px;
-            border: 1px solid #2c3e50;
+            border: 1px solid #2c3e50; /* Darker border */
             border-radius: 8px;
             font-size: 16px;
-            background-color: #2c3e50;
-            color: #ecf0f1;
+            background-color: #2c3e50; /* Darker input background */
+            color: #ecf0f1; /* Light text in inputs */
             transition: border-color 0.3s ease;
         }
 
@@ -105,7 +105,7 @@ icon: fas fa-stream
         }
 
         .thank-you {
-            background-color: #2c3e50;
+            background-color: #2c3e50; /* Darker thank you background */
             padding: 20px;
             border-radius: 8px;
             color: #ecf0f1;
@@ -114,7 +114,7 @@ icon: fas fa-stream
 </head>
 <body>
     <div class="form-container">
-        <h2>Contact Us - Support Ticket</h2>
+        <h2>Contact Us</h2>
         <form id="contactForm" action="https://formspree.io/f/xpwavqzy" method="POST">
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -132,6 +132,8 @@ icon: fas fa-stream
                 <label for="message">Message (please avoid sharing sensitive health information. For sensitive inquiries, kindly email us directly.)</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
+            <!-- Hidden ticket number field -->
+            <input type="hidden" id="ticketNumber" name="ticketNumber">
             <button type="submit">Submit</button>
         </form>
         <div id="response" class="thank-you"></div>
@@ -143,14 +145,18 @@ icon: fas fa-stream
         const emailInput = document.getElementById('email');
         const submitButton = document.querySelector('button[type="submit"]');
 
+        // Generate ticket number based on timestamp
+        const ticketNumber = 'TICKET-' + new Date().getTime();
+        document.getElementById('ticketNumber').value = ticketNumber;
+
         form.onsubmit = function(event) {
             event.preventDefault();
 
+            // Validate input (optional additional checks)
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const nameRegex = /^[A-Za-z]+$/;
+            const nameRegex = /^[A-Za-z]+$/; // Regex for letters only
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
-            const message = document.getElementById('message').value;
 
             if (!nameRegex.test(firstName)) {
                 responseDiv.innerText = 'Please enter a valid first name (letters only).';
@@ -170,32 +176,28 @@ icon: fas fa-stream
                 return;
             }
 
-            // Generate unique ticket ID
-            const ticketID = `TICKET-${Date.now()}`;
-
-            // Prepare form submission
-            const formData = new FormData(form);
-            formData.append('ticketID', ticketID); // Add ticket ID to FormData
-
             submitButton.disabled = true;
             submitButton.innerText = "Submitting...";
 
             fetch(form.action, {
                 method: 'POST',
-                body: formData
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
             })
             .then(response => {
                 if (response.ok) {
-                    responseDiv.innerText = `Your support request has been submitted successfully! Ticket ID: ${ticketID}. You will receive an email update soon.`;
+                    responseDiv.innerText = 'Thank you for reaching out to us! Your ticket number is ' + ticketNumber + '. We will get back to you soon.';
                     responseDiv.style.display = 'block';
                     form.reset();
                 } else {
-                    responseDiv.innerText = 'There was a problem submitting your request.';
+                    responseDiv.innerText = 'There was a problem sending your message.';
                     responseDiv.style.display = 'block';
                 }
             })
             .catch(error => {
-                responseDiv.innerText = 'There was a problem submitting your request.';
+                responseDiv.innerText = 'There was a problem sending your message.';
                 responseDiv.style.display = 'block';
             })
             .finally(() => {
