@@ -21,12 +21,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          secure: true
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "New Contact Form Submission"
           to: "cyberbouncerz@gmail.com"
-          from: "your-email@example.com"
+          from: "${{ secrets.EMAIL_USERNAME }}"
           body: |
             Name: ${{ github.event.inputs.name }}
             Email: ${{ github.event.inputs.email }}
@@ -36,13 +35,13 @@ jobs:
       - name: Send Confirmation to User
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.your-email-provider.com
+          server_address: smtp.gmail.com
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Your Contact Submission"
           to: "${{ github.event.inputs.email }}"
-          from: "your-email@example.com"
+          from: "${{ secrets.EMAIL_USERNAME }}"
           body: |
             Thank you for reaching out! Your ticket number is TICKET-${{ github.run_id }}.
             We will get back to you soon.
