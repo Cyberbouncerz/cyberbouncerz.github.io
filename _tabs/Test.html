@@ -30,16 +30,17 @@ icon: fas fa-stream
             var data = {};
             formData.forEach((value, key) => { data[key] = value });
 
-            fetch("https://script.google.com/macros/s/AKfycby_OJ9Srm_GFCSyJB94pg7fC8YhVC6CH46AkIqYHyI1xNp4YMexu4iblzcAkzwYMuby/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbwEgaYYnvToWT3Fl4x0aOl1iddmeoAASKGutjScw8UiIFwp5y-wah31AM_xtGjgcS1G/exec", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
             })
             .then(response => response.json())
             .then(result => alert("Your ticket number is: " + result.ticket))
-            .catch(error => alert("Error: " + error));
+            .catch(error => alert("Error: " + error.message));
         });
     </script>
 </body>
 </html>
+
 
