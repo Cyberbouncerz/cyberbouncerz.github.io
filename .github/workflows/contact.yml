@@ -1,0 +1,47 @@
+name: Contact Form Submission
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Sender Name'
+        required: true
+      email:
+        description: 'Sender Email'
+        required: true
+      message:
+        description: 'Message'
+        required: true
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.your-email-provider.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "New Contact Form Submission"
+          to: "cyberbouncerz@gmail.com"
+          from: "your-email@example.com"
+          body: |
+            Name: ${{ github.event.inputs.name }}
+            Email: ${{ github.event.inputs.email }}
+            Message: ${{ github.event.inputs.message }}
+            Ticket Number: TICKET-${{ github.run_id }}
+
+      - name: Send Confirmation to User
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.your-email-provider.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Your Contact Submission"
+          to: "${{ github.event.inputs.email }}"
+          from: "your-email@example.com"
+          body: |
+            Thank you for reaching out! Your ticket number is TICKET-${{ github.run_id }}.
+            We will get back to you soon.
