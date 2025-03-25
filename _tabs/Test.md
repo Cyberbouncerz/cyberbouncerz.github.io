@@ -30,7 +30,7 @@ icon: fas fa-stream
             var data = {};
             formData.forEach((value, key) => { data[key] = value });
 
-            fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+            fetch("https://script.google.com/macros/s/AKfycby_OJ9Srm_GFCSyJB94pg7fC8YhVC6CH46AkIqYHyI1xNp4YMexu4iblzcAkzwYMuby/exec", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" }
