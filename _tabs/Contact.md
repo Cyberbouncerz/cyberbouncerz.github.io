@@ -8,10 +8,10 @@ icon: fas fa-stream
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us - Support Ticket</title>
     <style>
         body {
-            background: linear-gradient(to bottom right, #2c3e50, #34495e); /* Darker, more muted gradient */
+            background: linear-gradient(to bottom right, #2c3e50, #34495e);
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -19,11 +19,11 @@ icon: fas fa-stream
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #ecf0f1; /* Light text on dark background */
+            color: #ecf0f1;
         }
 
         .form-container {
-            background: #34495e; /* Darker container background */
+            background: #34495e;
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -38,7 +38,7 @@ icon: fas fa-stream
         }
 
         h2 {
-            color: #ecf0f1; /* Light headings */
+            color: #ecf0f1;
             text-align: center;
             margin-bottom: 30px;
             font-size: 2em;
@@ -52,7 +52,7 @@ icon: fas fa-stream
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #bdc3c7; /* Slightly darker light text for labels */
+            color: #bdc3c7;
         }
 
         input[type="text"],
@@ -60,11 +60,11 @@ icon: fas fa-stream
         textarea {
             width: calc(100% - 22px);
             padding: 10px;
-            border: 1px solid #2c3e50; /* Darker border */
+            border: 1px solid #2c3e50;
             border-radius: 8px;
             font-size: 16px;
-            background-color: #2c3e50; /* Darker input background */
-            color: #ecf0f1; /* Light text in inputs */
+            background-color: #2c3e50;
+            color: #ecf0f1;
             transition: border-color 0.3s ease;
         }
 
@@ -105,7 +105,7 @@ icon: fas fa-stream
         }
 
         .thank-you {
-            background-color: #2c3e50; /* Darker thank you background */
+            background-color: #2c3e50;
             padding: 20px;
             border-radius: 8px;
             color: #ecf0f1;
@@ -114,7 +114,7 @@ icon: fas fa-stream
 </head>
 <body>
     <div class="form-container">
-        <h2>Contact Us</h2>
+        <h2>Contact Us - Support Ticket</h2>
         <form id="contactForm" action="https://formspree.io/f/xpwavqzy" method="POST">
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -147,9 +147,10 @@ icon: fas fa-stream
             event.preventDefault();
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const nameRegex = /^[A-Za-z]+$/; // Regex for letters only
+            const nameRegex = /^[A-Za-z]+$/;
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
+            const message = document.getElementById('message').value;
 
             if (!nameRegex.test(firstName)) {
                 responseDiv.innerText = 'Please enter a valid first name (letters only).';
@@ -169,28 +170,45 @@ icon: fas fa-stream
                 return;
             }
 
+            // Generate unique ticket ID
+            const ticketID = `TICKET-${Date.now()}`;
+
+            // Format email subject and body
+            const emailSubject = `Support Request - ${ticketID}`;
+            const emailBody = `
+                Ticket ID: ${ticketID}
+                Name: ${firstName} ${lastName}
+                Email: ${emailInput.value}
+                Status: Open
+                Message: ${message}
+            `;
+
             submitButton.disabled = true;
             submitButton.innerText = "Submitting...";
 
             fetch(form.action, {
                 method: 'POST',
-                body: new FormData(form),
+                body: new URLSearchParams({
+                    _subject: emailSubject,
+                    message: emailBody,
+                    email: emailInput.value
+                }),
                 headers: {
                     'Accept': 'application/json'
                 }
             })
             .then(response => {
                 if (response.ok) {
-                    responseDiv.innerText = 'Thank you for reaching out to us! We will get back to you as soon as possible.';
+                    responseDiv.innerText = `Your support request has been submitted successfully! Ticket ID: ${ticketID}. You will receive an email update soon.`;
                     responseDiv.style.display = 'block';
                     form.reset();
                 } else {
-                    responseDiv.innerText = 'There was a problem sending your message.';
+                    responseDiv.innerText = 'There was a problem submitting your request.';
                     responseDiv.style.display = 'block';
                 }
             })
             .catch(error => {
-                responseDiv.innerText = 'There was a problem sending your message.';
+                responseDiv.innerText = 'There was a problem submitting your request.';
                 responseDiv.style.display = 'block';
             })
             .finally(() => {
@@ -201,3 +219,4 @@ icon: fas fa-stream
     </script>
 </body>
 </html>
+
