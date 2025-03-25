@@ -36,4 +36,3 @@ jobs:
           body: |
             Thank you for reaching out! Your ticket number is TICKET-${{ github.run_id }}.
             We will get back to you soon.
-            
