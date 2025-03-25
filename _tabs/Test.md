@@ -4,9 +4,20 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
-# Contact Form
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input, textarea, button { width: 100%; padding: 10px; margin: 5px 0; }
+    </style>
+</head>
+<body>
 
-<form id="contact-form" method="POST">
+<h2>Contact Form</h2>
+<form id="contact-form">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -25,28 +36,26 @@ icon: fas fa-stream
 document.getElementById('contact-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    let formData = new FormData(this);
-    let jsonData = {};
-    formData.forEach((value, key) => jsonData[key] = value);
+    let formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
 
-    let response = await fetch('https://api.github.com/repos/cyberbouncerz/contact-form-submit/dispatches', {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer YOUR_GITHUB_PAT',  // Replace this with your stored GitHub Token
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            event_type: "contact-form-submission",
-            client_payload: jsonData
-        })
+    let response = await fetch("https://script.google.com/macros/s/AKfycbxe_T1M2RXJ1hzJYaibAnm-ueIVqfV4cRCAmNDsxROvQDJYM7FBKjbmOTVg83I5i2BF/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
     });
 
-    if (response.ok) {
-        document.getElementById('response').innerText = "Message sent! You'll receive a confirmation email.";
+    let result = await response.json();
+    if (result.status === "success") {
+        document.getElementById("response").innerText = "Message sent! Your ticket number is " + result.ticketNumber;
     } else {
-        let errorText = await response.text();
-        document.getElementById('response').innerText = "Error sending message: " + errorText;
+        document.getElementById("response").innerText = "Error: " + result.message;
     }
 });
 </script>
+
+</body>
+</html>
