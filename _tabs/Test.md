@@ -4,6 +4,7 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,17 +42,21 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         message: document.getElementById("message").value
     };
 
-    let response = await fetch("https://script.google.com/macros/s/AKfycbygJTqJ0RL1G76OxrmwBSE2-MZzovy5Wl0woxf0lYaTC9518T2-_Ob6j15TnQCI7dC7/exec", {
+    let response = await fetch("[YOUR_GOOGLE_SCRIPT_URL](https://script.google.com/macros/s/AKfycbygJTqJ0RL1G76OxrmwBSE2-MZzovy5Wl0woxf0lYaTC9518T2-_Ob6j15TnQCI7dC7/exec)", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
     });
 
-    let result = await response.json();
-    if (result.status === "success") {
-        document.getElementById("response").innerText = "Message sent! Your ticket number is " + result.ticketNumber;
-    } else {
-        document.getElementById("response").innerText = "Error: " + result.message;
+    try {
+        let result = await response.json();
+        if (result.status === "success") {
+            document.getElementById("response").innerText = "Message sent! Your ticket number is " + result.ticketNumber;
+        } else {
+            document.getElementById("response").innerText = "Error: " + result.message;
+        }
+    } catch (error) {
+        document.getElementById("response").innerText = "Error processing response.";
     }
 });
 </script>
