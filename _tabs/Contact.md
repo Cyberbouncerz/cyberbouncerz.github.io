@@ -115,7 +115,7 @@ icon: fas fa-stream
 <body>
     <div class="form-container">
         <h2>Contact Us - Support Ticket</h2>
-        <form id="contactForm" action="https://formspree.io/f/xpwavqzy" method="POST">
+        <form id="contactForm">
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" required>
@@ -173,32 +173,28 @@ icon: fas fa-stream
             // Generate unique ticket ID
             const ticketID = `TICKET-${Date.now()}`;
 
-            // Format email subject and body
-            const emailSubject = `Support Request - ${ticketID}`;
-            const emailBody = `
-                Ticket ID: ${ticketID}
-                Name: ${firstName} ${lastName}
-                Email: ${emailInput.value}
-                Status: Open
-                Message: ${message}
-            `;
+            // Prepare email data
+            const emailData = {
+                _subject: `Support Request - ${ticketID}`,
+                message: `Ticket ID: ${ticketID}\nName: ${firstName} ${lastName}\nEmail: ${emailInput.value}\nStatus: Open\nMessage: ${message}`,
+                email: emailInput.value
+            };
 
             submitButton.disabled = true;
             submitButton.innerText = "Submitting...";
 
-            fetch(form.action, {
+            // Send data using Formspree
+            fetch("https://formspree.io/f/xpwavqzy", {
                 method: 'POST',
-                body: new URLSearchParams({
-                    _subject: emailSubject,
-                    message: emailBody,
-                    email: emailInput.value
-                }),
                 headers: {
-                    'Accept': 'application/json'
-                }
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(emailData)
             })
-            .then(response => {
-                if (response.ok) {
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
                     responseDiv.innerText = `Your support request has been submitted successfully! Ticket ID: ${ticketID}. You will receive an email update soon.`;
                     responseDiv.style.display = 'block';
                     form.reset();
