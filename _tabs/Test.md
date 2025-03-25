@@ -42,7 +42,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         message: document.getElementById("message").value
     };
 
-    let response = await fetch("https://script.google.com/macros/s/AKfycbx-3BSd4MURBUx983Em0oZ94EnhFN3JyGF8zXUl6c7ShwcNEdZVWl3NIXWveMvdEvRe/exec", {
+    let response = await fetch("[https://script.google.com/macros/s/AKfycbx-3BSd4MURBUx983Em0oZ94EnhFN3JyGF8zXUl6c7ShwcNEdZVWl3NIXWveMvdEvRe/exec](https://script.google.com/macros/s/AKfycbx-3BSd4MURBUx983Em0oZ94EnhFN3JyGF8zXUl6c7ShwcNEdZVWl3NIXWveMvdEvRe/exec)", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
