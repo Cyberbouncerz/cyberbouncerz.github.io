@@ -29,17 +29,24 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     let jsonData = {};
     formData.forEach((value, key) => jsonData[key] = value);
 
-    let response = await fetch('https://YOUR_GITHUB_USERNAME.github.io/contact-form-submit/', {
+    let response = await fetch('https://api.github.com/repos/cyberbouncerz/contact-form-submit/dispatches', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(jsonData)
+        headers: {
+            'Authorization': 'Bearer YOUR_GITHUB_PAT',  // Replace this with your stored GitHub Token
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            event_type: "contact-form-submission",
+            client_payload: jsonData
+        })
     });
 
-    let responseText = await response.text();
     if (response.ok) {
         document.getElementById('response').innerText = "Message sent! You'll receive a confirmation email.";
     } else {
-        document.getElementById('response').innerText = "Error sending message.";
+        let errorText = await response.text();
+        document.getElementById('response').innerText = "Error sending message: " + errorText;
     }
 });
 </script>
