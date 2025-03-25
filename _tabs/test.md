@@ -1,3 +1,9 @@
+---
+layout: page
+permalink: /test/
+icon: fas fa-stream
+---
+
 <!DOCTYPE html>
 <html>
 <head>
