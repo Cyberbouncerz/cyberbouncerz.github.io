@@ -132,8 +132,6 @@ icon: fas fa-stream
                 <label for="message">Message (please avoid sharing sensitive health information. For sensitive inquiries, kindly email us directly.)</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
-            <!-- Hidden ticket number field -->
-            <input type="hidden" id="ticketNumber" name="ticketNumber">
             <button type="submit">Submit</button>
         </form>
         <div id="response" class="thank-you"></div>
@@ -145,14 +143,9 @@ icon: fas fa-stream
         const emailInput = document.getElementById('email');
         const submitButton = document.querySelector('button[type="submit"]');
 
-        // Generate ticket number based on timestamp
-        const ticketNumber = 'TICKET-' + new Date().getTime();
-        document.getElementById('ticketNumber').value = ticketNumber;
-
         form.onsubmit = function(event) {
             event.preventDefault();
 
-            // Validate input (optional additional checks)
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const nameRegex = /^[A-Za-z]+$/; // Regex for letters only
             const firstName = document.getElementById('firstName').value;
@@ -188,7 +181,7 @@ icon: fas fa-stream
             })
             .then(response => {
                 if (response.ok) {
-                    responseDiv.innerText = 'Thank you for reaching out to us! Your ticket number is ' + ticketNumber + '. We will get back to you soon.';
+                    responseDiv.innerText = 'Thank you for reaching out to us! We will get back to you as soon as possible.';
                     responseDiv.style.display = 'block';
                     form.reset();
                 } else {
@@ -208,4 +201,3 @@ icon: fas fa-stream
     </script>
 </body>
 </html>
-
