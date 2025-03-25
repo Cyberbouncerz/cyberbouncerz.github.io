@@ -1,16 +1,7 @@
 name: Contact Form Submission
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Sender Name'
-        required: true
-      email:
-        description: 'Sender Email'
-        required: true
-      message:
-        description: 'Message'
-        required: true
+  repository_dispatch:
+    types: [contact-form-submission]
 
 jobs:
   send-email:
@@ -27,9 +18,9 @@ jobs:
           to: "cyberbouncerz@gmail.com"
           from: "${{ secrets.EMAIL_USERNAME }}"
           body: |
-            Name: ${{ github.event.inputs.name }}
-            Email: ${{ github.event.inputs.email }}
-            Message: ${{ github.event.inputs.message }}
+            Name: ${{ github.event.client_payload.name }}
+            Email: ${{ github.event.client_payload.email }}
+            Message: ${{ github.event.client_payload.message }}
             Ticket Number: TICKET-${{ github.run_id }}
 
       - name: Send Confirmation to User
@@ -40,8 +31,9 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Your Contact Submission"
-          to: "${{ github.event.inputs.email }}"
+          to: "${{ github.event.client_payload.email }}"
           from: "${{ secrets.EMAIL_USERNAME }}"
           body: |
             Thank you for reaching out! Your ticket number is TICKET-${{ github.run_id }}.
             We will get back to you soon.
+            
