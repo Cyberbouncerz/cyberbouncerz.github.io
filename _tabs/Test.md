@@ -4,6 +4,10 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
+# Contact Form
+
+Please fill out the form below to get in touch with us:
+
 <form id="contact-form" method="POST">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
@@ -27,10 +31,14 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     let jsonData = {};
     formData.forEach((value, key) => jsonData[key] = value);
 
-    let response = await fetch('https://api.github.com/repos/YOUR_GITHUB_USERNAME/YOUR_REPO/actions/workflows/contact.yml/dispatches', {
+    const token = 'YOUR_GITHUB_PERSONAL_ACCESS_TOKEN';  // You must securely handle the token
+    const repoOwner = 'YOUR_GITHUB_USERNAME';
+    const repoName = 'YOUR_REPO';
+
+    let response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows/contact.yml/dispatches`, {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer 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',
+            'Authorization': `Bearer ${token}`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         },
@@ -40,6 +48,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         })
     });
 
+    let responseText = await response.json();
     if (response.ok) {
         document.getElementById('response').innerText = "Message sent! You'll receive a confirmation email.";
     } else {
@@ -47,3 +56,4 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     }
 });
 </script>
+
