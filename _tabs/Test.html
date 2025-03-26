@@ -7,134 +7,106 @@ icon: fas fa-stream
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Us</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: calc(100% - 12px);
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-        .loading {
-            display: none;
-        }
-
-    </style>
+<title>Contact Us</title>
+<style>
+  body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  form {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+  }
+  textarea {
+    resize: vertical;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #message {
+    margin-top: 10px;
+    text-align: center;
+  }
+</style>
 </head>
 <body>
-    <form id="contactForm">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+<form id="contactForm">
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" required>
 
-        <label for="company">Company:</label>
-        <input type="text" id="company" name="company">
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+  <label for="company">Company:</label>
+  <input type="text" id="company" name="company">
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
 
-        <button type="button" onclick="submitForm()">Submit</button>
-        <div class="loading" id="loading">Loading...</div>
-    </form>
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="4" required></textarea>
 
-    <script>
-        function submitForm() {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const company = document.getElementById('company').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+  <button type="button" onclick="submitForm()">Submit</button>
+  <div id="statusMessage"></div>
+</form>
 
-            const ticketNumber = generateTicketNumber();
+<script>
+  function submitForm() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const company = document.getElementById('company').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
 
-            const formData = {
-                firstName: firstName,
-                lastName: lastName,
-                company: company,
-                email: email,
-                message: message,
-                ticketNumber: ticketNumber
-            };
+    const formData = {
+      firstName: firstName,
+      lastName: lastName,
+      company: company,
+      email: email,
+      message: message
+    };
 
-            document.getElementById('loading').style.display = 'block'; // Show loading
+    const ticketNumber = Date.now();
+    formData.ticketNumber = ticketNumber;
 
-            fetch('https://script.google.com/macros/s/AKfycbz12Y7pfXbH7XQ7QMtWsEyTXNr2AbDZHafEX9IPTs-XvQ3FZFT6TDTxAjFHywGXdfFY/exec', { // Replace with your Apps Script URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                document.getElementById('loading').style.display = 'none'; // Hide loading
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
-            })
-            .then(data => {
-                alert('Message sent successfully! Your ticket number is: ' + ticketNumber);
-                document.getElementById('contactForm').reset();
-            })
-            .catch(error => {
-                document.getElementById('loading').style.display = 'none'; // Hide loading.
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            });
-        }
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz12Y7pfXbH7XQ7QMtWsEyTXNr2AbDZHafEX9IPTs-XvQ3FZFT6TDTxAjFHywGXdfFY/exec';
 
-        function generateTicketNumber() {
-            const timestamp = new Date().getTime();
-            const randomNumber = Math.floor(Math.random() * 10000);
-            return 'TKT-' + timestamp + '-' + randomNumber;
-        }
-    </script>
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.result === 'success') {
+        document.getElementById('statusMessage').textContent = 'Message sent successfully! Your ticket number is: ' + ticketNumber;
+        document.getElementById('contactForm').reset();
+      } else {
+        document.getElementById('statusMessage').textContent = 'Error sending message.';
+      }
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      document.getElementById('statusMessage').textContent = 'Error sending message.';
+    });
+  }
+</script>
+
 </body>
 </html>
