@@ -4,25 +4,103 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    var formData = new FormData(this);
-    var data = {};
-    formData.forEach((value, key) => { data[key] = value });
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
 
-    fetch("https://script.google.com/macros/s/AKfycbwEgaYYnvToWT3Fl4x0aOl1iddmeoAASKGutjScw8UiIFwp5y-wah31AM_xtGjgcS1G/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
+<form id="contactForm">
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" required>
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" required>
+
+  <label for="company">Company:</label>
+  <input type="text" id="company" name="company">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="4" required></textarea>
+
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const company = document.getElementById('company').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    // Generate a unique ticket number (simple example)
+    const ticketNumber = Date.now() + Math.floor(Math.random() * 1000);
+
+    // Prepare data for Google Apps Script
+    const formData = {
+      firstName: firstName,
+      lastName: lastName,
+      company: company,
+      email: email,
+      message: message,
+      ticketNumber: ticketNumber
+    };
+
+    // Send data to Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwEgaYYnvToWT3Fl4x0aOl1iddmeoAASKGutjScw8UiIFwp5y-wah31AM_xtGjgcS1G/exec', { // Replace with your script URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
     })
     .then(response => response.json())
-    .then(result => {
-        if (result.status === "Success") {
-            alert("Your ticket number is: " + result.ticket);
-        } else {
-            alert("Error: " + result.message);
-        }
+    .then(data => {
+      if (data.result === 'success') {
+        alert('Message sent successfully! Your ticket number is: ' + ticketNumber);
+      } else {
+        alert('Error sending message. Please try again.');
+      }
     })
-    .catch(error => alert("Error: " + error.message));
-});
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An unexpected error occurred. Please try again.');
+    });
+  });
+</script>
+
+</body>
+</html>
