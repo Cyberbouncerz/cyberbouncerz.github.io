@@ -4,6 +4,7 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
+<!DOCTYPE html>
 <html>
 <head>
 <title>Contact Us</title>
@@ -90,18 +91,19 @@ icon: fas fa-stream
         message: body
       };
 
-      if(confirm("Are you sure you want to send this email?")){
+      if (confirm("Are you sure you want to send this email?")) {
         emailjs.send(serviceID, templateID, templateParams)
-        .then((response) => {
-          alert('Email sent successfully!');
-          document.getElementById('contactForm').reset();
-        })
-        .catch((error) => {
-          console.error('Error sending email:', error);
-          alert('Failed to send email. Please try again.');
-        });
+          .then((response) => {
+            console.log("Email sent successfully:", response); // Log success
+            alert('Email sent successfully!');
+            document.getElementById('contactForm').reset();
+          })
+          .catch((error) => {
+            console.error('Error sending email:', error); // Log error
+            alert('Failed to send email. Please try again.');
+          });
       } else {
-          alert("Email sending cancelled");
+        alert("Email sending cancelled");
       }
     }
   </script>
