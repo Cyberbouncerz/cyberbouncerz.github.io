@@ -4,109 +4,48 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Contact Us</title>
-<style>
-  body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  form {
-    width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  label, input, textarea {
-    display: block;
-    margin-bottom: 10px;
-    width: calc(100% - 22px);
-  }
-  textarea {
-    resize: vertical;
-  }
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #message {
-    margin-top: 10px;
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-
-<form id="contactForm">
-  <label for="firstName">First Name:</label>
-  <input type="text" id="firstName" name="firstName" required>
-
-  <label for="lastName">Last Name:</label>
-  <input type="text" id="lastName" name="lastName" required>
-
-  <label for="company">Company:</label>
-  <input type="text" id="company" name="company">
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" rows="4" required></textarea>
-
-  <button type="button" onclick="submitForm()">Submit</button>
-  <div id="statusMessage"></div>
-</form>
-
 <script>
-  function submitForm() {
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const company = document.getElementById('company').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    function generateTicketNumber() {
+      return Math.floor(Math.random() * 1000000); // Generate a random 6-digit number
+    }
 
-    const formData = {
-      firstName: firstName,
-      lastName: lastName,
-      company: company,
-      email: email,
-      message: message
-    };
+    function sendEmail() {
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const company = document.getElementById('company').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const ticketNumber = generateTicketNumber();
 
-    const ticketNumber = Date.now();
-    formData.ticketNumber = ticketNumber;
+      const subject = `Contact Form Submission - Ticket #${ticketNumber}`;
+      const body = `
+      First Name: ${firstName}
+      Last Name: ${lastName}
+      Company: ${company}
+      Email: ${email}
+      Message: ${message}
+      Ticket Number: ${ticketNumber}
+      `;
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz12Y7pfXbH7XQ7QMtWsEyTXNr2AbDZHafEX9IPTs-XvQ3FZFT6TDTxAjFHywGXdfFY/exec';
+      emailjs.init('fEp7kaS49BiptXpkb'); // Use your user ID
+      const serviceID = 'service_qz2o75a'; // Use your service ID
+      const templateID = 'template_wws6odeerv'; // Use your template ID
 
-    fetch(scriptURL, {
-      method: 'POST',
-      body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === 'success') {
-        document.getElementById('statusMessage').textContent = 'Message sent successfully! Your ticket number is: ' + ticketNumber;
-        document.getElementById('contactForm').reset();
-      } else {
-        document.getElementById('statusMessage').textContent = 'Error sending message.';
-      }
-    })
-    .catch(error => {
-      console.error('Error!', error.message);
-      document.getElementById('statusMessage').textContent = 'Error sending message.';
-    });
-  }
-</script>
+      const templateParams = {
+        to_email: 'Cyberbouncerz@gmail.com', // Recipient's email
+        from_email: email, // Sender's email
+        subject: subject,
+        message: body
+      };
 
-</body>
-</html>
+      emailjs.send(serviceID, templateID, templateParams)
+        .then((response) => {
+          alert('Email sent successfully!');
+          document.getElementById('contactForm').reset(); // Clear the form
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+          alert('Failed to send email. Please try again.');
+        });
+    }
+  </script>
