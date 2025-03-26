@@ -4,9 +4,61 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
-<script>
+<html>
+<head>
+<title>Contact Us</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  form {
+    width: 400px;
+    margin: 20px auto;
+  }
+  label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  textarea {
+    height: 150px;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <h2>Contact Us</h2>
+
+  <form id="contactForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="button" onclick="sendEmail()">Submit</button>
+  </form>
+
+  <script>
     function generateTicketNumber() {
-      return Math.floor(Math.random() * 1000000); // Generate a random 6-digit number
+      return Math.floor(Math.random() * 1000000);
     }
 
     function sendEmail() {
@@ -27,25 +79,34 @@ icon: fas fa-stream
       Ticket Number: ${ticketNumber}
       `;
 
-      emailjs.init('fEp7kaS49BiptXpkb'); // Use your user ID
-      const serviceID = 'service_qz2o75a'; // Use your service ID
-      const templateID = 'template_wws6odeerv'; // Use your template ID
+      emailjs.init('fEp7kaS49BiptXpkb');
+      const serviceID = 'service_qz2o75a';
+      const templateID = 'template_wws6odeerv';
 
       const templateParams = {
-        to_email: 'Cyberbouncerz@gmail.com', // Recipient's email
-        from_email: email, // Sender's email
+        to_email: 'Cyberbouncerz@gmail.com',
+        from_email: email,
         subject: subject,
         message: body
       };
 
-      emailjs.send(serviceID, templateID, templateParams)
+      if(confirm("Are you sure you want to send this email?")){
+        emailjs.send(serviceID, templateID, templateParams)
         .then((response) => {
           alert('Email sent successfully!');
-          document.getElementById('contactForm').reset(); // Clear the form
+          document.getElementById('contactForm').reset();
         })
         .catch((error) => {
           console.error('Error sending email:', error);
           alert('Failed to send email. Please try again.');
         });
+      } else {
+          alert("Email sending cancelled");
+      }
     }
   </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+</body>
+</html>
