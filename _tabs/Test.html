@@ -62,8 +62,6 @@ icon: fas fa-stream
     }
 
     function sendEmail() {
-      console.log("sendEmail() function called"); // Debugging log
-
       const firstName = document.getElementById('firstName').value;
       const lastName = document.getElementById('lastName').value;
       const company = document.getElementById('company').value;
@@ -89,24 +87,21 @@ icon: fas fa-stream
         to_email: 'Cyberbouncerz@gmail.com',
         from_email: email,
         subject: subject,
-        message: body,
+        message: body
       };
 
-      console.log("templateParams:", templateParams); // Debugging log
-
-      if (confirm("Are you sure you want to send this email?")) {
+      if(confirm("Are you sure you want to send this email?")){
         emailjs.send(serviceID, templateID, templateParams)
-          .then((response) => {
-            console.log("Email sent successfully:", response);
-            alert('Email sent successfully!');
-            document.getElementById('contactForm').reset();
-          })
-          .catch((error) => {
-            console.error('Error sending email:', error);
-            alert('Failed to send email. Please try again.');
-          });
+        .then((response) => {
+          alert('Email sent successfully!');
+          document.getElementById('contactForm').reset();
+        })
+        .catch((error) => {
+          console.error('Error sending email:', error);
+          alert('Failed to send email. Please try again.');
+        });
       } else {
-        alert("Email sending cancelled");
+          alert("Email sending cancelled");
       }
     }
   </script>
