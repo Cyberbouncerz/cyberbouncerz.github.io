@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /contact/
+permalink: /contact us/
 icon: fas fa-stream
 ---
 
