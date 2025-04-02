@@ -12,8 +12,8 @@ icon: fas fa-stream
     <style>
         :root {
             --primary-color: #0056b3;
-            --secondary-color: #f9f9f9;
-            --text-color: #333;
+            --secondary-color: #2c3e50;
+            --text-color: #ffffff;
             --border-color: #ddd;
         }
         body {
@@ -73,4 +73,3 @@ icon: fas fa-stream
     <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@cyberbouncerz.com">info@cyberbouncerz.com</a>.</p>
 </body>
 </html>
-
