@@ -14,7 +14,6 @@
   {%- endcapture -%}
 
   <!-- Setup Open Graph image -->
-
   {% if page.image %}
     {% assign src = page.image.path | default: page.image %}
 
@@ -28,7 +27,6 @@
 
       {% assign seo_tags = seo_tags | replace: old_url, new_url %}
     {% endunless %}
-
   {% elsif site.social_preview_image %}
     {%- capture img_url -%}
       {% include media-url.html src=site.social_preview_image absolute=true %}
@@ -57,8 +55,10 @@
     {{ site.title }}
   </title>
 
-  <link rel="icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
+  <!-- Favicon -->
+  <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" type="image/png">
 
+  {% include_cached favicons.html %}
 
   <!-- Resource Hints -->
   {% unless site.assets.self_host.enabled %}
@@ -84,7 +84,6 @@
   <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
 
   <!-- 3rd-party Dependencies -->
-
   {% if site.toc and page.toc %}
     <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
@@ -99,7 +98,6 @@
   {% endif %}
 
   <!-- Scripts -->
-
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
   {% include js-selector.html lang=lang %}
@@ -125,3 +123,4 @@
 
   {% include metadata-hook.html %}
 </head>
+      
