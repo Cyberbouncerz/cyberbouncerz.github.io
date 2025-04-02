@@ -61,7 +61,6 @@ icon: fas fa-stream
     </style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
     
     <h2>Introduction</h2>
     <p>Welcome to Cyberbouncerz. Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and how we protect it.</p>
