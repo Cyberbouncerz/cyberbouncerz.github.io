@@ -12,8 +12,10 @@ icon: fas fa-stream
     <style>
         :root {
             --primary-color: #0056b3;
-            --secondary-color: #2c3e50;
-            --text-color: #ffffff;
+            --background-light: #ffffff;
+            --text-light: #333;
+            --background-dark: #2c3e50;
+            --text-dark: #ffffff;
             --border-color: #ddd;
         }
         body {
@@ -21,9 +23,10 @@ icon: fas fa-stream
             margin: 40px auto;
             max-width: 800px;
             line-height: 1.8;
-            background-color: var(--secondary-color);
             padding: 20px;
-            color: var(--text-color);
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             color: var(--primary-color);
@@ -31,13 +34,13 @@ icon: fas fa-stream
             margin-bottom: 20px;
         }
         h2 {
-            color: var(--text-color);
+            color: inherit;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 5px;
             margin-top: 20px;
         }
         p {
-            color: var(--text-color);
+            color: inherit;
         }
         a {
             color: var(--primary-color);
@@ -46,9 +49,19 @@ icon: fas fa-stream
         a:hover {
             text-decoration: underline;
         }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: var(--background-dark);
+                color: var(--text-dark);
+            }
+            h2 {
+                border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            }
+        }
     </style>
 </head>
 <body>
+    <h1>Privacy Policy</h1>
     
     <h2>Introduction</h2>
     <p>Welcome to Cyberbouncerz. Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and how we protect it.</p>
