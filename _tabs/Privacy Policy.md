@@ -4,6 +4,7 @@ permalink: /Privacy Policy/
 icon: fas fa-stream
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,11 +13,32 @@ icon: fas fa-stream
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
+            margin: 40px auto;
+            max-width: 800px;
+            line-height: 1.8;
+            background-color: #f9f9f9;
+            padding: 20px;
         }
-        h1, h2 {
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
             color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        p {
+            color: #555;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
