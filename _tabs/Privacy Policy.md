@@ -4,37 +4,43 @@ permalink: /Privacy Policy/
 icon: fas fa-stream
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Cyberbouncerz</title>
     <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f9f9f9;
+            --text-color: #333;
+            --border-color: #ddd;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 40px auto;
             max-width: 800px;
             line-height: 1.8;
-            background-color: #f9f9f9;
+            background-color: var(--secondary-color);
             padding: 20px;
+            color: var(--text-color);
         }
         h1 {
-            color: #0056b3;
+            color: var(--primary-color);
             text-align: center;
             margin-bottom: 20px;
         }
         h2 {
-            color: #333;
-            border-bottom: 2px solid #ddd;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 5px;
             margin-top: 20px;
         }
         p {
-            color: #555;
+            color: var(--text-color);
         }
         a {
-            color: #0056b3;
+            color: var(--primary-color);
             text-decoration: none;
         }
         a:hover {
@@ -67,3 +73,4 @@ icon: fas fa-stream
     <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@cyberbouncerz.com">info@cyberbouncerz.com</a>.</p>
 </body>
 </html>
+
