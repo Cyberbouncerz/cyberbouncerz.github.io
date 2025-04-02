@@ -226,4 +226,5 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-favicon: /assets/img/favicons/favicon.ico
+favicon: /assets/img/favicon.png
+
