@@ -6,48 +6,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 
-  {%- capture seo_tags -%}
-    {% seo title=false %}
-  {%- endcapture -%}
+  <title>{{ site.title }}</title>
 
-  <!-- Setup Open Graph image -->
-  {% if page.image %}
-    {% assign src = page.image.path | default: page.image %}
-    {% unless src contains '://' %}
-      {%- capture img_url -%}
-        {% include media-url.html src=src subpath=page.media_subpath absolute=true %}
-      {%- endcapture -%}
-      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
-      {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
-      {% assign seo_tags = seo_tags | replace: old_url, new_url %}
-    {% endunless %}
-  {% elsif site.social_preview_image %}
-    {%- capture img_url -%}
-      {% include media-url.html src=site.social_preview_image absolute=true %}
-    {%- endcapture -%}
-    {%- capture og_image -%}
-      <meta property="og:image" content="{{ img_url }}" />
-    {%- endcapture -%}
-    {%- capture twitter_image -%}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="{{ img_url }}" />
-    {%- endcapture -%}
-    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
-    {% assign new_meta_clip = og_image | append: twitter_image %}
-    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
-  {% endif %}
-
-  {{ seo_tags }}
-
-  <title>
-    {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
-  </title>
-
-  <!-- Add Favicon -->
-  <link rel="icon" href="{{ site.favicon }}" type="image/x-icon">
+  <!-- Explicitly Set Favicon with Versioning -->
+  <link rel="icon" href="https://cyberbouncerz.com/assets/img/favicon/favicon-v2.ico?v=2025" type="image/x-icon">
+  <link rel="apple-touch-icon" href="https://cyberbouncerz.com/assets/img/favicon/favicon-v2.ico?v=2025">
+  <link rel="shortcut icon" href="https://cyberbouncerz.com/assets/img/favicon/favicon-v2.ico?v=2025">
 
   <!-- Bootstrap -->
   {% unless jekyll.environment == 'production' %}
@@ -103,3 +67,4 @@
 
   {% include metadata-hook.html %}
 </head>
+ 
