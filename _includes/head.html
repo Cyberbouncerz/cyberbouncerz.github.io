@@ -47,17 +47,7 @@
   </title>
 
   <!-- Add Favicon -->
-  <link rel="icon" href="https://cyberbouncerz.com/assets/img/favicon/favicon-v2.ico" type="image/x-icon">
-
-
-  <!-- Resource Hints -->
-  {% unless site.assets.self_host.enabled %}
-    {% for hint in site.data.origin.cors.resource_hints %}
-      {% for link in hint.links %}
-        <link rel="{{ link.rel }}" href="{{ hint.url }}" {{ link.opts | join: ' ' }}>
-      {% endfor %}
-    {% endfor %}
-  {% endunless %}
+  <link rel="icon" href="{{ site.favicon }}" type="image/x-icon">
 
   <!-- Bootstrap -->
   {% unless jekyll.environment == 'production' %}
