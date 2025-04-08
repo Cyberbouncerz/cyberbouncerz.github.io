@@ -178,18 +178,25 @@ icon: fas fa-stream
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate;
+                /* Animation applied to the container */
+                transition: transform 0.3s ease-in-out;
             }
-            @keyframes bounce-up-down {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(-20px); }
+            .service-item:hover {
+                transform: translateY(-10px); /* Slight lift on hover */
             }
             .service-item img {
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 margin-bottom: 15px;
-                max-width: 90%;
+                max-width: 100%; /* Make image responsive within container */
                 height: auto;
+                object-fit: cover; /* Ensure image covers container */
+                aspect-ratio: 16 / 9; /* Optional: Maintain a 16:9 aspect ratio */
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transitions */
+            }
+            .service-item:hover img {
+                transform: scale(1.05); /* Slight zoom on hover */
+                opacity: 0.9; /* थोड़ा सा धुंधला */
             }
             .service-item h2 {
                 font-size: 1.5em;
@@ -291,4 +298,3 @@ icon: fas fa-stream
 
 </body>
 </html>
-
