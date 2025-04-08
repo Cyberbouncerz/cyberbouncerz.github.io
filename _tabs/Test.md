@@ -16,7 +16,7 @@ icon: fas fa-stream
             margin: 0;
             padding: 20px;
             color: #fff;
-            overflow-x: hidden;
+            overflow-x: auto; /* Enable horizontal scroll if needed */
         }
 
         .logo-container {
@@ -129,6 +129,7 @@ icon: fas fa-stream
         @media (min-width: 769px) {
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                overflow-x: auto; /* Enable horizontal scroll for all content */
             }
             .logo-container {
                 margin: 20px auto;
@@ -145,18 +146,23 @@ icon: fas fa-stream
             h1 {
                 font-size: 2.5em;
                 color: #4CAF50;
+                text-align: left; /* Align title to the left */
+                margin-left: 30px;
             }
             .services-container {
                 display: flex;
                 flex-direction: row; /* Make items go side by side */
-                justify-content: center;
+                justify-content: flex-start; /* Align items to the left */
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+                flex-wrap: nowrap; /* Prevent wrapping */
                 animation: none !important; /* Remove mobile animation */
+                overflow-x: auto; /* Enable horizontal scroll for services */
+                -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
             }
             .service-item {
-                flex: 0 1 300px; /* Set a base width for each item */
+                flex: 0 0 auto; /* Don't grow or shrink, take natural width */
+                width: 300px; /* Set a fixed width for each item */
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
@@ -192,6 +198,8 @@ icon: fas fa-stream
             .faq-container h3 {
                 font-size: 1.8em;
                 color: #4CAF50;
+                text-align: left; /* Align FAQ title to the left */
+                margin-left: 30px;
             }
             .faq-question {
                 color: #fff;
