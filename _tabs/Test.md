@@ -150,22 +150,21 @@ icon: fas fa-stream
             }
 
             .services-container {
-                width: 100%; /* Ensure container takes full width */
+                width: 100%;
                 margin-bottom: 30px;
-                overflow-x: auto; /* Enable horizontal scroll */
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .services-wrapper {
                 display: flex;
                 justify-content: flex-start;
-                animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite; /* Same animations as desktop */
-                width: auto; /* Adjust width based on content */
+                animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite;
+                width: auto;
             }
 
             .service-item {
-                flex: 0 0 auto; /* Adjust sizing based on content */
-                width: calc(100% - 40px); /* Take full width with some padding */
+                flex: 0 0 300px;
                 border: 1px solid #ddd;
                 padding: 20px;
                 text-align: center;
@@ -180,7 +179,7 @@ icon: fas fa-stream
             }
 
             .service-item img {
-                max-width: 100%; /* Ensure image fits within the service item */
+                max-width: 100%;
                 height: auto;
                 margin-bottom: 15px;
             }
@@ -273,4 +272,3 @@ icon: fas fa-stream
 
 </body>
 </html>
-
