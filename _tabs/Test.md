@@ -17,6 +17,12 @@ icon: fas fa-stream
             padding: 20px;
             color: #fff;
             overflow-x: auto;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
         }
 
         .logo-container {
@@ -24,6 +30,7 @@ icon: fas fa-stream
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
 
         .logo-container img {
@@ -44,6 +51,7 @@ icon: fas fa-stream
             text-align: center;
             margin-bottom: 25px;
             color: #4CAF50;
+            width: 100%;
         }
 
         .services-container {
@@ -51,6 +59,8 @@ icon: fas fa-stream
             flex-direction: column;
             gap: 20px;
             padding: 0 15px;
+            width: 100%;
+            align-items: center;
         }
 
         .service-item {
@@ -93,6 +103,10 @@ icon: fas fa-stream
         .faq-container {
             margin-top: 40px;
             padding: 0 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .faq-container h3 {
@@ -100,6 +114,11 @@ icon: fas fa-stream
             text-align: center;
             margin-bottom: 25px;
             color: #4CAF50;
+        }
+
+        .faq-container dl {
+            max-width: 800px;
+            width: 100%;
         }
 
         .faq-question {
@@ -127,106 +146,47 @@ icon: fas fa-stream
 
         /* Desktop Styles */
         @media (min-width: 769px) {
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                overflow-x: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                min-height: 100vh;
-                padding-top: 40px;
-            }
-
-            .logo-container {
-                margin-bottom: 40px;
-            }
-
             .logo-container img {
                 max-width: 200px;
             }
 
             h1 {
                 font-size: 2.5em;
-                color: #4CAF50;
                 text-align: center;
                 margin-bottom: 30px;
             }
 
             .services-container {
-                display: flex;
                 flex-direction: row;
                 justify-content: center;
-                gap: 30px;
-                padding: 0 30px;
                 flex-wrap: nowrap;
-                animation: none !important;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
-                margin-bottom: 40px;
-                width: 960px;
+                width: calc(3 * 300px + 2 * 30px);
             }
 
             .service-item {
                 flex: 0 0 auto;
                 width: 300px;
-                border-radius: 10px;
-                padding: 20px;
                 text-align: center;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                background-color: rgba(255, 255, 255, 0.05);
-                border-left: 5px solid #4CAF50;
-                opacity: 1;
-                transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Re-added bounce animation */
+                animation: bounce-up-down 1s ease-in-out infinite alternate;
             }
 
-            @keyframes bounce-up-down { /* Define the bounce animation */
+            @keyframes bounce-up-down {
                 0% { transform: translateY(0); }
                 100% { transform: translateY(-20px); }
             }
 
-            .service-item img {
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin-bottom: 15px;
-                max-width: 80%;
-                height: auto;
-            }
-
-            .service-item h2 {
-                font-size: 1.5em;
-                color: #f1f1f1;
-            }
-
-            .service-item p {
-                color: #ccc;
-            }
-
             .faq-container {
-                padding: 0 30px;
-                margin-top: 60px;
-                text-align: center;
-                max-width: 800px;
+                align-items: center;
             }
 
             .faq-container h3 {
-                font-size: 1.8em;
-                color: #4CAF50;
-                margin-bottom: 25px;
+                text-align: center;
             }
 
             .faq-container dl {
                 text-align: left;
-            }
-
-            .faq-question {
-                color: #fff;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-            .faq-answer {
-                color: #ccc;
             }
         }
     </style>
