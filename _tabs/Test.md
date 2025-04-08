@@ -12,29 +12,28 @@ icon: fas fa-stream
     <style>
         body {
             background-color: #2c3e50;
-            font-family: serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden; /* Prevent horizontal scroll bar */
+            color: #fff;
+            overflow-x: auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo-container {
-            width: 250px;
-            height: 250px;
             text-align: center;
-            margin: 20px auto;
-            padding: 20px;
-            border: 5px solid #4CAF50;
-            border-radius: 50%;
-            background-color: #f1f1f1;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            animation: pulse 2s ease-in-out infinite alternate; /* Add pulse animation to logo */
+        }
+
+        .logo-container img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s ease-in-out infinite alternate;
         }
 
         @keyframes pulse {
@@ -42,210 +41,242 @@ icon: fas fa-stream
             100% { transform: scale(1.05); }
         }
 
-        .logo-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 50%;
-        }
-
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2.2em;
             text-align: center;
-            color: #fff; /* Keep text color consistent with theme */
-            animation: fadeInDown 1s ease-out; /* Initial fade-in animation */
-        }
-
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 25px;
+            color: #4CAF50;
         }
 
         .services-container {
-            width: 100%;
-            margin-bottom: 30px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .services-wrapper {
             display: flex;
-            justify-content: flex-start;
-            animation: scroll 12s linear infinite, slightBounce 1s ease-in-out infinite alternate; /* Combine scroll and slight bounce */
-            width: auto; /* Adjust width to contain all items */
-        }
-
-        @keyframes slightBounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 15px;
         }
 
         .service-item {
-            flex: 0 0 300px; /* Set width to ensure proper space for the images */
-            border: 1px solid #ddd;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-            box-sizing: border-box;
-            margin-right: 15px;
-            flex-shrink: 0; /* Prevent the images from shrinking */
-            animation: fadeInUp 0.8s ease-out; /* Initial fade-in for each service item */
-        }
-
-        .service-item:last-child {
-            margin-right: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4CAF50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: box-shadow 0.3s ease;
         }
 
         @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.4s; }
 
         .service-item img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
             margin-bottom: 15px;
-            border-radius: 8px; /* Add slight border radius to images */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow to images */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
-            font-size: 1.3em;
+        .service-item h2 {
+            font-size: 1.5em;
+            color: #f1f1f1;
             margin-bottom: 10px;
-            color: #333; /* Darker text for headings */
+        }
+
+        .service-item p {
+            line-height: 1.6;
+            color: #ccc;
         }
 
         .faq-container {
-            width: 95%;
-            box-sizing: border-box;
-            animation: slideInLeft 1s ease-out; /* Slide in animation for FAQ */
+            margin-top: 40px;
+            padding: 0 15px;
         }
 
-        @keyframes slideInLeft {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        h3 {
+        .faq-container h3 {
             font-size: 1.8em;
-            margin-bottom: 20px;
             text-align: center;
-            color: #fff; /* Keep text color consistent */
+            margin-bottom: 25px;
+            color: #4CAF50;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         .faq-question {
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #ddd; /* Lighter color for questions */
-            cursor: pointer; /* Indicate it's clickable */
-            transition: color 0.3s ease; /* Smooth hover effect */
+            margin-bottom: 0;
+            color: #f1f1f1;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
-        .faq-question:hover {
-            color: #4CAF50; /* Highlight on hover */
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2em;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '-';
         }
 
         .faq-answer {
-            margin-bottom: 15px;
-            color: #ccc; /* Lighter color for answers */
-            line-height: 1.6; /* Improve readability */
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-            padding: 0;
+            color: #ccc;
+            line-height: 1.6;
+            padding: 10px;
+            background-color: #34495e;
+            display: none;
         }
 
         .faq-item.open .faq-answer {
-            max-height: 200px; /* Adjust as needed */
-            padding: 10px 0;
+            display: block;
         }
 
-        .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        /* Continuous scrolling animation for services */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-315px * 3)); } /* Adjust based on item width + margin */
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
+        /* Desktop Styles */
+        @media (min-width: 769px) {
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                overflow-x: auto;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
+            }
             .logo-container {
-                width: 150px;
-                height: 150px;
+                margin: 20px auto;
+                display: flex;
+                justify-content: center;
             }
-
+            .logo-container img {
+                max-width: 150px;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                animation: pulse 2s ease-in-out infinite alternate;
+            }
             h1 {
-                font-size: 2em;
+                font-size: 2.8em;
+                color: #4CAF50;
+                text-align: left;
+                margin-left: 30px;
+                margin-bottom: 40px;
             }
-
-            .services-wrapper {
-                animation: scroll-mobile 18s linear infinite, slightBounceMobile 1s ease-in-out infinite alternate; /* Slower scroll on mobile */
-                justify-content: flex-start; /* Start from left on mobile */
+            .services-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 30px;
+                padding: 0 30px;
+                flex-wrap: nowrap;
+                animation: none !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
-
-            @keyframes scroll-mobile {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-95%)); } /* Scroll across most of the width */
-            }
-
-            @keyframes slightBounceMobile {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(-3px); }
-            }
-
             .service-item {
-                flex: 0 0 80%; /* Adjust items for smaller screens */
-                min-width: 250px;
-                margin-right: 15px;
-                margin-bottom: 20px;
+                flex: 0 0 auto;
+                width: 300px;
+                border-radius: 10px;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
+                background-color: rgba(255, 255, 255, 0.05);
+                border-left: 5px solid #4CAF50;
+                opacity: 1;
+                transform: translateY(0);
+                animation: bounce-up-down 1s ease-in-out infinite alternate;
             }
-
+            @keyframes bounce-up-down {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-20px); }
+            }
+            .service-item img {
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                margin-bottom: 15px;
+                max-width: 90%;
+                height: auto;
+            }
+            .service-item h2 {
+                font-size: 1.5em;
+                color: #f1f1f1;
+            }
+            .service-item p {
+                color: #ccc;
+            }
             .faq-container {
-                padding: 0 10px;
+                padding: 40px 30px;
+                margin-top: 80px;
+            }
+            .faq-container h3 {
+                font-size: 2em;
+                color: #4CAF50;
+                text-align: left;
+                margin-left: 30px;
+                margin-bottom: 35px;
+            }
+            .faq-container dl {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .faq-question {
+                grid-column: 1;
+                border-bottom: none;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                cursor: pointer;
+                background-color: transparent;
+                display: block;
+                padding: 10px 0;
+            }
+            .faq-question::after {
+                content: '+';
+                font-size: 1.2em;
+                float: right;
+            }
+            .faq-question.active::after {
+                content: '-';
+            }
+            .faq-answer {
+                grid-column: 2;
+                margin-bottom: 15px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding: 0;
+            }
+            .faq-question.active + .faq-answer {
+                max-height: 200px; /* Adjust as needed */
+                padding: 10px 0;
+            }
+            .faq-container dt:nth-child(odd):last-child,
+            .faq-container dt:nth-child(even):last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
     </style>
 </head>
 <body>
 
-<div class="logo-container">
-    <img src="PNG file-2.png" alt="Logo">
-</div>
+    <div class="logo-container">
+        <img src="PNG file-2.png" alt="Logo">
+    </div>
 
-<h1>Our Services</h1>
+    <h1>Our Services</h1>
 
-<section class="services-container">
-    <div class="services-wrapper">
+    <section class="services-container">
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -263,64 +294,59 @@ icon: fas fa-stream
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
+    </section>
 
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+    <div class="faq-container">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <div class="faq-question">What is Cyber Bouncerz?</div>
+            <div class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</div>
         </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        <div class="faq-item">
+            <div class="faq-question">Is Cyber Bouncerz free?</div>
+            <div class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</div>
         </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        <div class="faq-item">
+            <div class="faq-question">Who is Cyber Bouncerz aimed to help?</div>
+            <div class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How can I contact Cyber Bouncerz?</div>
+            <div class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</div>
         </div>
     </div>
-</section>
 
-<div class="faq-container">
-    <h3>Frequently Asked Questions</h3>
-    <dl>
-        <div class="faq-item">
-            <dt class="faq-question">What is Cyber Bouncerz?</dt>
-            <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
-        </div>
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
 
-        <div class="faq-item">
-            <dt class="faq-question">Is Cyber Bouncerz free?</dt>
-            <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
-        </div>
-
-        <div class="faq-item">
-            <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
-            <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
-        </div>
-
-        <div class="faq-item">
-            <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
-            <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
-        </div>
-    </dl>
-</div>
-
-<script>
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const faqItem = question.parentNode;
-            faqItem.classList.toggle('open');
-            const answer = question.nextElementSibling;
-            answer.style.maxHeight = faqItem.classList.contains('open') ? answer.scrollHeight + 'px' : null;
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentNode;
+                faqItem.classList.toggle('open');
+                const answer = question.nextElementSibling;
+                answer.style.maxHeight = faqItem.classList.contains('open') ? answer.scrollHeight + 'px' : null;
+            });
         });
-    });
-</script>
+
+        // Desktop FAQ functionality
+        if (window.innerWidth > 768) {
+            const faqHeaders = document.querySelectorAll('.faq-container dt .faq-question');
+            const faqAnswers = document.querySelectorAll('.faq-container dd .faq-answer');
+
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const isActive = header.classList.contains('active');
+                    faqHeaders.forEach(h => h.classList.remove('active'));
+                    faqAnswers.forEach(a => a.style.maxHeight = null);
+
+                    if (!isActive) {
+                        header.classList.add('active');
+                        header.nextElementSibling.style.maxHeight = header.nextElementSibling.scrollHeight + 'px';
+                    }
+                });
+            });
+        }
+    </script>
 
 </body>
 </html>
