@@ -16,7 +16,7 @@ icon: fas fa-stream
             margin: 0;
             padding: 20px;
             color: #fff;
-            overflow-x: auto; /* Enable horizontal scroll if needed */
+            overflow-x: hidden;
         }
 
         .logo-container {
@@ -51,6 +51,8 @@ icon: fas fa-stream
             flex-direction: column;
             gap: 20px;
             padding: 0 15px;
+            overflow-x: auto; /* Enable horizontal scroll for mobile */
+            -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS mobile */
         }
 
         .service-item {
@@ -129,7 +131,7 @@ icon: fas fa-stream
         @media (min-width: 769px) {
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                overflow-x: auto; /* Enable horizontal scroll for all content */
+                overflow-x: hidden; /* Hide overall horizontal scroll */
             }
             .logo-container {
                 margin: 20px auto;
@@ -146,32 +148,34 @@ icon: fas fa-stream
             h1 {
                 font-size: 2.5em;
                 color: #4CAF50;
-                text-align: left; /* Align title to the left */
-                margin-left: 30px;
+                text-align: center;
+                margin-bottom: 30px;
             }
             .services-container {
                 display: flex;
-                flex-direction: row; /* Make items go side by side */
-                justify-content: flex-start; /* Align items to the left */
+                flex-direction: row;
+                justify-content: flex-start; /* Start from the left */
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: nowrap; /* Prevent wrapping */
-                animation: none !important; /* Remove mobile animation */
-                overflow-x: auto; /* Enable horizontal scroll for services */
+                flex-wrap: nowrap;
+                overflow-x: auto; /* Enable horizontal scroll for the container */
                 -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+                animation: scroll-left-right 20s linear infinite alternate; /* Left to right scroll */
+            }
+            @keyframes scroll-left-right {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(0% - (300px + 30px) * 2)); } /* Adjust based on item width and gap */
             }
             .service-item {
-                flex: 0 0 auto; /* Don't grow or shrink, take natural width */
-                width: 300px; /* Set a fixed width for each item */
+                flex: 0 0 auto;
+                width: 300px;
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 background-color: rgba(255, 255, 255, 0.05);
                 border-left: 5px solid #4CAF50;
-                opacity: 1;
-                transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Keep bounce */
+                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Up and down bounce */
             }
             @keyframes bounce-up-down {
                 0% { transform: translateY(0); }
@@ -198,8 +202,8 @@ icon: fas fa-stream
             .faq-container h3 {
                 font-size: 1.8em;
                 color: #4CAF50;
-                text-align: left; /* Align FAQ title to the left */
-                margin-left: 30px;
+                text-align: center;
+                margin-bottom: 25px;
             }
             .faq-question {
                 color: #fff;
