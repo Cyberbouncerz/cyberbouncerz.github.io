@@ -179,14 +179,14 @@ icon: fas fa-stream
                 justify-content: flex-start;
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: nowrap;
+                flex-wrap: wrap; /* Enable wrapping for desktop */
                 animation: none !important;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
             .service-item {
-                flex: 0 0 auto;
-                width: 300px;
+                flex: 0 1 calc(33.33% - 30px); /* Distribute items and account for gap */
+                width: auto; /* Remove fixed width for wrapping */
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
@@ -294,6 +294,18 @@ icon: fas fa-stream
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
+
+        <div class="service-item">
+            <img src="placeholder.jpg" alt="Placeholder Image">
+            <h2>Another Service</h2>
+            <p>Description of another service offered.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="placeholder2.jpg" alt="Another Placeholder">
+            <h2>Yet Another Service</h2>
+            <p>Details about yet another service.</p>
+        </div>
     </section>
 
     <div class="faq-container">
@@ -321,9 +333,10 @@ icon: fas fa-stream
 
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
-                question.classList.toggle('active');
+                const faqItem = question.parentNode;
+                faqItem.classList.toggle('open');
                 const answer = question.nextElementSibling;
-                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+                answer.style.maxHeight = faqItem.classList.contains('open') ? answer.scrollHeight + 'px' : null;
             });
         });
     </script>
