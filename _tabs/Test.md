@@ -17,12 +17,8 @@ icon: fas fa-stream
             padding: 20px;
             color: #fff;
             overflow-x: auto;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo-container {
@@ -30,7 +26,6 @@ icon: fas fa-stream
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
-            width: 100%;
         }
 
         .logo-container img {
@@ -51,7 +46,6 @@ icon: fas fa-stream
             text-align: center;
             margin-bottom: 25px;
             color: #4CAF50;
-            width: 100%;
         }
 
         .services-container {
@@ -59,8 +53,6 @@ icon: fas fa-stream
             flex-direction: column;
             gap: 20px;
             padding: 0 15px;
-            width: 100%;
-            align-items: center;
         }
 
         .service-item {
@@ -72,6 +64,7 @@ icon: fas fa-stream
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
+            transition: box-shadow 0.3s ease;
         }
 
         @keyframes fadeInUp {
@@ -103,10 +96,6 @@ icon: fas fa-stream
         .faq-container {
             margin-top: 40px;
             padding: 0 15px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .faq-container h3 {
@@ -114,11 +103,6 @@ icon: fas fa-stream
             text-align: center;
             margin-bottom: 25px;
             color: #4CAF50;
-        }
-
-        .faq-container dl {
-            max-width: 800px;
-            width: 100%;
         }
 
         .faq-question {
@@ -146,47 +130,104 @@ icon: fas fa-stream
 
         /* Desktop Styles */
         @media (min-width: 769px) {
-            .logo-container img {
-                max-width: 200px;
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                overflow-x: auto;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
             }
-
-            h1 {
-                font-size: 2.5em;
-                text-align: center;
-                margin-bottom: 30px;
-            }
-
-            .services-container {
-                flex-direction: row;
+            .logo-container {
+                margin: 20px auto;
+                display: flex;
                 justify-content: center;
+            }
+            .logo-container img {
+                max-width: 150px;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                animation: pulse 2s ease-in-out infinite alternate;
+            }
+            h1 {
+                font-size: 2.8em;
+                color: #4CAF50;
+                text-align: left;
+                margin-left: 30px;
+                margin-bottom: 40px;
+            }
+            .services-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 30px;
+                padding: 0 30px;
                 flex-wrap: nowrap;
+                animation: none !important;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
-                width: calc(3 * 300px + 2 * 30px);
             }
-
             .service-item {
                 flex: 0 0 auto;
                 width: 300px;
+                border-radius: 10px;
+                padding: 20px;
                 text-align: center;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
+                background-color: rgba(255, 255, 255, 0.05);
+                border-left: 5px solid #4CAF50;
+                opacity: 1;
+                transform: translateY(0);
                 animation: bounce-up-down 1s ease-in-out infinite alternate;
             }
-
             @keyframes bounce-up-down {
                 0% { transform: translateY(0); }
                 100% { transform: translateY(-20px); }
             }
-
+            .service-item img {
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                margin-bottom: 15px;
+                max-width: 90%;
+                height: auto;
+            }
+            .service-item h2 {
+                font-size: 1.5em;
+                color: #f1f1f1;
+            }
+            .service-item p {
+                color: #ccc;
+            }
             .faq-container {
-                align-items: center;
+                padding: 40px 30px;
+                margin-top: 80px;
             }
-
             .faq-container h3 {
-                text-align: center;
-            }
-
-            .faq-container dl {
+                font-size: 2em;
+                color: #4CAF50;
                 text-align: left;
+                margin-left: 30px;
+                margin-bottom: 35px;
+            }
+            .faq-container dl {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .faq-question {
+                grid-column: 1;
+                border-bottom: none;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                cursor: pointer;
+            }
+            .faq-answer {
+                grid-column: 2;
+                margin-bottom: 15px;
+            }
+            .faq-container dt:nth-child(odd):last-child,
+            .faq-container dt:nth-child(even):last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
     </style>
@@ -206,7 +247,7 @@ icon: fas fa-stream
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
 
-        <div class="service-item" id="middle-service">
+        <div class="service-item">
             <img src="1742498458560.jpg" alt="Simple and clean user interface design">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
@@ -246,14 +287,6 @@ icon: fas fa-stream
                 answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
             });
         });
-
-        // Scroll to the middle service item on desktop
-        if (window.innerWidth >= 769) {
-            const middleService = document.getElementById('middle-service');
-            if (middleService) {
-                middleService.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'center' });
-            }
-        }
     </script>
 
 </body>
