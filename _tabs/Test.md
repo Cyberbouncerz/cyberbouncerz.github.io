@@ -22,6 +22,8 @@ icon: fas fa-stream
         .logo-container {
             text-align: center;
             margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
         }
 
         .logo-container img {
@@ -132,7 +134,7 @@ icon: fas fa-stream
                 margin: 20px auto;
                 width: 250px;
                 height: 250px;
-                border: 5px solid #4CAF50;
+                border: 5px solid #4CAF50; /* Green border */
                 border-radius: 50%;
                 background-color: #f1f1f1;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -141,14 +143,14 @@ icon: fas fa-stream
                 align-items: center;
             }
             .logo-container img {
-                max-width: 100%;
+                max-width: 80%; /* Adjust image size within the circle */
                 height: auto;
                 border-radius: 50%;
-                animation: none; /* Remove mobile pulse */
+                animation: pulse 2s ease-in-out infinite alternate; /* Pulsing logo */
             }
             h1 {
                 font-size: 2.5em;
-                color: #fff; /* Revert to white */
+                color: #4CAF50; /* Green title */
             }
             .services-container {
                 flex-direction: row;
@@ -165,7 +167,7 @@ icon: fas fa-stream
                 text-align: center;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 background-color: #f9f9f9;
-                border-left: none; /* Remove mobile indicator */
+                border-left: 5px solid #4CAF50; /* Green left border */
                 opacity: 1; /* Ensure visible */
                 transform: translateY(0); /* Ensure not translated */
                 animation: none; /* Disable mobile fade-in */
@@ -195,7 +197,7 @@ icon: fas fa-stream
             }
             .faq-container h3 {
                 font-size: 1.8em;
-                color: #fff; /* Keep white for desktop theme */
+                color: #4CAF50; /* Green FAQ title */
             }
             .faq-question {
                 color: #fff;
@@ -216,6 +218,24 @@ icon: fas fa-stream
     <h1>Our Services</h1>
 
     <section class="services-container">
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
+
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
