@@ -50,10 +50,9 @@ icon: fas fa-stream
 
         .services-container {
             display: flex;
-            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            flex-direction: column;
             gap: 20px;
             padding: 0 15px;
-            justify-content: center; /* Center items on each line */
         }
 
         .service-item {
@@ -66,17 +65,6 @@ icon: fas fa-stream
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
             transition: box-shadow 0.3s ease;
-            width: calc(50% - 10px); /* Two items per row with some gap */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Target the third item specifically to make it take the full width */
-        .services-container .service-item:nth-child(3) {
-            width: 100%;
         }
 
         @keyframes fadeInUp {
@@ -86,28 +74,12 @@ icon: fas fa-stream
         .service-item:nth-child(2) { animation-delay: 0.2s; }
         .service-item:nth-child(3) { animation-delay: 0.4s; }
 
-        .slanty-image-wrapper {
-            width: 80%; /* Adjust as needed */
-            max-width: 250px; /* Optional: set a maximum width */
-            height: auto; /* Maintain aspect ratio */
-            overflow: hidden;
+        .service-item img {
+            max-width: 100%;
+            height: auto;
             border-radius: 8px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
             margin-bottom: 15px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .slanty-image-wrapper:hover {
-            transform: scale(1.03);
-        }
-
-        .slanty-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: skewY(-5deg); /* Adjust the slant angle */
-            transform-origin: bottom left; /* Set the origin for the skew */
-            display: block; /* Prevent extra space below inline images */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .service-item h2 {
@@ -186,13 +158,18 @@ icon: fas fa-stream
             }
             .services-container {
                 display: flex;
-                flex-wrap: wrap; /* Allow wrapping */
+                flex-direction: row;
                 justify-content: flex-start;
                 gap: 30px;
                 padding: 0 30px;
+                flex-wrap: nowrap;
+                animation: none !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
             .service-item {
-                flex: 0 0 calc(50% - 15px); /* Two items per row */
+                flex: 0 0 auto;
+                width: 300px;
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
@@ -201,35 +178,18 @@ icon: fas fa-stream
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                animation: none; /* Remove fadeInUp on desktop for direct display */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                animation: bounce-up-down 1s ease-in-out infinite alternate;
             }
-            /* Make the third item take full width on desktop */
-            .services-container .service-item:nth-child(3) {
-                flex-basis: 100%;
+            @keyframes bounce-up-down {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-20px); }
             }
-            .slanty-image-wrapper {
-                width: 90%; /* Adjust as needed for desktop */
-                max-width: 300px; /* Optional: set a maximum width */
-                height: auto; /* Maintain aspect ratio */
-                overflow: hidden;
+            .service-item img {
                 border-radius: 8px;
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 margin-bottom: 15px;
-                transition: transform 0.3s ease-in-out;
-            }
-            .slanty-image-wrapper:hover {
-                transform: scale(1.03);
-            }
-            .slanty-image {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transform: skewY(-5deg); /* Adjust the slant angle */
-                transform-origin: bottom left; /* Set the origin for the skew */
-                display: block; /* Prevent extra space below inline images */
+                max-width: 90%;
+                height: auto;
             }
             .service-item h2 {
                 font-size: 1.5em;
@@ -282,25 +242,19 @@ icon: fas fa-stream
 
     <section class="services-container">
         <div class="service-item">
-            <div class="slanty-image-wrapper">
-                <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety" class="slanty-image">
-            </div>
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
 
         <div class="service-item">
-            <div class="slanty-image-wrapper">
-                <img src="1742498458560.jpg" alt="Simple and clean user interface design" class="slanty-image">
-            </div>
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
 
         <div class="service-item">
-            <div class="slanty-image-wrapper">
-                <img src="1742497812008.jpg" alt="Clear and concise terms explanation" class="slanty-image">
-            </div>
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
