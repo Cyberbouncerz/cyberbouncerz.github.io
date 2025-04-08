@@ -4,7 +4,6 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -129,7 +128,7 @@ icon: fas fa-stream
         /* Desktop Styles */
         @media (min-width: 769px) {
             body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Keep modern font */
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             .logo-container {
                 margin: 20px auto;
@@ -137,53 +136,54 @@ icon: fas fa-stream
                 justify-content: center;
             }
             .logo-container img {
-                max-width: 150px; /* Match mobile logo size */
+                max-width: 150px;
                 height: auto;
-                border-radius: 10px; /* Match mobile logo border-radius */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Match mobile logo shadow */
-                animation: pulse 2s ease-in-out infinite alternate; /* Pulsing logo */
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                animation: pulse 2s ease-in-out infinite alternate;
             }
             h1 {
                 font-size: 2.5em;
-                color: #4CAF50; /* Green title */
+                color: #4CAF50;
             }
             .services-container {
-                flex-direction: row;
-                justify-content: center; /* Center the items */
+                display: flex;
+                flex-direction: row; /* Make items go side by side */
+                justify-content: center;
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: wrap; /* Allow items to wrap if needed */
-                animation: none !important; /* Remove horizontal scroll animation */
+                flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+                animation: none !important; /* Remove mobile animation */
             }
             .service-item {
-                flex: 0 1 300px; /* Set a fixed width for each item */
-                border-radius: 10px; /* Match mobile border-radius */
+                flex: 0 1 300px; /* Set a base width for each item */
+                border-radius: 10px;
                 padding: 20px;
                 text-align: center;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Match mobile shadow */
-                background-color: rgba(255, 255, 255, 0.05); /* Match mobile background */
-                border-left: 5px solid #4CAF50; /* Green left border */
-                opacity: 1; /* Ensure visible */
-                transform: translateY(0); /* Ensure not translated */
-                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Up and down bounce */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: rgba(255, 255, 255, 0.05);
+                border-left: 5px solid #4CAF50;
+                opacity: 1;
+                transform: translateY(0);
+                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Keep bounce */
             }
             @keyframes bounce-up-down {
                 0% { transform: translateY(0); }
                 100% { transform: translateY(-20px); }
             }
             .service-item img {
-                border-radius: 8px; /* Match mobile border-radius */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Match mobile shadow */
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 margin-bottom: 15px;
-                max-width: 80%; /* Adjust image size within the container */
+                max-width: 80%;
                 height: auto;
             }
             .service-item h2 {
                 font-size: 1.5em;
-                color: #f1f1f1; /* Match mobile title color */
+                color: #f1f1f1;
             }
             .service-item p {
-                color: #ccc; /* Match mobile text color */
+                color: #ccc;
             }
             .faq-container {
                 padding: 0 30px;
@@ -191,7 +191,7 @@ icon: fas fa-stream
             }
             .faq-container h3 {
                 font-size: 1.8em;
-                color: #4CAF50; /* Green FAQ title */
+                color: #4CAF50;
             }
             .faq-question {
                 color: #fff;
