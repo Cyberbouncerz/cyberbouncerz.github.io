@@ -28,9 +28,9 @@ icon: fas fa-stream
             text-align: center;
             margin: 20px auto;
             padding: 20px;
-            border: 5px solid #90caf9; /* Light blue border */
+            border: 5px solid #4CAF50; /* Green border */
             border-radius: 50%;
-            background-color: #e3f2fd; /* Very light blue background */
+            background-color: #e0f7fa; /* Very light cyan background */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
@@ -76,11 +76,11 @@ icon: fas fa-stream
 
         .service-item {
             flex: 0 0 300px; /* Set width to ensure proper space for the images */
-            border: 1px solid #90caf9; /* Light blue border */
+            border: 1px solid #4CAF50; /* Green border */
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #e3f2fd; /* Very light blue background */
+            background-color: #e0f7fa; /* Very light cyan background */
             box-sizing: border-box;
             margin-right: 15px;
         }
@@ -105,7 +105,7 @@ icon: fas fa-stream
         .faq-container {
             width: 95%;
             box-sizing: border-box;
-            background-color: #e3f2fd; /* Very light blue background for FAQ */
+            background-color: #e0f7fa; /* Very light cyan background for FAQ */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -118,15 +118,42 @@ icon: fas fa-stream
             color: #1e3a8a; /* Dark blue text for FAQ heading */
         }
 
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
         .faq-question {
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #3f51b5; /* Slightly darker blue for questions */
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2em;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '-';
         }
 
         .faq-answer {
-            margin-bottom: 15px;
-            color: #5c6bc0; /* Another shade of blue for answers */
+            padding: 10px;
+            background-color: #fff;
+            color: #555;
+            display: none; /* Initially hidden */
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
         }
 
         /* Bouncing animations for left, center, and right items (KEEP AS IS) */
@@ -274,20 +301,35 @@ icon: fas fa-stream
 
 <div class="faq-container">
     <h3>Frequently Asked Questions</h3>
-    <dl>
-        <dt class="faq-question">What is Cyber Bouncerz?</dt>
-        <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
-
-        <dt class="faq-question">Is Cyber Bouncerz free?</dt>
-        <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
-
-        <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
-        <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
-
-        <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
-        <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
-    </dl>
+    <div class="faq-item">
+        <div class="faq-question">What is Cyber Bouncerz?</div>
+        <div class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">Is Cyber Bouncerz free?</div>
+        <div class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">Who is Cyber Bouncerz aimed to help?</div>
+        <div class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">How can I contact Cyber Bouncerz?</div>
+        <div class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</div>
+    </div>
 </div>
+
+<script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('open');
+        });
+    });
+</script>
 
 </body>
 </html>
+ 
