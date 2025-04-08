@@ -4,7 +4,6 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -140,70 +139,94 @@ icon: fas fa-stream
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
+            body {
+                align-items: stretch; /* Make body take full width */
+            }
+
             .logo-container {
-                width: 150px;
-                height: 150px;
+                position: fixed;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                width: 80px;
+                height: 80px;
+                border-width: 3px;
+                padding: 10px;
+                z-index: 10; /* Ensure logo is above other content */
+                animation: bounce-logo 1s ease-in-out infinite alternate;
+            }
+
+            @keyframes bounce-logo {
+                0% { transform: translateY(-50%) translateX(0); }
+                100% { transform: translateY(-50%) translateX(10px); }
+            }
+
+            .logo-container img {
+                border-radius: 50%;
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
+                margin-top: 10px;
                 margin-bottom: 15px;
+                text-align: center;
+                padding-left: 100px; /* Adjust for logo width */
+                padding-right: 10px;
             }
 
             .services-container {
-                width: 100%;
-                margin-bottom: 30px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+                margin-bottom: 20px;
+                padding-left: 100px; /* Adjust for logo width */
+                padding-right: 10px;
+                overflow-y: auto; /* Enable vertical scrolling */
+                overflow-x: hidden; /* Hide horizontal scroll */
             }
 
             .services-wrapper {
                 display: flex;
-                justify-content: flex-start;
-                animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite;
-                width: auto;
+                flex-direction: column; /* Stack items vertically */
+                align-items: stretch; /* Make items take full width */
+                animation: none !important; /* Disable desktop animations */
+                width: 100%;
             }
 
             .service-item {
                 flex: 0 0 auto;
-                width: calc(100% - 30px);
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
                 border: 1px solid #ddd;
                 padding: 15px;
                 text-align: center;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 background-color: #f9f9f9;
                 box-sizing: border-box;
-                margin-right: 10px;
-            }
-
-            .service-item:last-child {
-                margin-right: 0;
             }
 
             .service-item img {
-                width: 100%;
+                max-width: 80%;
                 height: auto;
                 margin-bottom: 10px;
-                display: block;
             }
 
             h2 {
-                font-size: 1.1em;
+                font-size: 1.2em;
                 margin-bottom: 8px;
             }
 
             p {
-                font-size: 0.85em;
+                font-size: 0.9em;
             }
 
             .faq-container {
                 width: 95%;
-                padding: 0 10px;
+                padding-left: 100px; /* Adjust for logo width */
+                padding-right: 10px;
             }
 
             h3 {
-                font-size: 1.5em;
-                margin-bottom: 12px;
+                font-size: 1.6em;
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -275,3 +298,4 @@ icon: fas fa-stream
 
 </body>
 </html>
+   
