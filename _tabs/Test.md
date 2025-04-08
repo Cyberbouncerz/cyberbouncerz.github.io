@@ -86,21 +86,28 @@ icon: fas fa-stream
         .service-item:nth-child(2) { animation-delay: 0.2s; }
         .service-item:nth-child(3) { animation-delay: 0.4s; }
 
-        .service-item img {
-            max-width: 80%;
-            height: auto;
+        .slanty-image-wrapper {
+            width: 80%; /* Adjust as needed */
+            max-width: 250px; /* Optional: set a maximum width */
+            height: auto; /* Maintain aspect ratio */
+            overflow: hidden;
             border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
             margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: tilt-shaking 0.8s cubic-bezier(.36,.07,.19,.97) both infinite; /* Cool tilt animation */
+            transition: transform 0.3s ease-in-out;
         }
 
-        @keyframes tilt-shaking {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            50% { transform: rotate(0deg); }
-            75% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
+        .slanty-image-wrapper:hover {
+            transform: scale(1.03);
+        }
+
+        .slanty-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: skewY(-5deg); /* Adjust the slant angle */
+            transform-origin: bottom left; /* Set the origin for the skew */
+            display: block; /* Prevent extra space below inline images */
         }
 
         .service-item h2 {
@@ -194,7 +201,7 @@ icon: fas fa-stream
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                animation: none; /* Remove bounce on desktop for this layout */
+                animation: none; /* Remove fadeInUp on desktop for direct display */
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -203,13 +210,26 @@ icon: fas fa-stream
             .services-container .service-item:nth-child(3) {
                 flex-basis: 100%;
             }
-            .service-item img {
+            .slanty-image-wrapper {
+                width: 90%; /* Adjust as needed for desktop */
+                max-width: 300px; /* Optional: set a maximum width */
+                height: auto; /* Maintain aspect ratio */
+                overflow: hidden;
                 border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
                 margin-bottom: 15px;
-                max-width: 90%;
-                height: auto;
-                animation: tilt-shaking 0.8s cubic-bezier(.36,.07,.19,.97) both infinite; /* Cool tilt animation */
+                transition: transform 0.3s ease-in-out;
+            }
+            .slanty-image-wrapper:hover {
+                transform: scale(1.03);
+            }
+            .slanty-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: skewY(-5deg); /* Adjust the slant angle */
+                transform-origin: bottom left; /* Set the origin for the skew */
+                display: block; /* Prevent extra space below inline images */
             }
             .service-item h2 {
                 font-size: 1.5em;
@@ -262,19 +282,25 @@ icon: fas fa-stream
 
     <section class="services-container">
         <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <div class="slanty-image-wrapper">
+                <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety" class="slanty-image">
+            </div>
             <h2>Expert Panel</h2>
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
 
         <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <div class="slanty-image-wrapper">
+                <img src="1742498458560.jpg" alt="Simple and clean user interface design" class="slanty-image">
+            </div>
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
         </div>
 
         <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <div class="slanty-image-wrapper">
+                <img src="1742497812008.jpg" alt="Clear and concise terms explanation" class="slanty-image">
+            </div>
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
