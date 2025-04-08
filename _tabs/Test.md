@@ -16,7 +16,9 @@ icon: fas fa-stream
             margin: 0;
             padding: 20px;
             color: #fff;
-            overflow-x: auto; /* Enable horizontal scroll if needed */
+            overflow-x: auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo-container {
@@ -62,6 +64,7 @@ icon: fas fa-stream
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
+            transition: box-shadow 0.3s ease;
         }
 
         @keyframes fadeInUp {
@@ -129,7 +132,10 @@ icon: fas fa-stream
         @media (min-width: 769px) {
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                overflow-x: auto; /* Enable horizontal scroll for all content */
+                overflow-x: auto;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
             }
             .logo-container {
                 margin: 20px auto;
@@ -144,34 +150,35 @@ icon: fas fa-stream
                 animation: pulse 2s ease-in-out infinite alternate;
             }
             h1 {
-                font-size: 2.5em;
+                font-size: 2.8em;
                 color: #4CAF50;
-                text-align: left; /* Align title to the left */
+                text-align: left;
                 margin-left: 30px;
+                margin-bottom: 40px;
             }
             .services-container {
                 display: flex;
-                flex-direction: row; /* Make items go side by side */
-                justify-content: flex-start; /* Align items to the left */
+                flex-direction: row;
+                justify-content: flex-start;
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: nowrap; /* Prevent wrapping */
-                animation: none !important; /* Remove mobile animation */
-                overflow-x: auto; /* Enable horizontal scroll for services */
-                -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+                flex-wrap: nowrap;
+                animation: none !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
             .service-item {
-                flex: 0 0 auto; /* Don't grow or shrink, take natural width */
-                width: 300px; /* Set a fixed width for each item */
+                flex: 0 0 auto;
+                width: 300px;
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
                 background-color: rgba(255, 255, 255, 0.05);
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Keep bounce */
+                animation: bounce-up-down 1s ease-in-out infinite alternate;
             }
             @keyframes bounce-up-down {
                 0% { transform: translateY(0); }
@@ -181,7 +188,7 @@ icon: fas fa-stream
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 margin-bottom: 15px;
-                max-width: 80%;
+                max-width: 90%;
                 height: auto;
             }
             .service-item h2 {
@@ -192,21 +199,35 @@ icon: fas fa-stream
                 color: #ccc;
             }
             .faq-container {
-                padding: 0 30px;
-                margin-top: 60px;
+                padding: 40px 30px;
+                margin-top: 80px;
             }
             .faq-container h3 {
-                font-size: 1.8em;
+                font-size: 2em;
                 color: #4CAF50;
-                text-align: left; /* Align FAQ title to the left */
+                text-align: left;
                 margin-left: 30px;
+                margin-bottom: 35px;
+            }
+            .faq-container dl {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
             }
             .faq-question {
-                color: #fff;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                grid-column: 1;
+                border-bottom: none;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                cursor: pointer;
             }
             .faq-answer {
-                color: #ccc;
+                grid-column: 2;
+                margin-bottom: 15px;
+            }
+            .faq-container dt:nth-child(odd):last-child,
+            .faq-container dt:nth-child(even):last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
     </style>
@@ -270,3 +291,4 @@ icon: fas fa-stream
 
 </body>
 </html>
+
