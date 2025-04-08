@@ -58,12 +58,12 @@ icon: fas fa-stream
         .services-wrapper {
             display: flex;
             justify-content: flex-start;
-            animation: bounce 4s ease-in-out infinite; /* Speed up the bounce */
-            width: 100%;
+            animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite; /* Desktop animations */
+            width: auto;
         }
 
         .service-item {
-            flex: 0 0 300px; /* Set width to ensure proper space for the images */
+            flex: 0 0 300px; /* Set width for desktop layout */
             border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
@@ -108,66 +108,30 @@ icon: fas fa-stream
             margin-bottom: 15px;
         }
 
-        /* Bouncing animations for left, center, and right items */
+        /* Bouncing animations for left, center, and right items (Desktop) */
         @keyframes bounce-left {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
 
         @keyframes bounce-center {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
         }
 
         @keyframes bounce-right {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+            100% { transform: translateY(0); }
         }
 
-        /* Applying different animations to left, center, and right images */
-        .service-item:nth-child(1) {
-            animation: bounce-left 4s ease-in-out infinite;
-        }
+        .service-item:nth-child(1) { animation-name: bounce-left; }
+        .service-item:nth-child(2) { animation-name: bounce-center; }
+        .service-item:nth-child(3) { animation-name: bounce-right; }
 
-        .service-item:nth-child(2) {
-            animation: bounce-center 4s ease-in-out infinite;
-        }
-
-        .service-item:nth-child(3) {
-            animation: bounce-right 4s ease-in-out infinite;
-        }
-
-        /* Duplicate the service items for continuous bouncing effect */
-        .services-wrapper {
-            width: auto;
-            animation: scroll 12s linear infinite;
-        }
-
-        .service-item {
-            flex-shrink: 0; /* Prevent the images from shrinking */
-        }
-
+        /* Continuous scrolling animation (Desktop) */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
@@ -176,69 +140,74 @@ icon: fas fa-stream
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .logo-container {
-                width: 150px; /* Slightly smaller logo */
+                width: 150px;
                 height: 150px;
             }
 
             h1 {
-                font-size: 1.8em; /* Slightly smaller main heading */
+                font-size: 1.8em;
                 margin-bottom: 15px;
             }
 
             .services-container {
-                overflow: auto; /* Allow vertical scrolling for services */
-                padding: 10px; /* Add some padding around the container */
+                overflow: hidden; /* Hide overflow for single item view */
+                padding: 10px;
             }
 
             .services-wrapper {
                 display: flex;
-                flex-direction: row; /* Keep items in a row for a potential carousel */
-                justify-content: flex-start; /* Align items to the start */
-                align-items: stretch; /* Make items the same height */
-                animation: none; /* Stop the continuous horizontal scroll */
-                flex-wrap: nowrap; /* Prevent wrapping for carousel-like behavior */
-                overflow-x: auto; /* Enable horizontal scrolling for the carousel */
-                scroll-snap-type: x mandatory; /* Enable smooth snapping for carousel */
-                -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
-                padding-bottom: 15px; /* Add some space below the carousel */
+                flex-direction: row;
+                animation: scroll-mobile 12s linear infinite; /* Auto-scroll for mobile */
+                width: calc(100% * 6); /* Total width of all items */
+                padding-bottom: 15px;
             }
 
             .service-item {
-                flex: 0 0 80%; /* Make each item take up most of the screen width */
-                min-width: auto; /* Allow width to be controlled by flex-basis */
-                margin-right: 15px; /* Keep some spacing between items */
-                margin-bottom: 0; /* Remove bottom margin as they are side-by-side */
-                scroll-snap-align: start; /* Snap items to the start of the container */
+                flex: 0 0 100%; /* Each item takes full width on mobile */
+                min-width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+                animation: none !important; /* Disable desktop bounce animation */
             }
 
             .service-item:last-child {
-                margin-right: 0; /* Remove right margin for the last item */
+                margin-right: 0;
             }
 
             .service-item img {
-                margin-bottom: 10px; /* Slightly less margin below the image */
+                max-width: 80%;
+                height: auto;
+                margin-bottom: 10px;
             }
 
             h2 {
-                font-size: 1.2em; /* Slightly smaller service title */
+                font-size: 1.2em;
                 margin-bottom: 8px;
             }
 
             p {
-                font-size: 0.9em; /* Slightly smaller paragraph text */
+                font-size: 0.9em;
             }
 
             .faq-container {
-                padding: 0 15px; /* Adjust padding for FAQ */
+                padding: 0 15px;
             }
 
             h3 {
-                font-size: 1.6em; /* Slightly smaller FAQ heading */
+                font-size: 1.6em;
                 margin-bottom: 15px;
             }
 
-            .services-wrapper .service-item:nth-child(n+4) {
-                /* Keep the duplicate items for the scrollable carousel */
+            /* Keyframes for mobile auto-scroll */
+            @keyframes scroll-mobile {
+                0% { transform: translateX(0%); }
+                16.66% { transform: translateX(0%); }
+                33.32% { transform: translateX(-100%); }
+                49.98% { transform: translateX(-100%); }
+                66.64% { transform: translateX(-200%); }
+                83.3% { transform: translateX(-200%); }
+                100% { transform: translateX(0%); }
             }
         }
     </style>
