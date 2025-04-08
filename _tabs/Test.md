@@ -4,6 +4,7 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -128,24 +129,18 @@ icon: fas fa-stream
         /* Desktop Styles */
         @media (min-width: 769px) {
             body {
-                font-family: serif; /* Revert to serif for desktop */
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Keep modern font */
             }
             .logo-container {
                 margin: 20px auto;
-                width: 250px;
-                height: 250px;
-                border: 5px solid #4CAF50; /* Green border */
-                border-radius: 50%;
-                background-color: #f1f1f1;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 display: flex;
                 justify-content: center;
-                align-items: center;
             }
             .logo-container img {
-                max-width: 80%; /* Adjust image size within the circle */
+                max-width: 150px; /* Match mobile logo size */
                 height: auto;
-                border-radius: 50%;
+                border-radius: 10px; /* Match mobile logo border-radius */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Match mobile logo shadow */
                 animation: pulse 2s ease-in-out infinite alternate; /* Pulsing logo */
             }
             h1 {
@@ -154,42 +149,41 @@ icon: fas fa-stream
             }
             .services-container {
                 flex-direction: row;
-                justify-content: flex-start;
-                animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite;
-                width: auto;
-                padding: 0;
-                gap: 15px;
+                justify-content: center; /* Center the items */
+                gap: 30px;
+                padding: 0 30px;
+                flex-wrap: wrap; /* Allow items to wrap if needed */
+                animation: none !important; /* Remove horizontal scroll animation */
             }
             .service-item {
-                flex: 0 0 300px;
-                border: 1px solid #ddd;
+                flex: 0 1 300px; /* Set a fixed width for each item */
+                border-radius: 10px; /* Match mobile border-radius */
                 padding: 20px;
                 text-align: center;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                background-color: #f9f9f9;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Match mobile shadow */
+                background-color: rgba(255, 255, 255, 0.05); /* Match mobile background */
                 border-left: 5px solid #4CAF50; /* Green left border */
                 opacity: 1; /* Ensure visible */
                 transform: translateY(0); /* Ensure not translated */
-                animation: none; /* Disable mobile fade-in */
+                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Up and down bounce */
             }
-            .service-item:nth-child(1) { animation-name: bounce-left; }
-            .service-item:nth-child(2) { animation-name: bounce-center; }
-            .service-item:nth-child(3) { animation-name: bounce-right; }
-            @keyframes bounce-left { 0% { transform: translateY(0); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0); } }
-            @keyframes bounce-center { 0% { transform: translateY(0); } 50% { transform: translateY(10px); } 100% { transform: translateY(0); } }
-            @keyframes bounce-right { 0% { transform: translateY(0); } 50% { transform: translateY(20px); } 100% { transform: translateY(0); } }
-            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+            @keyframes bounce-up-down {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-20px); }
+            }
             .service-item img {
-                border-radius: 0;
-                box-shadow: none;
+                border-radius: 8px; /* Match mobile border-radius */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Match mobile shadow */
                 margin-bottom: 15px;
+                max-width: 80%; /* Adjust image size within the container */
+                height: auto;
             }
             .service-item h2 {
-                font-size: 1.3em;
-                color: #000; /* Darker text for desktop */
+                font-size: 1.5em;
+                color: #f1f1f1; /* Match mobile title color */
             }
             .service-item p {
-                color: #333; /* Darker text for desktop */
+                color: #ccc; /* Match mobile text color */
             }
             .faq-container {
                 padding: 0 30px;
@@ -218,24 +212,6 @@ icon: fas fa-stream
     <h1>Our Services</h1>
 
     <section class="services-container">
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
-
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
