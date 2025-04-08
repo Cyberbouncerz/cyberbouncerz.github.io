@@ -150,25 +150,29 @@ icon: fas fa-stream
             }
 
             .services-container {
-                overflow: hidden; /* Hide overflow for single item view */
-                padding: 10px;
+                width: 100%; /* Ensure container takes full width */
+                margin-bottom: 30px;
+                overflow-x: auto; /* Enable horizontal scroll */
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
             }
 
             .services-wrapper {
                 display: flex;
-                flex-direction: row;
-                animation: scroll-mobile 12s linear infinite; /* Auto-scroll for mobile */
-                width: calc(100% * 6); /* Total width of all items */
-                padding-bottom: 15px;
+                justify-content: flex-start;
+                animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite; /* Same animations as desktop */
+                width: auto; /* Adjust width based on content */
             }
 
             .service-item {
-                flex: 0 0 100%; /* Each item takes full width on mobile */
-                min-width: 100%;
-                margin-right: 0;
-                margin-bottom: 15px;
+                flex: 0 0 auto; /* Adjust sizing based on content */
+                width: calc(100% - 40px); /* Take full width with some padding */
+                border: 1px solid #ddd;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                background-color: #f9f9f9;
                 box-sizing: border-box;
-                animation: none !important; /* Disable desktop bounce animation */
+                margin-right: 15px;
             }
 
             .service-item:last-child {
@@ -176,14 +180,14 @@ icon: fas fa-stream
             }
 
             .service-item img {
-                max-width: 80%;
+                max-width: 100%; /* Ensure image fits within the service item */
                 height: auto;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
             }
 
             h2 {
                 font-size: 1.2em;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
             }
 
             p {
@@ -191,23 +195,13 @@ icon: fas fa-stream
             }
 
             .faq-container {
+                width: 95%;
                 padding: 0 15px;
             }
 
             h3 {
                 font-size: 1.6em;
                 margin-bottom: 15px;
-            }
-
-            /* Keyframes for mobile auto-scroll */
-            @keyframes scroll-mobile {
-                0% { transform: translateX(0%); }
-                16.66% { transform: translateX(0%); }
-                33.32% { transform: translateX(-100%); }
-                49.98% { transform: translateX(-100%); }
-                66.64% { transform: translateX(-200%); }
-                83.3% { transform: translateX(-200%); }
-                100% { transform: translateX(0%); }
             }
         }
     </style>
@@ -279,3 +273,4 @@ icon: fas fa-stream
 
 </body>
 </html>
+
