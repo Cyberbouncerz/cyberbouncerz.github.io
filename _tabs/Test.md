@@ -4,6 +4,7 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -164,14 +165,15 @@ icon: fas fa-stream
             }
 
             .service-item {
-                flex: 0 0 300px;
+                flex: 0 0 auto;
+                width: calc(100% - 30px);
                 border: 1px solid #ddd;
-                padding: 20px;
+                padding: 15px;
                 text-align: center;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 background-color: #f9f9f9;
                 box-sizing: border-box;
-                margin-right: 15px;
+                margin-right: 10px;
             }
 
             .service-item:last-child {
@@ -179,28 +181,29 @@ icon: fas fa-stream
             }
 
             .service-item img {
-                max-width: 100%;
+                width: 100%;
                 height: auto;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
+                display: block;
             }
 
             h2 {
-                font-size: 1.2em;
-                margin-bottom: 10px;
+                font-size: 1.1em;
+                margin-bottom: 8px;
             }
 
             p {
-                font-size: 0.9em;
+                font-size: 0.85em;
             }
 
             .faq-container {
                 width: 95%;
-                padding: 0 15px;
+                padding: 0 10px;
             }
 
             h3 {
-                font-size: 1.6em;
-                margin-bottom: 15px;
+                font-size: 1.5em;
+                margin-bottom: 12px;
             }
         }
     </style>
