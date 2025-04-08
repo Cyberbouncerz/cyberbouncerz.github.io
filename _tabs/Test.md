@@ -130,40 +130,41 @@ icon: fas fa-stream
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 overflow-x: auto;
-                display: flex; /* Enable flexbox for vertical centering */
-                flex-direction: column; /* Stack elements vertically */
-                align-items: center; /* Center items horizontally */
-                justify-content: flex-start; /* Start content from the top */
-                min-height: 100vh; /* Ensure full viewport height */
-                padding-top: 0; /* Reset top padding */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                min-height: 100vh;
+                padding-top: 40px;
             }
 
             .logo-container {
-                margin: 40px 0 30px; /* More top margin */
+                margin-bottom: 40px;
             }
 
             .logo-container img {
-                max-width: 200px; /* Bigger logo */
+                max-width: 200px;
             }
 
             h1 {
                 font-size: 2.5em;
                 color: #4CAF50;
-                text-align: center; /* Center the title */
+                text-align: center;
                 margin-bottom: 30px;
             }
 
             .services-container {
                 display: flex;
                 flex-direction: row;
-                justify-content: center; /* Center the service items */
+                justify-content: center;
                 gap: 30px;
                 padding: 0 30px;
                 flex-wrap: nowrap;
                 animation: none !important;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
-                margin-bottom: 40px; /* Add some space below services */
+                margin-bottom: 40px;
+                width: 960px;
             }
 
             .service-item {
@@ -177,7 +178,12 @@ icon: fas fa-stream
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                /* Removed bounce animation for a cleaner centered look */
+                animation: bounce-up-down 1s ease-in-out infinite alternate; /* Re-added bounce animation */
+            }
+
+            @keyframes bounce-up-down { /* Define the bounce animation */
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-20px); }
             }
 
             .service-item img {
@@ -200,7 +206,8 @@ icon: fas fa-stream
             .faq-container {
                 padding: 0 30px;
                 margin-top: 60px;
-                text-align: center; /* Center the FAQ section */
+                text-align: center;
+                max-width: 800px;
             }
 
             .faq-container h3 {
@@ -210,9 +217,7 @@ icon: fas fa-stream
             }
 
             .faq-container dl {
-                text-align: left; /* Align questions and answers to the left within the centered container */
-                max-width: 800px; /* Limit width of FAQ for better readability */
-                margin: 0 auto; /* Center the FAQ list */
+                text-align: left;
             }
 
             .faq-question {
@@ -286,7 +291,7 @@ icon: fas fa-stream
         if (window.innerWidth >= 769) {
             const middleService = document.getElementById('middle-service');
             if (middleService) {
-                middleService.scrollIntoView({ behavior: 'instant', block: 'center' });
+                middleService.scrollIntoView({ behavior: 'instant', block: 'center', inline: 'center' });
             }
         }
     </script>
