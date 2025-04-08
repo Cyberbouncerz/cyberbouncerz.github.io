@@ -10,242 +10,51 @@ icon: fas fa-stream
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services</title>
     <style>
-        body {
-            background-color: #2c3e50;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            color: #fff;
-            overflow-x: auto;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .logo-container img {
-            max-width: 150px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        h1 {
-            font-size: 2.2em;
-            text-align: center;
-            margin-bottom: 25px;
-            color: #4CAF50;
-        }
-
         .services-container {
             display: flex;
-            flex-direction: column;
             gap: 20px;
             padding: 0 15px;
+            justify-content: center;
+            overflow-x: auto;         /* Allow horizontal scrolling */
+            scroll-snap-type: x mandatory; /* Enable snap scrolling */
+            -webkit-overflow-scrolling: touch;
         }
 
         .service-item {
-            background-color: rgba(255, 255, 255, 0.05);
+            flex: 0 0 auto;
+            width: 300px;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #4CAF50;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease-out forwards;
-            transition: box-shadow 0.3s ease;
-        }
-
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .service-item:nth-child(2) { animation-delay: 0.2s; }
-        .service-item:nth-child(3) { animation-delay: 0.4s; }
-
-        .service-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-item h2 {
-            font-size: 1.5em;
-            color: #f1f1f1;
-            margin-bottom: 10px;
-        }
-
-        .service-item p {
-            line-height: 1.6;
-            color: #ccc;
-        }
-
-        .faq-container {
-            margin-top: 40px;
-            padding: 0 15px;
-        }
-
-        .faq-container h3 {
-            font-size: 1.8em;
             text-align: center;
-            margin-bottom: 25px;
-            color: #4CAF50;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid #4CAF50;
+            opacity: 1;
+            transform: translateY(0);
+            animation: bounce-up-down 1s ease-in-out infinite alternate;
+            scroll-snap-align: center; /* Ensure each item aligns in the center during scroll */
         }
 
-        .faq-question {
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #f1f1f1;
-            cursor: pointer;
-            padding: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        @keyframes bounce-up-down {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
         }
 
-        .faq-answer {
-            margin-bottom: 15px;
-            color: #ccc;
-            line-height: 1.6;
-            padding: 0 10px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+        /* Additional rules to center the first item */
+        .services-container {
+            display: flex;
+            justify-content: flex-start;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
         }
 
-        .faq-question.active + .faq-answer {
-            max-height: 200px; /* Adjust as needed */
-        }
-
-        /* Desktop Styles */
-        @media (min-width: 769px) {
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                overflow-x: auto;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 40px;
-            }
-            .logo-container {
-                margin: 20px auto;
-                display: flex;
-                justify-content: center;
-            }
-            .logo-container img {
-                max-width: 150px;
-                height: auto;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                animation: pulse 2s ease-in-out infinite alternate;
-            }
-            h1 {
-                font-size: 2.8em;
-                color: #4CAF50;
-                text-align: left;
-                margin-left: 30px;
-                margin-bottom: 40px;
-            }
-            .services-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 30px;
-                padding: 0 30px;
-                flex-wrap: nowrap;
-                animation: none !important;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .service-item {
-                flex: 0 0 auto;
-                width: 300px;
-                border-radius: 10px;
-                padding: 20px;
-                text-align: center;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
-                background-color: rgba(255, 255, 255, 0.05);
-                border-left: 5px solid #4CAF50;
-                opacity: 1;
-                transform: translateY(0);
-                /* Animation applied to the container */
-                transition: transform 0.3s ease-in-out;
-            }
-            .service-item:hover {
-                transform: translateY(-10px); /* Slight lift on hover */
-            }
-            .service-item img {
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin-bottom: 15px;
-                max-width: 100%; /* Make image responsive within container */
-                height: auto;
-                object-fit: cover; /* Ensure image covers container */
-                aspect-ratio: 16 / 9; /* Optional: Maintain a 16:9 aspect ratio */
-                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transitions */
-            }
-            .service-item:hover img {
-                transform: scale(1.05); /* Slight zoom on hover */
-                opacity: 0.9; /* थोड़ा सा धुंधला */
-            }
-            .service-item h2 {
-                font-size: 1.5em;
-                color: #f1f1f1;
-            }
-            .service-item p {
-                color: #ccc;
-            }
-            .faq-container {
-                padding: 40px 30px;
-                margin-top: 80px;
-            }
-            .faq-container h3 {
-                font-size: 2em;
-                color: #4CAF50;
-                text-align: left;
-                margin-left: 30px;
-                margin-bottom: 35px;
-            }
-            .faq-container dl {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-            .faq-question {
-                grid-column: 1;
-                border-bottom: none;
-                padding-bottom: 5px;
-                margin-bottom: 5px;
-                cursor: pointer;
-            }
-            .faq-answer {
-                grid-column: 2;
-                margin-bottom: 15px;
-            }
-            .faq-container dt:nth-child(odd):last-child,
-            .faq-container dt:nth-child(even):last-child {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
+        .service-item:first-child {
+            margin-left: auto; /* Push the first item to the center */
+            margin-right: auto; /* Center the first item horizontally */
         }
     </style>
 </head>
 <body>
-
-    <div class="logo-container">
-        <img src="PNG file-2.png" alt="Logo">
-    </div>
-
-    <h1>Our Services</h1>
 
     <section class="services-container">
         <div class="service-item">
@@ -266,35 +75,6 @@ icon: fas fa-stream
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
     </section>
-
-    <div class="faq-container">
-        <h3>Frequently Asked Questions</h3>
-        <dl>
-            <dt class="faq-question">What is Cyber Bouncerz?</dt>
-            <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
-
-            <dt class="faq-question">Is Cyber Bouncerz free?</dt>
-            <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
-
-            <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
-            <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
-
-            <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
-            <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
-        </dl>
-    </div>
-
-    <script>
-        const faqQuestions = document.querySelectorAll('.faq-question');
-
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                question.classList.toggle('active');
-                const answer = question.nextElementSibling;
-                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
-            });
-        });
-    </script>
 
 </body>
 </html>
