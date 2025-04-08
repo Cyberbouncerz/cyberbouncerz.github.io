@@ -50,9 +50,10 @@ icon: fas fa-stream
 
         .services-container {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
             gap: 20px;
             padding: 0 15px;
+            justify-content: center; /* Center items on each line */
         }
 
         .service-item {
@@ -65,6 +66,17 @@ icon: fas fa-stream
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
             transition: box-shadow 0.3s ease;
+            width: calc(50% - 10px); /* Two items per row with some gap */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Target the third item specifically to make it take the full width */
+        .services-container .service-item:nth-child(3) {
+            width: 100%;
         }
 
         @keyframes fadeInUp {
@@ -75,11 +87,20 @@ icon: fas fa-stream
         .service-item:nth-child(3) { animation-delay: 0.4s; }
 
         .service-item img {
-            max-width: 100%;
+            max-width: 80%;
             height: auto;
             border-radius: 8px;
             margin-bottom: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: tilt-shaking 0.8s cubic-bezier(.36,.07,.19,.97) both infinite; /* Cool tilt animation */
+        }
+
+        @keyframes tilt-shaking {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
         }
 
         .service-item h2 {
@@ -158,18 +179,13 @@ icon: fas fa-stream
             }
             .services-container {
                 display: flex;
-                flex-direction: row;
+                flex-wrap: wrap; /* Allow wrapping */
                 justify-content: flex-start;
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: nowrap;
-                animation: none !important;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
             }
             .service-item {
-                flex: 0 0 auto;
-                width: 300px;
+                flex: 0 0 calc(50% - 15px); /* Two items per row */
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
@@ -178,11 +194,14 @@ icon: fas fa-stream
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate;
+                animation: none; /* Remove bounce on desktop for this layout */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
-            @keyframes bounce-up-down {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(-20px); }
+            /* Make the third item take full width on desktop */
+            .services-container .service-item:nth-child(3) {
+                flex-basis: 100%;
             }
             .service-item img {
                 border-radius: 8px;
@@ -190,6 +209,7 @@ icon: fas fa-stream
                 margin-bottom: 15px;
                 max-width: 90%;
                 height: auto;
+                animation: tilt-shaking 0.8s cubic-bezier(.36,.07,.19,.97) both infinite; /* Cool tilt animation */
             }
             .service-item h2 {
                 font-size: 1.5em;
@@ -227,4 +247,67 @@ icon: fas fa-stream
             }
             .faq-container dt:nth-child(odd):last-child,
             .faq-container dt:nth-child(even):last-child {
-                border-
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="PNG file-2.png" alt="Logo">
+    </div>
+
+    <h1>Our Services</h1>
+
+    <section class="services-container">
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
+    </section>
+
+    <div class="faq-container">
+        <h3>Frequently Asked Questions</h3>
+        <dl>
+            <dt class="faq-question">What is Cyber Bouncerz?</dt>
+            <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
+
+            <dt class="faq-question">Is Cyber Bouncerz free?</dt>
+            <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
+
+            <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
+            <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
+
+            <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
+            <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
+        </dl>
+    </div>
+
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+            });
+        });
+    </script>
+
+</body>
+</html>
