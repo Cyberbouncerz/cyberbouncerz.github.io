@@ -11,291 +11,229 @@ icon: fas fa-stream
     <title>Our Services</title>
     <style>
         body {
-          background-color: #2c3e50;
-            font-family: serif;
+            background-color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden; /* Prevent horizontal scroll bar */
+            color: #fff;
+            overflow-x: hidden;
         }
 
         .logo-container {
-            width: 250px;
-            height: 250px;
             text-align: center;
-            margin: 20px auto;
-            padding: 20px;
-            border: 5px solid #4CAF50;
-            border-radius: 50%;
-            background-color: #f1f1f1;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-bottom: 30px;
         }
 
         .logo-container img {
-            max-width: 100%;
+            max-width: 150px;
             height: auto;
-            border-radius: 50%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2.2em;
             text-align: center;
+            margin-bottom: 25px;
+            color: #4CAF50;
         }
 
         .services-container {
-            width: 100%;
-            margin-bottom: 30px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .services-wrapper {
             display: flex;
-            justify-content: flex-start;
-            animation: bounce 4s ease-in-out infinite, scroll 12s linear infinite; /* Desktop animations */
-            width: auto;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 15px;
         }
 
         .service-item {
-            flex: 0 0 300px; /* Set width for desktop layout */
-            border: 1px solid #ddd;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-            box-sizing: border-box;
-            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4CAF50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .service-item:last-child {
-            margin-right: 0;
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.4s; }
+        .service-item:nth-child(4) { animation-delay: 0.6s; }
+        .service-item:nth-child(5) { animation-delay: 0.8s; }
+        .service-item:nth-child(6) { animation-delay: 1s; }
 
         .service-item img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
             margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
-            font-size: 1.3em;
+        .service-item h2 {
+            font-size: 1.5em;
+            color: #f1f1f1;
             margin-bottom: 10px;
         }
 
-        .faq-container {
-            width: 95%;
-            box-sizing: border-box;
+        .service-item p {
+            line-height: 1.6;
+            color: #ccc;
         }
 
-        h3 {
+        .faq-container {
+            margin-top: 40px;
+            padding: 0 15px;
+        }
+
+        .faq-container h3 {
             font-size: 1.8em;
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 25px;
+            color: #4CAF50;
         }
 
         .faq-question {
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #f1f1f1;
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .faq-answer {
             margin-bottom: 15px;
+            color: #ccc;
+            line-height: 1.6;
+            padding: 0 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
 
-        /* Bouncing animations for left, center, and right items (Desktop) */
-        @keyframes bounce-left {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+        .faq-question.active + .faq-answer {
+            max-height: 200px; /* Adjust as needed */
         }
 
-        @keyframes bounce-center {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-            100% { transform: translateY(0); }
-        }
-
-        @keyframes bounce-right {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(20px); }
-            100% { transform: translateY(0); }
-        }
-
-        .service-item:nth-child(1) { animation-name: bounce-left; }
-        .service-item:nth-child(2) { animation-name: bounce-center; }
-        .service-item:nth-child(3) { animation-name: bounce-right; }
-
-        /* Continuous scrolling animation (Desktop) */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            body {
-                align-items: stretch; /* Make body take full width */
-            }
-
+        /* Desktop Styles (if needed to override mobile) */
+        @media (min-width: 769px) {
             .logo-container {
-                position: fixed;
-                top: 50%;
-                left: 10px;
-                transform: translateY(-50%);
-                width: 80px;
-                height: 80px;
-                border-width: 3px;
-                padding: 10px;
-                z-index: 10; /* Ensure logo is above other content */
-                animation: bounce-logo 1s ease-in-out infinite alternate;
+                margin: 20px auto;
             }
-
-            @keyframes bounce-logo {
-                0% { transform: translateY(-50%) translateX(0); }
-                100% { transform: translateY(-50%) translateX(10px); }
-            }
-
             .logo-container img {
-                border-radius: 50%;
+                max-width: 250px;
             }
-
             h1 {
-                font-size: 2em;
-                margin-top: 10px;
-                margin-bottom: 15px;
-                text-align: center;
-                padding-left: 100px; /* Adjust for logo width */
-                padding-right: 10px;
+                font-size: 2.5em;
             }
-
             .services-container {
-                margin-bottom: 20px;
-                padding-left: 100px; /* Adjust for logo width */
-                padding-right: 10px;
-                overflow-y: auto; /* Enable vertical scrolling */
-                overflow-x: hidden; /* Hide horizontal scroll */
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+                padding: 0 30px;
             }
-
-            .services-wrapper {
-                display: flex;
-                flex-direction: column; /* Stack items vertically */
-                align-items: stretch; /* Make items take full width */
-                animation: none !important; /* Disable desktop animations */
-                width: 100%;
-            }
-
             .service-item {
-                flex: 0 0 auto;
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-                padding: 15px;
-                text-align: center;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                background-color: #f9f9f9;
-                box-sizing: border-box;
+                flex: 0 1 calc(50% - 30px);
+                border-left: 5px solid #4CAF50;
+                animation: none;
+                opacity: 1;
+                transform: translateY(0);
             }
-
-            .service-item img {
-                max-width: 80%;
-                height: auto;
-                margin-bottom: 10px;
-            }
-
-            h2 {
-                font-size: 1.2em;
-                margin-bottom: 8px;
-            }
-
-            p {
-                font-size: 0.9em;
-            }
-
             .faq-container {
-                width: 95%;
-                padding-left: 100px; /* Adjust for logo width */
-                padding-right: 10px;
+                padding: 0 30px;
             }
-
-            h3 {
-                font-size: 1.6em;
-                margin-bottom: 15px;
+            .faq-container h3 {
+                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="logo-container">
-    <img src="PNG file-2.png" alt="Logo">
-</div>
-
-<h1>Our Services</h1>
-
-<section class="services-container">
-    <div class="services-wrapper">
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
-        </div>
+    <div class="logo-container">
+        <img src="PNG file-2.png" alt="Logo">
     </div>
-</section>
 
-<div class="faq-container">
-    <h3>Frequently Asked Questions</h3>
-    <dl>
-        <dt class="faq-question">What is Cyber Bouncerz?</dt>
-        <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
+    <h1>Our Services</h1>
 
-        <dt class="faq-question">Is Cyber Bouncerz free?</dt>
-        <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
+    <section class="services-container">
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
 
-        <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
-        <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
 
-        <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
-        <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
-    </dl>
-</div>
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
+            <h2>Expert Panel</h2>
+            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
+            <h2>User Friendly Interface</h2>
+            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        </div>
+
+        <div class="service-item">
+            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
+            <h2>User Friendly Terms</h2>
+            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        </div>
+    </section>
+
+    <div class="faq-container">
+        <h3>Frequently Asked Questions</h3>
+        <dl>
+            <dt class="faq-question">What is Cyber Bouncerz?</dt>
+            <dd class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</dd>
+
+            <dt class="faq-question">Is Cyber Bouncerz free?</dt>
+            <dd class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</dd>
+
+            <dt class="faq-question">Who is Cyber Bouncerz aimed to help?</dt>
+            <dd class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</dd>
+
+            <dt class="faq-question">How can I contact Cyber Bouncerz?</dt>
+            <dd class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</dd>
+        </dl>
+    </div>
+
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+            });
+        });
+    </script>
 
 </body>
 </html>
-   
