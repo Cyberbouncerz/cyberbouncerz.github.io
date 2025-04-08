@@ -11,129 +11,117 @@ icon: fas fa-stream
     <title>Our Services</title>
     <style>
         body {
-            background-color: #1e3a8a; /* Dark blue from the image */
-            font-family: serif;
+            background-color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden; /* Prevent horizontal scroll bar */
-            color: #f0f8ff; /* Light text for contrast */
+            color: #fff;
+            overflow-x: auto;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo-container {
-            width: 250px;
-            height: 250px;
             text-align: center;
-            margin: 20px auto;
-            padding: 20px;
-            border: 5px solid #4CAF50; /* Green border */
-            border-radius: 50%;
-            background-color: #e0f7fa; /* Very light cyan background */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            animation: pulse 2s infinite alternate; /* Pulse animation for logo */
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.05);
-            }
         }
 
         .logo-container img {
-            max-width: 100%;
+            max-width: 150px;
             height: auto;
-            border-radius: 50%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2.2em;
             text-align: center;
-            color: #f0f8ff; /* Light text */
+            margin-bottom: 25px;
+            color: #4CAF50;
         }
 
         .services-container {
-            width: 100%;
-            margin-bottom: 30px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .services-wrapper {
             display: flex;
-            justify-content: flex-start;
-            animation: scroll 12s linear infinite; /* Keep scroll animation */
-            width: auto;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 15px;
         }
 
         .service-item {
-            flex: 0 0 300px; /* Set width to ensure proper space for the images */
-            border: 1px solid #4CAF50; /* Green border */
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #e0f7fa; /* Very light cyan background */
-            box-sizing: border-box;
-            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4CAF50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            transition: box-shadow 0.3s ease;
         }
 
-        .service-item:last-child {
-            margin-right: 0;
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.4s; }
 
         .service-item img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 15px;
-            border-radius: 5px; /* Slightly rounded image corners */
-        }
-
-        h2 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            color: #1e3a8a; /* Dark blue text for headings */
-        }
-
-        .faq-container {
-            width: 95%;
-            box-sizing: border-box;
-            background-color: #e0f7fa; /* Very light cyan background for FAQ */
-            padding: 20px;
             border-radius: 8px;
+            margin-bottom: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        h3 {
+        .service-item h2 {
+            font-size: 1.5em;
+            color: #f1f1f1;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .faq-container {
+            margin-top: 40px;
+            padding: 0 15px;
+        }
+
+        .faq-container h3 {
             font-size: 1.8em;
-            margin-bottom: 20px;
             text-align: center;
-            color: #1e3a8a; /* Dark blue text for FAQ heading */
+            margin-bottom: 25px;
+            color: #4CAF50;
         }
 
         .faq-item {
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
         }
 
         .faq-question {
-            background-color: #f9f9f9;
-            color: #333;
-            padding: 10px;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: #f1f1f1;
             cursor: pointer;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .faq-question::after {
@@ -146,121 +134,149 @@ icon: fas fa-stream
         }
 
         .faq-answer {
+            color: #ccc;
+            line-height: 1.6;
             padding: 10px;
-            background-color: #fff;
-            color: #555;
-            display: none; /* Initially hidden */
+            background-color: #34495e;
+            display: none;
         }
 
         .faq-item.open .faq-answer {
             display: block;
         }
 
-        /* Bouncing animations for left, center, and right items (KEEP AS IS) */
-        @keyframes bounce-left {
-            0% {
-                transform: translateY(0);
+        /* Desktop Styles */
+        @media (min-width: 769px) {
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                overflow-x: auto;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px;
             }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce-center {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce-right {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        /* Applying different animations to left, center, and right images (KEEP AS IS) */
-        .service-item:nth-child(1) {
-            animation: bounce-left 4s ease-in-out infinite;
-        }
-
-        .service-item:nth-child(2) {
-            animation: bounce-center 4s ease-in-out infinite;
-        }
-
-        .service-item:nth-child(3) {
-            animation: bounce-right 4s ease-in-out infinite;
-        }
-
-        /* Duplicate the service items for continuous bouncing effect (KEEP AS IS) */
-        .service-item {
-            flex-shrink: 0; /* Prevent the images from shrinking */
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Mobile responsiveness (KEEP AS IS) */
-        @media (max-width: 768px) {
             .logo-container {
-                width: 200px;
-                height: 200px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .service-item {
-                flex: 0 0 80%; /* Adjust items for smaller screens */
-                min-width: 250px;
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .services-wrapper {
+                margin: 20px auto;
+                display: flex;
                 justify-content: center;
-                animation: none; /* Stop scrolling animation on mobile */
-                flex-wrap: wrap; /* Ensure items are neatly stacked */
             }
-
+            .logo-container img {
+                max-width: 150px;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                animation: pulse 2s ease-in-out infinite alternate;
+            }
+            h1 {
+                font-size: 2.8em;
+                color: #4CAF50;
+                text-align: left;
+                margin-left: 30px;
+                margin-bottom: 40px;
+            }
+            .services-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 30px;
+                padding: 0 30px;
+                flex-wrap: nowrap;
+                animation: none !important;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .service-item {
+                flex: 0 0 auto;
+                width: 300px;
+                border-radius: 10px;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
+                background-color: rgba(255, 255, 255, 0.05);
+                border-left: 5px solid #4CAF50;
+                opacity: 1;
+                transform: translateY(0);
+                animation: bounce-up-down 1s ease-in-out infinite alternate;
+            }
+            @keyframes bounce-up-down {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-20px); }
+            }
+            .service-item img {
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                margin-bottom: 15px;
+                max-width: 90%;
+                height: auto;
+            }
+            .service-item h2 {
+                font-size: 1.5em;
+                color: #f1f1f1;
+            }
+            .service-item p {
+                color: #ccc;
+            }
             .faq-container {
-                padding: 0 10px;
+                padding: 40px 30px;
+                margin-top: 80px;
             }
-
-            /* Ensure only one of each service item is visible on mobile */
-            .services-wrapper .service-item:nth-child(n+4) {
-                display: none; /* Hide the duplicate service items */
+            .faq-container h3 {
+                font-size: 2em;
+                color: #4CAF50;
+                text-align: left;
+                margin-left: 30px;
+                margin-bottom: 35px;
+            }
+            .faq-container dl {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .faq-question {
+                grid-column: 1;
+                border-bottom: none;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                cursor: pointer;
+                background-color: transparent;
+                display: block;
+                padding: 10px 0;
+            }
+            .faq-question::after {
+                content: '+';
+                font-size: 1.2em;
+                float: right;
+            }
+            .faq-question.active::after {
+                content: '-';
+            }
+            .faq-answer {
+                grid-column: 2;
+                margin-bottom: 15px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding: 0;
+            }
+            .faq-question.active + .faq-answer {
+                max-height: 200px; /* Adjust as needed */
+                padding: 10px 0;
+            }
+            .faq-container dt:nth-child(odd):last-child,
+            .faq-container dt:nth-child(even):last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
     </style>
 </head>
 <body>
 
-<div class="logo-container">
-    <img src="PNG file-2.png" alt="Logo">
-</div>
+    <div class="logo-container">
+        <img src="PNG file-2.png" alt="Logo">
+    </div>
 
-<h1>Our Services</h1>
+    <h1>Our Services</h1>
 
-<section class="services-container">
-    <div class="services-wrapper">
+    <section class="services-container">
         <div class="service-item">
             <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
             <h2>Expert Panel</h2>
@@ -278,58 +294,39 @@ icon: fas fa-stream
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
+    </section>
 
-        <div class="service-item">
-            <img src="1742496723906.jpg" alt="Cybersecurity expert panel discussing digital safety">
-            <h2>Expert Panel</h2>
-            <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
+    <div class="faq-container">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <div class="faq-question">What is Cyber Bouncerz?</div>
+            <div class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</div>
         </div>
-
-        <div class="service-item">
-            <img src="1742498458560.jpg" alt="Simple and clean user interface design">
-            <h2>User Friendly Interface</h2>
-            <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
+        <div class="faq-item">
+            <div class="faq-question">Is Cyber Bouncerz free?</div>
+            <div class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</div>
         </div>
-
-        <div class="service-item">
-            <img src="1742497812008.jpg" alt="Clear and concise terms explanation">
-            <h2>User Friendly Terms</h2>
-            <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
+        <div class="faq-item">
+            <div class="faq-question">Who is Cyber Bouncerz aimed to help?</div>
+            <div class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How can I contact Cyber Bouncerz?</div>
+            <div class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</</div>
         </div>
     </div>
-</section>
 
-<div class="faq-container">
-    <h3>Frequently Asked Questions</h3>
-    <div class="faq-item">
-        <div class="faq-question">What is Cyber Bouncerz?</div>
-        <div class="faq-answer">Cyber Bouncerz is a collective of accredited cybersecurity consultants ready to address any cybersecurity concerns.</div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-question">Is Cyber Bouncerz free?</div>
-        <div class="faq-answer">Currently, all services provided by Cyber Bouncerz are free for everyone.</div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-question">Who is Cyber Bouncerz aimed to help?</div>
-        <div class="faq-answer">Cyber Bouncerz is designed to assist anyone in need of cybersecurity services.</div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-question">How can I contact Cyber Bouncerz?</div>
-        <div class="faq-answer">You can reach out to Cyber Bouncerz by clicking on the "contact us" tab on our website.</div>
-    </div>
-</div>
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
 
-<script>
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            item.classList.toggle('open');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
- 
