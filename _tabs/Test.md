@@ -179,14 +179,14 @@ icon: fas fa-stream
                 justify-content: flex-start;
                 gap: 30px;
                 padding: 0 30px;
-                flex-wrap: wrap; /* Enable wrapping for desktop */
+                flex-wrap: nowrap;
                 animation: none !important;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
             .service-item {
-                flex: 0 1 calc(33.33% - 30px); /* Distribute items and account for gap */
-                width: auto; /* Remove fixed width for wrapping */
+                flex: 0 0 auto;
+                width: 300px;
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
