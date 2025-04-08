@@ -17,8 +17,6 @@ icon: fas fa-stream
             padding: 20px;
             color: #fff;
             overflow-x: auto;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .logo-container {
@@ -64,7 +62,6 @@ icon: fas fa-stream
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
-            transition: box-shadow 0.3s ease;
         }
 
         @keyframes fadeInUp {
@@ -133,101 +130,98 @@ icon: fas fa-stream
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 overflow-x: auto;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 40px;
+                display: flex; /* Enable flexbox for vertical centering */
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center; /* Center items horizontally */
+                justify-content: flex-start; /* Start content from the top */
+                min-height: 100vh; /* Ensure full viewport height */
+                padding-top: 0; /* Reset top padding */
             }
+
             .logo-container {
-                margin: 20px auto;
-                display: flex;
-                justify-content: center;
+                margin: 40px 0 30px; /* More top margin */
             }
+
             .logo-container img {
-                max-width: 150px;
-                height: auto;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                animation: pulse 2s ease-in-out infinite alternate;
+                max-width: 200px; /* Bigger logo */
             }
+
             h1 {
-                font-size: 2.8em;
+                font-size: 2.5em;
                 color: #4CAF50;
-                text-align: left;
-                margin-left: 30px;
-                margin-bottom: 40px;
+                text-align: center; /* Center the title */
+                margin-bottom: 30px;
             }
+
             .services-container {
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-start;
+                justify-content: center; /* Center the service items */
                 gap: 30px;
                 padding: 0 30px;
                 flex-wrap: nowrap;
                 animation: none !important;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
+                margin-bottom: 40px; /* Add some space below services */
             }
+
             .service-item {
                 flex: 0 0 auto;
                 width: 300px;
                 border-radius: 10px;
                 padding: 20px;
                 text-align: center;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 background-color: rgba(255, 255, 255, 0.05);
                 border-left: 5px solid #4CAF50;
                 opacity: 1;
                 transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate;
+                /* Removed bounce animation for a cleaner centered look */
             }
-            @keyframes bounce-up-down {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(-20px); }
-            }
+
             .service-item img {
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 margin-bottom: 15px;
-                max-width: 90%;
+                max-width: 80%;
                 height: auto;
             }
+
             .service-item h2 {
                 font-size: 1.5em;
                 color: #f1f1f1;
             }
+
             .service-item p {
                 color: #ccc;
             }
+
             .faq-container {
-                padding: 40px 30px;
-                margin-top: 80px;
+                padding: 0 30px;
+                margin-top: 60px;
+                text-align: center; /* Center the FAQ section */
             }
+
             .faq-container h3 {
-                font-size: 2em;
+                font-size: 1.8em;
                 color: #4CAF50;
-                text-align: left;
-                margin-left: 30px;
-                margin-bottom: 35px;
+                margin-bottom: 25px;
             }
+
             .faq-container dl {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                text-align: left; /* Align questions and answers to the left within the centered container */
+                max-width: 800px; /* Limit width of FAQ for better readability */
+                margin: 0 auto; /* Center the FAQ list */
             }
+
             .faq-question {
-                grid-column: 1;
-                border-bottom: none;
-                padding-bottom: 5px;
-                margin-bottom: 5px;
-                cursor: pointer;
-            }
-            .faq-answer {
-                grid-column: 2;
-                margin-bottom: 15px;
-            }
-            .faq-container dt:nth-child(odd):last-child,
-            .faq-container dt:nth-child(even):last-child {
+                color: #fff;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .faq-answer {
+                color: #ccc;
             }
         }
     </style>
@@ -247,7 +241,7 @@ icon: fas fa-stream
             <p>Connect with a team of cybersecurity experts covering a range of topics, from protecting your online presence to navigating the digital landscape, all here to answer your Questions and share practical insights.</p>
         </div>
 
-        <div class="service-item">
+        <div class="service-item" id="middle-service">
             <img src="1742498458560.jpg" alt="Simple and clean user interface design">
             <h2>User Friendly Interface</h2>
             <p>Our website features a simple and easy to use design, ensuring that users can effortlessly find the cybersecurity information they need with clear categories, and a user-friendly layout.</p>
@@ -287,8 +281,15 @@ icon: fas fa-stream
                 answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + 'px';
             });
         });
+
+        // Scroll to the middle service item on desktop
+        if (window.innerWidth >= 769) {
+            const middleService = document.getElementById('middle-service');
+            if (middleService) {
+                middleService.scrollIntoView({ behavior: 'instant', block: 'center' });
+            }
+        }
     </script>
 
 </body>
 </html>
-
