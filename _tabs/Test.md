@@ -294,18 +294,6 @@ icon: fas fa-stream
             <h2>User Friendly Terms</h2>
             <p>We explain cybersecurity without using complicated language so it is easy for everyone to understand. Aiming to simplify the world of digital security for a straightforward and inclusive experience.</p>
         </div>
-
-        <div class="service-item">
-            <img src="placeholder.jpg" alt="Placeholder Image">
-            <h2>Another Service</h2>
-            <p>Description of another service offered.</p>
-        </div>
-
-        <div class="service-item">
-            <img src="placeholder2.jpg" alt="Another Placeholder">
-            <h2>Yet Another Service</h2>
-            <p>Details about yet another service.</p>
-        </div>
     </section>
 
     <div class="faq-container">
