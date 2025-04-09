@@ -16,35 +16,42 @@ icon: fas fa-stream
             --text-light: #eaeaea; /* Light text */
             --background-dark: #1f1f1f; /* Darker background for dark mode */
             --text-dark: #ffffff; /* Light text for dark mode */
-            --border-color: #333; /* Border color */
+            --border-color: #444; /* Lighter border color */
+            --max-width: 900px; /* Max width for content */
         }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px auto;
-            max-width: 800px;
-            line-height: 1.8;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
             padding: 20px;
             background-color: var(--background-light);
             color: var(--text-light);
             transition: background-color 0.3s, color 0.3s;
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         h1 {
             color: var(--primary-color);
             text-align: center;
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
 
         h2 {
-            color: inherit;
+            color: var(--primary-color);
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 5px;
-            margin-top: 20px;
+            margin-top: 30px;
+            font-size: 1.8em;
         }
 
         p {
             color: inherit;
+            font-size: 1.1em;
+            margin-bottom: 20px;
         }
 
         a {
@@ -56,7 +63,7 @@ icon: fas fa-stream
             text-decoration: underline;
         }
 
-        /* Dark mode */
+        /* Dark mode support */
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: var(--background-dark);
@@ -67,7 +74,7 @@ icon: fas fa-stream
             }
         }
 
-        /* Mobile responsiveness */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -75,15 +82,35 @@ icon: fas fa-stream
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
 
             h2 {
-                font-size: 1.2em;
+                font-size: 1.4em;
             }
 
             p {
                 font-size: 1em;
+            }
+        }
+
+        /* Desktop: Ensure content doesn't stretch too wide */
+        @media (min-width: 769px) {
+            body {
+                padding: 30px;
+                margin-top: 50px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 1.2em;
             }
         }
     </style>
