@@ -46,7 +46,7 @@ icon: fas fa-stream
   <form
     id="contact-form"
     method="POST"
-    action="https://script.google.com/macros/s/AKfycbzniLZeUytRDBRsIK_djGV4X-xJ0AnMtTnFY73JyZaIuUmM9DjK5esTgBLlo0jxMu3c/exec"
+    action="https://script.google.com/macros/s/AKfycbz12Y7pfXbH7XQ7QMtWsEyTXNr2AbDZHafEX9IPTs-XvQ3FZFT6TDTxAjFHywGXdfFY/exec"
     target="hidden_iframe"
     onsubmit="submitted=true;"
   >
