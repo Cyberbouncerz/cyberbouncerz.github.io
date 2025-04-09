@@ -11,13 +11,14 @@ icon: fas fa-stream
     <title>Privacy Policy - Cyberbouncerz</title>
     <style>
         :root {
-            --primary-color: #0056b3;
-            --background-light: #ffffff;
-            --text-light: #333;
-            --background-dark: #2c3e50;
-            --text-dark: #ffffff;
-            --border-color: #ddd;
+            --primary-color: #00b140; /* Green accent */
+            --background-light: #121212; /* Dark background */
+            --text-light: #eaeaea; /* Light text */
+            --background-dark: #1f1f1f; /* Darker background for dark mode */
+            --text-dark: #ffffff; /* Light text for dark mode */
+            --border-color: #333; /* Border color */
         }
+
         body {
             font-family: Arial, sans-serif;
             margin: 40px auto;
@@ -28,27 +29,34 @@ icon: fas fa-stream
             color: var(--text-light);
             transition: background-color 0.3s, color 0.3s;
         }
+
         h1 {
             color: var(--primary-color);
             text-align: center;
             margin-bottom: 20px;
         }
+
         h2 {
             color: inherit;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 5px;
             margin-top: 20px;
         }
+
         p {
             color: inherit;
         }
+
         a {
             color: var(--primary-color);
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
+        /* Dark mode */
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: var(--background-dark);
@@ -58,9 +66,31 @@ icon: fas fa-stream
                 border-bottom: 2px solid rgba(255, 255, 255, 0.5);
             }
         }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                margin: 20px auto;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
+    
+    <h1>Privacy Policy</h1>
     
     <h2>Introduction</h2>
     <p>Welcome to Cyberbouncerz. Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and how we protect it.</p>
@@ -82,5 +112,6 @@ icon: fas fa-stream
     
     <h2>Contact Us</h2>
     <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@cyberbouncerz.com">info@cyberbouncerz.com</a>.</p>
+
 </body>
 </html>
