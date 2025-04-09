@@ -37,41 +37,19 @@ icon: fas fa-stream
   </style>
   <script>
     var submitted = false;
-
-    function submitForm(event) {
-      event.preventDefault();
-
-      const formData = new FormData(document.getElementById('contact-form'));
-      const formObject = {};
-      formData.forEach((value, key) => {
-        formObject[key] = value;
-      });
-
-      fetch('https://script.google.com/macros/s/AKfycbwJHOXEBmZK0pcPGs3765grHEHNDaAp3BVqD5w0aieDxuITEsooENuDdaxU9pBLD3Nj/exec', {
-        method: 'POST',
-        body: new URLSearchParams(formObject)
-      })
-      .then(response => response.text())
-      .then(data => {
-        if (data === "Success") {
-          document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-          document.getElementById('contact-form').reset();
-        } else {
-          document.getElementById('status').innerText = '❌ Error: Could not send your message.';
-        }
-      })
-      .catch(error => {
-        document.getElementById('status').innerText = '❌ An error occurred. Please try again later.';
-        console.error(error);
-      });
-    }
   </script>
 </head>
 <body>
 
   <h2>Contact Us</h2>
 
-  <form id="contact-form" onsubmit="submitForm(event)">
+  <form
+    id="contact-form"
+    method="POST"
+    action="https://script.google.com/macros/s/AKfycbwJHOXEBmZK0pcPGs3765grHEHNDaAp3BVqD5w0aieDxuITEsooENuDdaxU9pBLD3Nj/exec"
+    target="hidden_iframe"
+    onsubmit="submitted=true;"
+  >
     <input type="text" name="firstName" placeholder="First Name" required />
     <input type="text" name="lastName" placeholder="Last Name" required />
     <input type="text" name="company" placeholder="Company" />
@@ -80,6 +58,16 @@ icon: fas fa-stream
     <button type="submit">Send</button>
     <div id="status">Waiting for submission...</div>
   </form>
+
+  <iframe
+    name="hidden_iframe"
+    style="display:none;"
+    onload="if(submitted){ 
+      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+      document.getElementById('contact-form').reset(); 
+      submitted=false; 
+    }">
+  </iframe>
 
 </body>
 </html>
