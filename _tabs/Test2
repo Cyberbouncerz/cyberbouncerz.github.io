@@ -82,7 +82,7 @@ icon: fas fa-stream
             var formData = new FormData(this);
 
             // Send data to Google Apps Script via POST
-            fetch("https://script.google.com/macros/s/AKfycbz12Y7pfXbH7XQ7QMtWsEyTXNr2AbDZHafEX9IPTs-XvQ3FZFT6TDTxAjFHywGXdfFY/exec", {
+            fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
                 method: "POST",
                 body: formData
             })
