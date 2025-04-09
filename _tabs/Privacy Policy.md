@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /Privacy Policy/
-icon: fas fa-stream
+icon: fas fa-shield-alt
 ---
 
 <html lang="en">
