@@ -5,115 +5,69 @@ icon: fas fa-stream
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberbouncerz Contact Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    var submitted = false;
+  </script>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Cyberbouncerz Contact Form</h2>
-        <form id="contactForm">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-            
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-            
-            <label for="company">Company:</label>
-            <input type="text" id="company" name="company" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            
-            <button type="submit">Send Email</button>
-        </form>
-    </div>
+  <h2>Contact Us</h2>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+  <form
+    id="contact-form"
+    method="POST"
+    action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec"
+    target="hidden_iframe"
+    onsubmit="submitted=true;"
+  >
+    <input type="text" name="firstName" placeholder="First Name" required />
+    <input type="text" name="lastName" placeholder="Last Name" required />
+    <input type="text" name="company" placeholder="Company" />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+    <div id="status">Waiting for submission...</div>
+  </form>
 
-            // Collect form data
-            var firstName = document.getElementById("firstName").value;
-            var lastName = document.getElementById("lastName").value;
-            var company = document.getElementById("company").value;
-            var email = document.getElementById("email").value;
-            var message = document.getElementById("message").value;
-
-            // Prepare email content
-            var emailBody = `
-                First Name: ${firstName}\n
-                Last Name: ${lastName}\n
-                Company: ${company}\n
-                Email: ${email}\n
-                Message: ${message}
-            `;
-
-            // Send email using SMTP.js
-            Email.send({
-                SecureToken: "your-secure-token-here", // Replace with your SMTP secure token
-                To: "your-email@example.com", // The recipient email address
-                From: email, // The sender's email address
-                Subject: "New Contact Form Submission",
-                Body: emailBody
-            }).then(function(response) {
-                alert("Email sent successfully!");
-                document.getElementById("contactForm").reset(); // Reset the form after submission
-            }).catch(function(error) {
-                alert("Error sending email: " + error);
-            });
-        });
-    </script>
-
-</body>
-</html>
-
-    </script>
+  <iframe
+    name="hidden_iframe"
+    style="display:none;"
+    onload="if(submitted){ 
+      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+      document.getElementById('contact-form').reset(); 
+      submitted=false; 
+    }">
+  </iframe>
 
 </body>
 </html>
