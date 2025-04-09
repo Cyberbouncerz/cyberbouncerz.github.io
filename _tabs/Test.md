@@ -4,6 +4,12 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
+---
+layout: page
+permalink: /test/
+icon: fas fa-stream
+---
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,8 +23,8 @@ icon: fas fa-stream
             padding: 20px;
             color: #fff;
             overflow-x: auto;
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;  /* Allow body to fill the full width of the screen */
+            box-sizing: border-box;
         }
 
         .logo-container {
@@ -26,6 +32,7 @@ icon: fas fa-stream
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
+            width: 100%; /* Ensure logo container fills the screen width */
         }
 
         .logo-container img {
@@ -50,9 +57,11 @@ icon: fas fa-stream
 
         .services-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between;
             gap: 20px;
             padding: 0 15px;
+            width: 100%; /* Ensure services container fills the screen */
         }
 
         .service-item {
@@ -61,6 +70,7 @@ icon: fas fa-stream
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-left: 5px solid #4CAF50;
+            flex: 1 1 30%;  /* Allow service items to expand and fill the screen */
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
@@ -70,9 +80,6 @@ icon: fas fa-stream
         @keyframes fadeInUp {
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .service-item:nth-child(2) { animation-delay: 0.2s; }
-        .service-item:nth-child(3) { animation-delay: 0.4s; }
 
         .service-item img {
             max-width: 100%;
@@ -96,6 +103,7 @@ icon: fas fa-stream
         .faq-container {
             margin-top: 40px;
             padding: 0 15px;
+            width: 100%; /* Ensure FAQ section fills the screen */
         }
 
         .faq-container h3 {
@@ -145,127 +153,6 @@ icon: fas fa-stream
             display: block;
         }
 
-        /* Desktop Styles */
-        @media (min-width: 769px) {
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                overflow-x: auto;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 40px;
-            }
-            .logo-container {
-                margin: 20px auto;
-                display: flex;
-                justify-content: center;
-            }
-            .logo-container img {
-                max-width: 150px;
-                height: auto;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                animation: pulse 2s ease-in-out infinite alternate;
-            }
-            h1 {
-                font-size: 2.8em;
-                color: #4CAF50;
-                text-align: left;
-                margin-left: 30px;
-                margin-bottom: 40px;
-            }
-            .services-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 30px;
-                padding: 0 30px;
-                flex-wrap: nowrap;
-                animation: none !important;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .service-item {
-                flex: 0 0 auto;
-                width: 300px;
-                border-radius: 10px;
-                padding: 20px;
-                text-align: center;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
-                background-color: rgba(255, 255, 255, 0.05);
-                border-left: 5px solid #4CAF50;
-                opacity: 1;
-                transform: translateY(0);
-                animation: bounce-up-down 1s ease-in-out infinite alternate;
-            }
-            @keyframes bounce-up-down {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(-20px); }
-            }
-            .service-item img {
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin-bottom: 15px;
-                max-width: 90%;
-                height: auto;
-            }
-            .service-item h2 {
-                font-size: 1.5em;
-                color: #f1f1f1;
-            }
-            .service-item p {
-                color: #ccc;
-            }
-            .faq-container {
-                padding: 40px 30px;
-                margin-top: 80px;
-            }
-            .faq-container h3 {
-                font-size: 2em;
-                color: #4CAF50;
-                text-align: left;
-                margin-left: 30px;
-                margin-bottom: 35px;
-            }
-            .faq-container dl {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-            .faq-question {
-                grid-column: 1;
-                border-bottom: none;
-                padding-bottom: 5px;
-                margin-bottom: 5px;
-                cursor: pointer;
-                background-color: transparent;
-                display: block;
-                padding: 10px 0;
-            }
-            .faq-question::after {
-                content: '+';
-                font-size: 1.2em;
-                float: right;
-            }
-            .faq-question.active::after {
-                content: '-';
-            }
-            .faq-answer {
-                grid-column: 2;
-                margin-bottom: 15px;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                padding: 0;
-            }
-            .faq-question.active + .faq-answer {
-                max-height: 200px; /* Adjust as needed */
-                padding: 10px 0;
-            }
-            .faq-container dt:nth-child(odd):last-child,
-            .faq-container dt:nth-child(even):last-child {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-        }
     </style>
 </head>
 <body>
@@ -327,25 +214,6 @@ icon: fas fa-stream
                 answer.style.maxHeight = faqItem.classList.contains('open') ? answer.scrollHeight + 'px' : null;
             });
         });
-
-        // Desktop FAQ functionality
-        if (window.innerWidth > 768) {
-            const faqHeaders = document.querySelectorAll('.faq-container dt .faq-question');
-            const faqAnswers = document.querySelectorAll('.faq-container dd .faq-answer');
-
-            faqHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const isActive = header.classList.contains('active');
-                    faqHeaders.forEach(h => h.classList.remove('active'));
-                    faqAnswers.forEach(a => a.style.maxHeight = null);
-
-                    if (!isActive) {
-                        header.classList.add('active');
-                        header.nextElementSibling.style.maxHeight = header.nextElementSibling.scrollHeight + 'px';
-                    }
-                });
-            });
-        }
     </script>
 
 </body>
