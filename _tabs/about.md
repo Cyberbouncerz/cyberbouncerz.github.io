@@ -42,7 +42,7 @@ order: 4
 
         h1,
         h2 {
-            color: #ecf0f1; /* Light headings */
+            color: #4CAF50; /* Green accent for headings */
             text-align: center;
             font-weight: 700;
             margin-bottom: 20px;
@@ -54,11 +54,13 @@ order: 4
             text-align: center;
             margin: 10px;
             border-radius: 5px;
+            border-left: 5px solid #4CAF50; /* Green accent for section border */
         }
 
         .section h2 {
             font-size: 1.8rem;
             text-align: center;
+            color: #4CAF50; /* Green accent for section headings */
         }
 
         p {
@@ -71,6 +73,16 @@ order: 4
 
         .mission {
             background-color: #34495e; /* Darker mission background */
+            border-left: 5px solid #4CAF50; /* Green accent for mission border */
+        }
+
+        .mission h2 {
+            color: #4CAF50; /* Green accent for mission heading */
+        }
+
+        i {
+            color: #4CAF50; /* Green accent for icons */
+            margin-right: 5px;
         }
 
         @media (min-width: 768px) {
