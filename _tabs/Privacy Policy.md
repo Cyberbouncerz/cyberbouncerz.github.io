@@ -12,14 +12,15 @@ icon: fas fa-stream
     <style>
         :root {
             --primary-color: #00b140; /* Green accent */
-            --background-light: #121212; /* Dark background */
+            --background-light: #1d1f20; /* Dark background */
             --text-light: #eaeaea; /* Light text */
-            --background-dark: #1f1f1f; /* Darker background for dark mode */
+            --background-dark: #121212; /* Darker background for dark mode */
             --text-dark: #ffffff; /* Light text for dark mode */
-            --border-color: #444; /* Lighter border color */
+            --border-color: #00b140; /* Green border accent */
             --max-width: 900px; /* Max width for content */
         }
 
+        /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -38,11 +39,13 @@ icon: fas fa-stream
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color); /* Green accent under header */
+            padding-bottom: 10px;
         }
 
         h2 {
             color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color); /* Green accent under subheaders */
             padding-bottom: 5px;
             margin-top: 30px;
             font-size: 1.8em;
@@ -70,7 +73,7 @@ icon: fas fa-stream
                 color: var(--text-dark);
             }
             h2 {
-                border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+                border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Subtle green border for dark mode */
             }
         }
 
