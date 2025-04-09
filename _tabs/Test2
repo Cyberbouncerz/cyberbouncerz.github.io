@@ -9,11 +9,35 @@ icon: fas fa-stream
 <head>
   <title>Contact Us</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
-    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
-    button { padding: 10px 20px; }
-    #status { margin-top: 10px; font-weight: bold; }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
   </style>
+  <script>
+    var submitted = false;
+  </script>
 </head>
 <body>
 
@@ -22,24 +46,28 @@ icon: fas fa-stream
   <form
     id="contact-form"
     method="POST"
-    action="https://script.google.com/macros/s/AKfycbzniLZeUytRDBRsIK_djGV4X-xJ0AnMtTnFY73JyZaIuUmM9DjK5esTgBLlo0jxMu3c/exec"
+    action="YOUR_SCRIPT_URL_HERE"
     target="hidden_iframe"
     onsubmit="submitted=true;"
   >
     <input type="text" name="firstName" placeholder="First Name" required />
     <input type="text" name="lastName" placeholder="Last Name" required />
     <input type="text" name="company" placeholder="Company" />
-    <input type="email" name="email" placeholder="Email" required />
-    <textarea name="message" placeholder="Message" required></textarea>
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
     <button type="submit">Send</button>
     <div id="status">Waiting for submission...</div>
   </form>
 
-  <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){ document.getElementById('status').innerText = '✅ Message sent! We’ll get back to you soon.'; document.getElementById('contact-form').reset(); submitted=false; }"></iframe>
-
-  <script>
-    let submitted = false;
-  </script>
+  <iframe
+    name="hidden_iframe"
+    style="display:none;"
+    onload="if(submitted){ 
+      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+      document.getElementById('contact-form').reset(); 
+      submitted=false; 
+    }">
+  </iframe>
 
 </body>
 </html>
