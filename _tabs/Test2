@@ -69,39 +69,46 @@ icon: fas fa-stream
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
             
-            <button type="submit">Submit</button>
+            <button type="submit">Send Email</button>
         </form>
-        <p id="statusMessage" style="text-align: center; color: green;"></p>
     </div>
 
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
             // Collect form data
-            var formData = new FormData(this);
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var company = document.getElementById("company").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
 
-            // Send data to Google Apps Script via POST
-            fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("statusMessage").innerText = "Form submitted successfully!";
-                document.getElementById("contactForm").reset();
-            })
-            .catch(error => {
-                document.getElementById("statusMessage").innerText = "There was an error. Please try again.";
-                console.error(error);
+            // Prepare email content
+            var emailBody = `
+                First Name: ${firstName}\n
+                Last Name: ${lastName}\n
+                Company: ${company}\n
+                Email: ${email}\n
+                Message: ${message}
+            `;
+
+            // Send email using SMTP.js
+            Email.send({
+                SecureToken: "your-secure-token-here", // Replace with your SMTP secure token
+                To: "your-email@example.com", // The recipient email address
+                From: email, // The sender's email address
+                Subject: "New Contact Form Submission",
+                Body: emailBody
+            }).then(function(response) {
+                alert("Email sent successfully!");
+                document.getElementById("contactForm").reset(); // Reset the form after submission
+            }).catch(function(error) {
+                alert("Error sending email: " + error);
             });
         });
     </script>
-
-</body>
-</html>
-
-  </iframe>
 
 </body>
 </html>
