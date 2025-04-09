@@ -71,12 +71,30 @@ icon: fas fa-stream
             flex: 1 1 30%;  /* Allow service items to expand and fill the screen */
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.6s ease-out forwards;
+            animation: fadeInUp 0.6s ease-out forwards, swivel-drop 2s ease-in-out infinite alternate;
             transition: box-shadow 0.3s ease;
         }
 
         @keyframes fadeInUp {
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes swivel-drop {
+            0% { 
+                transform: rotateY(0deg) translateY(0);
+            }
+            25% { 
+                transform: rotateY(15deg) translateY(10px); 
+            }
+            50% { 
+                transform: rotateY(-15deg) translateY(20px);
+            }
+            75% { 
+                transform: rotateY(15deg) translateY(10px); 
+            }
+            100% { 
+                transform: rotateY(0deg) translateY(0); 
+            }
         }
 
         .service-item img {
