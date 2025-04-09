@@ -4,12 +4,6 @@ permalink: /test/
 icon: fas fa-stream
 ---
 
----
-layout: page
-permalink: /test/
-icon: fas fa-stream
----
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,12 +34,16 @@ icon: fas fa-stream
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s ease-in-out infinite alternate;
+            animation: pulse-shift 2s ease-in-out infinite alternate;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        @keyframes pulse-shift {
+            0% { 
+                transform: scale(1) translateX(0); 
+            }
+            100% { 
+                transform: scale(1.05) translateX(5px); 
+            }
         }
 
         h1 {
@@ -87,6 +85,7 @@ icon: fas fa-stream
             border-radius: 8px;
             margin-bottom: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse-shift 2s ease-in-out infinite alternate; /* Add animation to all images */
         }
 
         .service-item h2 {
