@@ -1,13 +1,7 @@
 ---
 layout: page
-permalink: /test2/
-icon: fas fa-stream
----
-
----
-layout: page
 permalink: /contact/
-icon: fas fa-envelope
+icon: fas fa-stream
 ---
 
 <!DOCTYPE html>
