@@ -17,7 +17,7 @@ icon: fas fa-stream
             padding: 20px;
             color: #fff;
             overflow-x: auto;
-            width: 100%;  /* Allow body to fill the full width of the screen */
+            width: 100%;
             box-sizing: border-box;
         }
 
@@ -26,7 +26,7 @@ icon: fas fa-stream
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
-            width: 100%; /* Ensure logo container fills the screen width */
+            width: 100%;
         }
 
         .logo-container img {
@@ -59,7 +59,7 @@ icon: fas fa-stream
             justify-content: space-between;
             gap: 20px;
             padding: 0 15px;
-            width: 100%; /* Ensure services container fills the screen */
+            width: 100%;
         }
 
         .service-item {
@@ -68,7 +68,7 @@ icon: fas fa-stream
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-left: 5px solid #4CAF50;
-            flex: 1 1 30%;  /* Allow service items to expand and fill the screen */
+            flex: 1 1 30%;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards, swivel-drop 2s ease-in-out infinite alternate;
@@ -103,7 +103,7 @@ icon: fas fa-stream
             border-radius: 8px;
             margin-bottom: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: pulse-shift 2s ease-in-out infinite alternate; /* Add animation to all images */
+            animation: pulse-shift 2s ease-in-out infinite alternate;
         }
 
         .service-item h2 {
@@ -120,7 +120,7 @@ icon: fas fa-stream
         .faq-container {
             margin-top: 40px;
             padding: 0 15px;
-            width: 100%; /* Ensure FAQ section fills the screen */
+            width: 100%;
         }
 
         .faq-container h3 {
@@ -168,6 +168,58 @@ icon: fas fa-stream
 
         .faq-item.open .faq-answer {
             display: block;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+
+            .services-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .service-item {
+                width: 100%;
+                padding: 15px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transform: none; /* Remove animation for smoother mobile experience */
+                animation: fadeInUp 0.6s ease-out forwards;
+            }
+
+            .service-item h2 {
+                font-size: 1.2em;
+            }
+
+            .service-item p {
+                font-size: 0.9em;
+                color: #ccc;
+            }
+
+            .faq-container h3 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            .faq-question {
+                font-size: 1.1em;
+                padding: 10px;
+            }
+
+            .faq-answer {
+                font-size: 0.9em;
+            }
+
+            .logo-container img {
+                max-width: 120px; /* Adjust logo size for mobile */
+            }
         }
 
     </style>
