@@ -55,6 +55,10 @@ icon: fas fa-stream
       color: #bbb;
     }
 
+    .g-recaptcha {
+      margin-bottom: 15px;
+    }
+
     button {
       background-color: #4CAF50;
       color: white;
@@ -82,12 +86,15 @@ icon: fas fa-stream
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+
+  <!-- reCAPTCHA Script -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <script>
     var submitted = false;
   </script>
 </head>
 <body>
-
 
   <div class="form-container">
     <form
@@ -102,6 +109,10 @@ icon: fas fa-stream
       <input type="text" name="company" placeholder="Company (Optional)" />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+      <!-- Google reCAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
+
       <button type="submit">Send</button>
       <div id="status">Waiting for submission...</div>
     </form>
