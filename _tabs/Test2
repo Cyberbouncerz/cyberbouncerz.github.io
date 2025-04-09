@@ -7,45 +7,39 @@ icon: fas fa-stream
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Contact</title>
+  <title>Contact Us</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+    button { padding: 10px 20px; }
+    #status { margin-top: 10px; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <form id="contact-form">
+
+  <h2>Contact Us</h2>
+
+  <form
+    id="contact-form"
+    method="POST"
+    action="https://script.google.com/macros/s/AKfycbzniLZeUytRDBRsIK_djGV4X-xJ0AnMtTnFY73JyZaIuUmM9DjK5esTgBLlo0jxMu3c/exec"
+    target="hidden_iframe"
+    onsubmit="submitted=true;"
+  >
     <input type="text" name="firstName" placeholder="First Name" required />
     <input type="text" name="lastName" placeholder="Last Name" required />
     <input type="text" name="company" placeholder="Company" />
     <input type="email" name="email" placeholder="Email" required />
     <textarea name="message" placeholder="Message" required></textarea>
     <button type="submit">Send</button>
-    <div id="status"></div>
+    <div id="status">Waiting for submission...</div>
   </form>
 
+  <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){ document.getElementById('status').innerText = '✅ Message sent! We’ll get back to you soon.'; document.getElementById('contact-form').reset(); submitted=false; }"></iframe>
+
   <script>
-    document.getElementById("contact-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const form = e.target;
-      const formData = new FormData(form);
-      const jsonData = {};
-      formData.forEach((value, key) => (jsonData[key] = value));
-
-      try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzniLZeUytRDBRsIK_djGV4X-xJ0AnMtTnFY73JyZaIuUmM9DjK5esTgBLlo0jxMu3c/exec", {
-          method: "POST",
-          body: JSON.stringify(jsonData),
-          headers: { "Content-Type": "application/json" },
-        });
-
-        const result = await response.json();
-        document.getElementById("status").innerText = result.success
-          ? `Message sent! Your ticket number is ${result.ticket}`
-          : "There was a problem sending your message.";
-        form.reset();
-      } catch (error) {
-        console.error(error);
-        document.getElementById("status").innerText = "Error sending message.";
-      }
-    });
+    let submitted = false;
   </script>
+
 </body>
 </html>
