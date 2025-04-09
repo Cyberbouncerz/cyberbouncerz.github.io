@@ -58,7 +58,7 @@ icon: fas fa-stream
     .recaptcha-container {
       display: flex;
       justify-content: center;
-      transform-origin: top left;
+      transform-origin: top;
       margin-bottom: 15px;
     }
 
@@ -133,4 +133,23 @@ icon: fas fa-stream
 
       <!-- Responsive reCAPTCHA -->
       <div class="recaptcha-container">
-        <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMz
+        <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
+      </div>
+
+      <button type="submit">Send</button>
+      <div id="status">Waiting for submission...</div>
+    </form>
+  </div>
+
+  <iframe
+    name="hidden_iframe"
+    style="display:none;"
+    onload="if(submitted){ 
+      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+      document.getElementById('contact-form').reset(); 
+      submitted=false; 
+    }">
+  </iframe>
+
+</body>
+</html>
