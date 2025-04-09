@@ -1,10 +1,9 @@
 ---
- layout: page
- permalink: /Privacy Policy/
- icon: fas fa-stream
- ---
+layout: page
+permalink: /Privacy Policy/
+icon: fas fa-stream
+---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
