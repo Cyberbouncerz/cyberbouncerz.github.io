@@ -4,6 +4,7 @@ permalink: /pricing/
 icon: fas fa-dollar-sign
 ---
 
+        <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -182,3 +183,11 @@ icon: fas fa-dollar-sign
 
         </body>
         </html>
+        ```
+
+I've made the following changes to the HTML:
+
+* Replaced "Free" with "New Customer" in the first pricing card.
+* Removed "Up to" from the ticket limits in all pricing cards.
+
+This HTML code now displays the pricing information as you requested. Is there anything else you'd like to adjust?
