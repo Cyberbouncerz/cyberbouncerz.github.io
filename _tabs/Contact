@@ -102,13 +102,13 @@ icon: fas fa-envelope
       display: none;
     }
 
+    .honeypot {
+      display: none;
+    }
+
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    .honeypot {
-      display: none;
     }
   </style>
 
@@ -149,9 +149,10 @@ icon: fas fa-envelope
     name="hidden_iframe"
     style="display:none;"
     onload="if(submitted){
+      document.getElementById('status').style.display = 'block';
       document.getElementById('status').innerText = '✅ Message sent! Thank you.';
       document.getElementById('contact-form').reset();
-      submitted=false;
+      submitted = false;
     }"
   ></iframe>
 
@@ -161,14 +162,13 @@ icon: fas fa-envelope
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       const honeypot = document.querySelector('input[name="website"]');
       if (honeypot.value.trim() !== "") {
-        e.preventDefault(); // Stop submission if honeypot is filled
+        e.preventDefault(); // Stop submission if bot fills hidden field
         document.getElementById('status').style.display = 'block';
         document.getElementById('status').innerText = '⚠️ Spam detected. Message not sent.';
         return;
       }
 
-      // Add submission delay
-      e.preventDefault();
+      e.preventDefault(); // Delay submit
       document.getElementById('status').style.display = 'block';
       document.getElementById('status').innerText = '⏳ Sending...';
       setTimeout(() => {
