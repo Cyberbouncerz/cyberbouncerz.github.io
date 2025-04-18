@@ -8,7 +8,7 @@ icon: fas fa-envelope
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Form</title>
+  <title>Contact Us</title>
 
   <style>
     body {
@@ -125,12 +125,12 @@ icon: fas fa-envelope
   <script>
     const form = document.getElementById('contact-form');
     const status = document.getElementById('status');
-    const iframe = document.getElementById('hidden_iframe');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
       const honeypot = form.querySelector('input[name="website"]');
       if (honeypot.value.trim() !== "") {
-        e.preventDefault();
         status.style.display = 'block';
         status.innerText = '⚠️ Spam detected. Message not sent.';
         return;
@@ -139,18 +139,17 @@ icon: fas fa-envelope
       status.style.display = 'block';
       status.innerText = '⏳ Sending...';
 
-      // Delay submit slightly
-      e.preventDefault();
+      // Submit the form
       setTimeout(() => {
-        iframe.onload = () => {
-          status.style.display = 'block';
+        form.submit();
+
+        // Simulate success message
+        setTimeout(() => {
           status.innerText = '✅ Message sent! Thank you.';
           form.reset();
           grecaptcha.reset();
-          iframe.onload = null;
-        };
-        form.submit();
-      }, 500);
+        }, 1200); // adjust delay as needed
+      }, 200);
     });
   </script>
 
