@@ -4,11 +4,11 @@ permalink: /contact/
 icon: fas fa-envelope
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
 
   <style>
     body {
@@ -106,16 +106,18 @@ icon: fas fa-envelope
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .honeypot {
+      display: none;
+    }
   </style>
 
-  <!-- reCAPTCHA Script -->
+  <!-- Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  <script>
-    var submitted = false;
-  </script>
 </head>
 <body>
+
+  <h1>Contact Us</h1>
 
   <div class="form-container">
     <form
@@ -123,7 +125,6 @@ icon: fas fa-envelope
       method="POST"
       action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec"
       target="hidden_iframe"
-      onsubmit="submitted=true; document.getElementById('status').style.display='block'; document.getElementById('status').innerText='⏳ Sending...';"
     >
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
@@ -131,7 +132,10 @@ icon: fas fa-envelope
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
-      <!-- Responsive reCAPTCHA -->
+      <!-- Honeypot anti-spam field -->
+      <input class="honeypot" type="text" name="website" placeholder="Leave blank" autocomplete="off" />
+
+      <!-- reCAPTCHA -->
       <div class="recaptcha-container">
         <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
       </div>
@@ -144,12 +148,35 @@ icon: fas fa-envelope
   <iframe
     name="hidden_iframe"
     style="display:none;"
-    onload="if(submitted){ 
+    onload="if(submitted){
       document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-      document.getElementById('contact-form').reset(); 
-      submitted=false; 
-    }">
-  </iframe>
+      document.getElementById('contact-form').reset();
+      submitted=false;
+    }"
+  ></iframe>
+
+  <script>
+    var submitted = false;
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      const honeypot = document.querySelector('input[name="website"]');
+      if (honeypot.value.trim() !== "") {
+        e.preventDefault(); // Stop submission if honeypot is filled
+        document.getElementById('status').style.display = 'block';
+        document.getElementById('status').innerText = '⚠️ Spam detected. Message not sent.';
+        return;
+      }
+
+      // Add submission delay
+      e.preventDefault();
+      document.getElementById('status').style.display = 'block';
+      document.getElementById('status').innerText = '⏳ Sending...';
+      setTimeout(() => {
+        submitted = true;
+        this.submit();
+      }, 1000); // 1 second delay
+    });
+  </script>
 
 </body>
 </html>
