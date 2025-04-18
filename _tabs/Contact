@@ -8,7 +8,7 @@ icon: fas fa-envelope
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us</title>
+  <title>Contact Form</title>
 
   <style>
     body {
@@ -58,26 +58,7 @@ icon: fas fa-envelope
     .recaptcha-container {
       display: flex;
       justify-content: center;
-      transform-origin: top;
       margin-bottom: 15px;
-    }
-
-    @media (max-width: 479px) {
-      .recaptcha-container {
-        transform: scale(0.76);
-      }
-    }
-
-    @media (min-width: 480px) and (max-width: 767px) {
-      .recaptcha-container {
-        transform: scale(0.85);
-      }
-    }
-
-    @media (min-width: 768px) {
-      .recaptcha-container {
-        transform: scale(1);
-      }
     }
 
     button {
@@ -112,7 +93,6 @@ icon: fas fa-envelope
     }
   </style>
 
-  <!-- Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
@@ -120,63 +100,60 @@ icon: fas fa-envelope
   <h1>Contact Us</h1>
 
   <div class="form-container">
-    <form
-      id="contact-form"
-      method="POST"
-      action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec"
-      target="hidden_iframe"
-    >
+    <form id="contact-form" method="POST" target="hidden_iframe"
+      action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec">
+      
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
       <input type="text" name="company" placeholder="Company (Optional)" />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
-      <!-- Honeypot anti-spam field -->
-      <input class="honeypot" type="text" name="website" placeholder="Leave blank" autocomplete="off" />
+      <input class="honeypot" type="text" name="website" placeholder="Leave blank" />
 
-      <!-- reCAPTCHA -->
       <div class="recaptcha-container">
         <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
       </div>
 
       <button type="submit">Send</button>
-      <div id="status">Waiting for submission...</div>
+      <div id="status">⏳ Sending...</div>
     </form>
   </div>
 
-  <iframe
-    name="hidden_iframe"
-    style="display:none;"
-    onload="if(submitted){
-      document.getElementById('status').style.display = 'block';
-      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-      document.getElementById('contact-form').reset();
-      submitted = false;
-    }"
-  ></iframe>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <script>
-    var submitted = false;
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('status');
+    const iframe = document.getElementById('hidden_iframe');
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      const honeypot = document.querySelector('input[name="website"]');
+    form.addEventListener('submit', function(e) {
+      const honeypot = form.querySelector('input[name="website"]');
       if (honeypot.value.trim() !== "") {
-        e.preventDefault(); // Stop submission if bot fills hidden field
-        document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = '⚠️ Spam detected. Message not sent.';
+        e.preventDefault();
+        status.style.display = 'block';
+        status.innerText = '⚠️ Spam detected. Message not sent.';
         return;
       }
 
-      e.preventDefault(); // Delay submit
-      document.getElementById('status').style.display = 'block';
-      document.getElementById('status').innerText = '⏳ Sending...';
+      status.style.display = 'block';
+      status.innerText = '⏳ Sending...';
+
+      // Delay submit slightly
+      e.preventDefault();
       setTimeout(() => {
-        submitted = true;
-        this.submit();
-      }, 1000); // 1 second delay
+        iframe.onload = () => {
+          status.style.display = 'block';
+          status.innerText = '✅ Message sent! Thank you.';
+          form.reset();
+          grecaptcha.reset();
+          iframe.onload = null;
+        };
+        form.submit();
+      }, 500);
     });
   </script>
 
 </body>
 </html>
+
