@@ -107,9 +107,6 @@ icon: fas fa-envelope
         }
     </style>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        var submitted = false;
-    </script>
 </head>
 <body>
 
@@ -120,11 +117,10 @@ icon: fas fa-envelope
             method="POST"
             action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec"
             target="hidden_iframe"
-            onsubmit="submitted=true; document.getElementById('status').style.display='block'; document.getElementById('status').innerText='⏳ Sending...';"
         >
             <input type="text" name="firstName" placeholder="First Name" required />
             <input type="text" name="lastName" placeholder="Last Name" required />
-            <input type="text" name="company" placeholder="Company (Optional)" />
+            <input type="text" name="company" placeholder="Company" required />
             <input type="email" name="email" placeholder="Your Email" required />
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
@@ -147,6 +143,23 @@ icon: fas fa-envelope
         }">
     </iframe>
 
+    <script>
+        var submitted = false;
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            const recaptcha = grecaptcha.getResponse();
+            if (!recaptcha) {
+                e.preventDefault();
+                document.getElementById('status').style.display = 'block';
+                document.getElementById('status').innerText = 'Please complete the reCAPTCHA.';
+                return false;
+            }
+
+            submitted = true;
+            document.getElementById('status').style.display = 'block';
+            document.getElementById('status').innerText = '⏳ Sending...';
+        });
+    </script>
+
 </body>
 </html>
-
