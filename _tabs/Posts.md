@@ -4,7 +4,6 @@ permalink: /Posts/
 icon: fas fa-shield-alt
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,7 +21,7 @@ icon: fas fa-shield-alt
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.4/tabletop.min.js"></script>
 <script>
-  const publicSpreadsheetKey = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToPdj35srTzpevTrPbjhVk2c7fsIkE8Qg17OFHVqtZCx7uY5GNNtyQn3yjuc7_tZTc5PGphtZZQXss/pubhtml'; // <-- put your Google Sheet ID here
+  const publicSpreadsheetKey = '2PACX-1vToPdj35srTzpevTrPbjhVk2c7fsIkE8Qg17OFHVqtZCx7uY5GNNtyQn3yjuc7_tZTc5PGphtZZQXss'; // your key
 
   function showPosts(data, tabletop) {
     const postsDiv = document.getElementById('posts');
