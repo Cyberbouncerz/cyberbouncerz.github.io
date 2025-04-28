@@ -21,7 +21,7 @@ icon: fas fa-shield-alt
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.4/tabletop.min.js"></script>
 <script>
-  const publicSpreadsheetKey = '2PACX-1vToPdj35srTzpevTrPbjhVk2c7fsIkE8Qg17OFHVqtZCx7uY5GNNtyQn3yjuc7_tZTc5PGphtZZQXss'; // your key
+  const publicSpreadsheetKey = '2PACX-1vTt4pN-NQYJpbD2JHziZke36zRMNWd6vkVMELm435RLz5YcBqyHTNbcr2o19sz-tp_sfaoUTqSZ6PzT'; // Sheet ID
 
   function showPosts(data, tabletop) {
     const postsDiv = document.getElementById('posts');
