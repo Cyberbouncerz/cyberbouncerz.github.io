@@ -38,15 +38,26 @@ icon: fas fa-envelope
       animation: fadeInUp 0.6s ease-out forwards;
     }
 
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #eee;
+      font-size: 0.9rem;
+    }
+
     input, textarea {
       width: 100%;
       padding: 14px;
-      margin-bottom: 15px;
       border: 1px solid #444;
       background-color: #34495e;
       color: #fff;
       border-radius: 8px;
       font-size: 1.05rem;
+      box-sizing: border-box; /* Ensure padding doesn't affect overall width */
     }
 
     input::placeholder,
@@ -101,8 +112,13 @@ icon: fas fa-envelope
       display: none;
     }
 
-    .honeypot {
-      display: none;
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
     }
 
     @keyframes fadeInUp {
@@ -122,14 +138,29 @@ icon: fas fa-envelope
       action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec"
       target="hidden_iframe"
     >
-      <input type="text" name="firstName" placeholder="First Name" required />
-      <input type="text" name="lastName" placeholder="Last Name" required />
-      <input type="text" name="company" placeholder="Company" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+      </div>
+      <div class="form-group">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Company" />
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
 
-      <!-- Honeypot field -->
-      <input type="text" name="hiddenTrap" class="honeypot" />
+      <input type="text" id="delayTrap" name="delayTrap" class="visually-hidden" tabindex="-1" autocomplete="off" />
+      <input type="hidden" id="submissionTime" name="submissionTime" value="">
 
       <div class="recaptcha-container">
         <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
@@ -152,10 +183,27 @@ icon: fas fa-envelope
 
   <script>
     var submitted = false;
+    var startTime;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      startTime = new Date().getTime();
+      document.getElementById('submissionTime').value = startTime;
+    });
 
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       const recaptcha = grecaptcha.getResponse();
-      const honeypot = document.querySelector('input[name="hiddenTrap"]').value;
+      const delayTrap = document.getElementById('delayTrap').value;
+      const submissionTime = parseInt(document.getElementById('submissionTime').value, 10);
+      const endTime = new Date().getTime();
+      const timeTaken = endTime - submissionTime;
+
+      // Basic time delay check (adjust the threshold as needed)
+      if (timeTaken < 500) { // Less than 0.5 seconds - likely a bot
+        e.preventDefault();
+        document.getElementById('status').style.display = 'block';
+        document.getElementById('status').innerText = '🤖 Suspicious submission detected.';
+        return false;
+      }
 
       if (!recaptcha) {
         e.preventDefault();
@@ -164,10 +212,10 @@ icon: fas fa-envelope
         return false;
       }
 
-      if (honeypot !== '') {
+      if (delayTrap !== '') {
         e.preventDefault();
         document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Spam detected.';
+        document.getElementById('status').innerText = '🤖 Spam detected.';
         return false;
       }
 
