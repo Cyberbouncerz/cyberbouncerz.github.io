@@ -1,9 +1,4 @@
----
-layout: page
-permalink: /contact/
-icon: fas fa-envelope
----
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,7 +9,6 @@ icon: fas fa-envelope
       background-color: #2c3e50;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
-      margin: 0;
       padding: 40px 20px;
       max-width: 1200px;
       margin: 0 auto;
@@ -49,34 +43,8 @@ icon: fas fa-envelope
       font-size: 1.05rem;
     }
 
-    input::placeholder,
-    textarea::placeholder {
+    input::placeholder, textarea::placeholder {
       color: #bbb;
-    }
-
-    .recaptcha-container {
-      display: flex;
-      justify-content: center;
-      transform-origin: top;
-      margin-bottom: 15px;
-    }
-
-    @media (max-width: 479px) {
-      .recaptcha-container {
-        transform: scale(0.76);
-      }
-    }
-
-    @media (min-width: 480px) and (max-width: 767px) {
-      .recaptcha-container {
-        transform: scale(0.85);
-      }
-    }
-
-    @media (min-width: 768px) {
-      .recaptcha-container {
-        transform: scale(1);
-      }
     }
 
     button {
@@ -110,71 +78,92 @@ icon: fas fa-envelope
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
   <div class="form-container">
     <h1>Contact Us</h1>
-    <form
-      id="contact-form"
-      method="POST"
-      action="https://script.google.com/macros/s/AKfycbw6P7k-bwAx8grjGQEn7WVO0ucrjCc1H3A21ZxdxlnVxNPaKZfhzpKcL0t8oOHmSwK01Q/exec"
-      target="hidden_iframe"
-    >
+    <form id="contact-form"
+          method="POST"
+          action="https://script.google.com/macros/s/REPLACE_WITH_YOUR_SCRIPT/exec"
+          target="hidden_iframe">
+
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
       <input type="text" name="company" placeholder="Company" required />
-      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="email" name="email" id="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
-      <!-- Honeypot field -->
+      <!-- Honeypots -->
       <input type="text" name="hiddenTrap" class="honeypot" />
+      <input type="text" name="fullname" class="honeypot" />
+      <input type="email" name="contact" class="honeypot" />
 
-      <div class="recaptcha-container">
-        <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
-      </div>
+      <!-- Invisible reCAPTCHA -->
+      <button class="g-recaptcha"
+              data-sitekey="YOUR_SITE_KEY"
+              data-callback="onSubmit"
+              data-badge="bottomright"
+              data-size="invisible">
+        Send
+      </button>
 
-      <button type="submit">Send</button>
       <div id="status">Waiting for submission...</div>
     </form>
   </div>
 
-  <iframe
-    name="hidden_iframe"
-    style="display:none;"
-    onload="if(submitted){
-      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-      document.getElementById('contact-form').reset();
-      submitted=false;
-    }">
+  <iframe name="hidden_iframe" style="display:none;"
+          onload="if(submitted){
+            document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+            document.getElementById('contact-form').reset();
+            submitted=false;
+          }">
   </iframe>
 
   <script>
-    var submitted = false;
+    let submitted = false;
+    let pageLoadTime = Date.now();
 
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      const recaptcha = grecaptcha.getResponse();
-      const honeypot = document.querySelector('input[name="hiddenTrap"]').value;
+    function validateEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
 
-      if (!recaptcha) {
-        e.preventDefault();
-        document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Please complete the reCAPTCHA.';
-        return false;
+    function onSubmit(token) {
+      const honeypots = ['hiddenTrap', 'fullname', 'contact'];
+      const email = document.getElementById('email').value;
+
+      // Check honeypots
+      for (let field of honeypots) {
+        if (document.querySelector(`input[name="${field}"]`).value !== '') {
+          document.getElementById('status').style.display = 'block';
+          document.getElementById('status').innerText = 'Spam detected.';
+          return;
+        }
       }
 
-      if (honeypot !== '') {
-        e.preventDefault();
+      // Check time since page load
+      if (Date.now() - pageLoadTime < 5000) {
         document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Spam detected.';
-        return false;
+        document.getElementById('status').innerText = 'Too fast. Are you a bot?';
+        return;
       }
 
+      // Validate email format
+      if (!validateEmail(email)) {
+        document.getElementById('status').style.display = 'block';
+        document.getElementById('status').innerText = 'Invalid email format.';
+        return;
+      }
+
+      // All good
       submitted = true;
       document.getElementById('status').style.display = 'block';
       document.getElementById('status').innerText = '⏳ Sending...';
-    });
+      document.getElementById('contact-form').submit();
+    }
   </script>
 
 </body>
