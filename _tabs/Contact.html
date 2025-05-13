@@ -1,14 +1,15 @@
 ---
 layout: page
 permalink: /contact/
-icon: fas fa-envelope
+icon: fas fa-stream
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us</title>
+
   <style>
     body {
       background-color: #2c3e50;
@@ -101,36 +102,36 @@ icon: fas fa-envelope
       display: none;
     }
 
-    .honeypot {
-      display: none;
-    }
-
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+
+  <!-- reCAPTCHA Script -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script>
+    var submitted = false;
+  </script>
 </head>
 <body>
 
   <div class="form-container">
-    <h1>Contact Us</h1>
     <form
       id="contact-form"
       method="POST"
       action="https://script.google.com/macros/s/AKfycby63HDvxXDvytSkS8_iKmDvsg-CZZDAb4rQshA4EzjUVqFLOA_c0EVLV-4lMYGSKeTJYQ/exec"
       target="hidden_iframe"
+      onsubmit="submitted=true; document.getElementById('status').style.display='block'; document.getElementById('status').innerText='⏳ Sending...';"
     >
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
-      <input type="text" name="company" placeholder="Company" required />
+      <input type="text" name="company" placeholder="Company (Optional)" />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
-      <!-- Honeypot field -->
-      <input type="text" name="hiddenTrap" class="honeypot" />
-
+      <!-- Responsive reCAPTCHA -->
       <div class="recaptcha-container">
         <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
       </div>
@@ -143,39 +144,12 @@ icon: fas fa-envelope
   <iframe
     name="hidden_iframe"
     style="display:none;"
-    onload="if(submitted){
+    onload="if(submitted){ 
       document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-      document.getElementById('contact-form').reset();
-      submitted=false;
+      document.getElementById('contact-form').reset(); 
+      submitted=false; 
     }">
   </iframe>
-
-  <script>
-    var submitted = false;
-
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      const recaptcha = grecaptcha.getResponse();
-      const honeypot = document.querySelector('input[name="hiddenTrap"]').value;
-
-      if (!recaptcha) {
-        e.preventDefault();
-        document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Please complete the reCAPTCHA.';
-        return false;
-      }
-
-      if (honeypot !== '') {
-        e.preventDefault();
-        document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Spam detected.';
-        return false;
-      }
-
-      submitted = true;
-      document.getElementById('status').style.display = 'block';
-      document.getElementById('status').innerText = '⏳ Sending...';
-    });
-  </script>
 
 </body>
 </html>
