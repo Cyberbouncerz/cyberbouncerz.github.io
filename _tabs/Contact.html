@@ -34,7 +34,6 @@ icon: fas fa-envelope
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       max-width: 600px;
       margin: 0 auto;
-      animation: fadeInUp 0.6s ease-out forwards;
     }
 
     input, textarea {
@@ -77,14 +76,10 @@ icon: fas fa-envelope
     .honeypot {
       display: none;
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Load reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
 </head>
 <body>
 
@@ -92,7 +87,7 @@ icon: fas fa-envelope
     <h1>Contact Us</h1>
     <form id="contact-form"
           method="POST"
-          action="https://script.google.com/macros/s/REPLACE_WITH_YOUR_SCRIPT/exec"
+          action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
           target="hidden_iframe">
 
       <input type="text" name="firstName" placeholder="First Name" required />
@@ -106,69 +101,65 @@ icon: fas fa-envelope
       <input type="text" name="fullname" class="honeypot" />
       <input type="email" name="contact" class="honeypot" />
 
-      <!-- Invisible reCAPTCHA -->
-      <button class="g-recaptcha"
-              data-sitekey="YOUR_SITE_KEY"
-              data-callback="onSubmit"
-              data-badge="bottomright"
-              data-size="invisible">
-        Send
-      </button>
+      <!-- Hidden token field for reCAPTCHA -->
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
 
+      <button type="submit">Send</button>
       <div id="status">Waiting for submission...</div>
     </form>
   </div>
 
-  <iframe name="hidden_iframe" style="display:none;"
-          onload="if(submitted){
-            document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-            document.getElementById('contact-form').reset();
-            submitted=false;
-          }">
-  </iframe>
+  <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){
+    document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+    document.getElementById('contact-form').reset();
+    submitted=false;
+  }"></iframe>
 
   <script>
     let submitted = false;
     let pageLoadTime = Date.now();
 
-    function validateEmail(email) {
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return regex.test(email);
-    }
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    function onSubmit(token) {
       const honeypots = ['hiddenTrap', 'fullname', 'contact'];
       const email = document.getElementById('email').value;
+      const status = document.getElementById('status');
 
-      // Check honeypots
+      // Honeypot check
       for (let field of honeypots) {
         if (document.querySelector(`input[name="${field}"]`).value !== '') {
-          document.getElementById('status').style.display = 'block';
-          document.getElementById('status').innerText = 'Spam detected.';
+          status.style.display = 'block';
+          status.innerText = 'Spam detected.';
           return;
         }
       }
 
-      // Check time since page load
+      // Too fast submission
       if (Date.now() - pageLoadTime < 5000) {
-        document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Too fast. Are you a bot?';
+        status.style.display = 'block';
+        status.innerText = 'Submission too fast — possible bot.';
         return;
       }
 
-      // Validate email format
-      if (!validateEmail(email)) {
-        document.getElementById('status').style.display = 'block';
-        document.getElementById('status').innerText = 'Invalid email format.';
+      // Email format check
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        status.style.display = 'block';
+        status.innerText = 'Invalid email format.';
         return;
       }
 
-      // All good
-      submitted = true;
-      document.getElementById('status').style.display = 'block';
-      document.getElementById('status').innerText = '⏳ Sending...';
-      document.getElementById('contact-form').submit();
-    }
+      // CAPTCHA request
+      grecaptcha.ready(function() {
+        grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
+          document.getElementById('g-recaptcha-response').value = token;
+          submitted = true;
+          status.style.display = 'block';
+          status.innerText = '⏳ Sending...';
+          document.getElementById('contact-form').submit();
+        });
+      });
+    });
   </script>
 
 </body>
