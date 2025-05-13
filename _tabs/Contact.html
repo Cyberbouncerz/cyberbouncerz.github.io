@@ -78,9 +78,7 @@ icon: fas fa-envelope
     }
   </style>
 
-  <!-- Load reCAPTCHA v3 -->
-  <script src="https://script.google.com/macros/s/AKfycbw6P7k-bwAx8grjGQEn7WVO0ucrjCc1H3A21ZxdxlnVxNPaKZfhzpKcL0t8oOHmSwK01Q/exec"
-></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -88,7 +86,7 @@ icon: fas fa-envelope
     <h1>Contact Us</h1>
     <form id="contact-form"
           method="POST"
-          action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
+          action="https://script.google.com/macros/s/AKfycbw6P7k-bwAx8grjGQEn7WVO0ucrjCc1H3A21ZxdxlnVxNPaKZfhzpKcL0t8oOHmSwK01Q/exec"
           target="hidden_iframe">
 
       <input type="text" name="firstName" placeholder="First Name" required />
@@ -102,10 +100,13 @@ icon: fas fa-envelope
       <input type="text" name="fullname" class="honeypot" />
       <input type="email" name="contact" class="honeypot" />
 
-      <!-- Hidden token field for reCAPTCHA -->
-      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
+      <button class="g-recaptcha"
+              data-sitekey="YOUR_SITE_KEY_HERE"
+              data-callback="onSubmit"
+              data-size="invisible">
+        Send
+      </button>
 
-      <button type="submit">Send</button>
       <div id="status">Waiting for submission...</div>
     </form>
   </div>
@@ -120,9 +121,11 @@ icon: fas fa-envelope
     let submitted = false;
     let pageLoadTime = Date.now();
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
 
+    function onSubmit(token) {
       const honeypots = ['hiddenTrap', 'fullname', 'contact'];
       const email = document.getElementById('email').value;
       const status = document.getElementById('status');
@@ -136,31 +139,25 @@ icon: fas fa-envelope
         }
       }
 
-      // Too fast submission
+      // Time check
       if (Date.now() - pageLoadTime < 5000) {
         status.style.display = 'block';
-        status.innerText = 'Submission too fast — possible bot.';
+        status.innerText = 'Too fast. Are you a bot?';
         return;
       }
 
-      // Email format check
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      // Email format
+      if (!validateEmail(email)) {
         status.style.display = 'block';
         status.innerText = 'Invalid email format.';
         return;
       }
 
-      // CAPTCHA request
-      grecaptcha.ready(function() {
-        grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
-          document.getElementById('g-recaptcha-response').value = token;
-          submitted = true;
-          status.style.display = 'block';
-          status.innerText = '⏳ Sending...';
-          document.getElementById('contact-form').submit();
-        });
-      });
-    });
+      submitted = true;
+      status.style.display = 'block';
+      status.innerText = '⏳ Sending...';
+      document.getElementById('contact-form').submit();
+    }
   </script>
 
 </body>
