@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /Privacy Policy/
+permalink: /Privacy/
 icon: fas fa-shield-alt
 ---
 
