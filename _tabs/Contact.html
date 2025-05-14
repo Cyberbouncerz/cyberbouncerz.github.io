@@ -130,8 +130,8 @@ icon: fas fa-envelope
       <!-- Honeypot field -->
       <input type="text" name="hiddenTrap" class="honeypot" />
 
-      <!-- Hidden token field -->
-      <input type="hidden" name="formToken" id="formToken" />
+      <!-- ✅ Static secure token -->
+      <input type="hidden" name="secureToken" value="only-from-my-site-xyz123" />
 
       <div class="recaptcha-container">
         <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
@@ -154,24 +154,6 @@ icon: fas fa-envelope
 
   <script>
     var submitted = false;
-
-    // Generate random token
-    function generateToken(length = 32) {
-      const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let token = '';
-      for (let i = 0; i < length; i++) {
-        token += charset.charAt(Math.floor(Math.random() * charset.length));
-      }
-      return token;
-    }
-
-    // Set the token when the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      const tokenField = document.getElementById('formToken');
-      if (tokenField) {
-        tokenField.value = generateToken();
-      }
-    });
 
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       const recaptcha = grecaptcha.getResponse();
@@ -199,3 +181,4 @@ icon: fas fa-envelope
 
 </body>
 </html>
+
