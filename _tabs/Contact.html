@@ -34,6 +34,7 @@ icon: fas fa-envelope
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       max-width: 600px;
       margin: 0 auto;
+      animation: fadeInUp 0.6s ease-out forwards;
     }
 
     input, textarea {
@@ -47,8 +48,34 @@ icon: fas fa-envelope
       font-size: 1.05rem;
     }
 
-    input::placeholder, textarea::placeholder {
+    input::placeholder,
+    textarea::placeholder {
       color: #bbb;
+    }
+
+    .recaptcha-container {
+      display: flex;
+      justify-content: center;
+      transform-origin: top;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 479px) {
+      .recaptcha-container {
+        transform: scale(0.76);
+      }
+    }
+
+    @media (min-width: 480px) and (max-width: 767px) {
+      .recaptcha-container {
+        transform: scale(0.85);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .recaptcha-container {
+        transform: scale(1);
+      }
     }
 
     button {
@@ -76,88 +103,98 @@ icon: fas fa-envelope
     .honeypot {
       display: none;
     }
-  </style>
 
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
   <div class="form-container">
     <h1>Contact Us</h1>
-    <form id="contact-form"
-          method="POST"
-          action="https://script.google.com/macros/s/AKfycbw6P7k-bwAx8grjGQEn7WVO0ucrjCc1H3A21ZxdxlnVxNPaKZfhzpKcL0t8oOHmSwK01Q/exec"
-          target="hidden_iframe">
-
+    <form
+      id="contact-form"
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbyraZ2zLF86Ddc8AdEg-q4ypDSv9IwjvMqmqeORTBhPEBZx-37sQueAEd1Izwm6p935/exec"
+      target="hidden_iframe"
+    >
       <input type="text" name="firstName" placeholder="First Name" required />
       <input type="text" name="lastName" placeholder="Last Name" required />
       <input type="text" name="company" placeholder="Company" required />
-      <input type="email" name="email" id="email" placeholder="Your Email" required />
+      <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
 
-      <!-- Honeypots -->
+      <!-- Honeypot field -->
       <input type="text" name="hiddenTrap" class="honeypot" />
-      <input type="text" name="fullname" class="honeypot" />
-      <input type="email" name="contact" class="honeypot" />
 
-      <button class="g-recaptcha"
-              data-sitekey="YOUR_SITE_KEY_HERE"
-              data-callback="onSubmit"
-              data-size="invisible">
-        Send
-      </button>
+      <!-- Hidden token field -->
+      <input type="hidden" name="formToken" id="formToken" />
 
+      <div class="recaptcha-container">
+        <div class="g-recaptcha" data-sitekey="6Ld_uBArAAAAAFvp-mMzrrqmv5QKlm8ye9hjTq01"></div>
+      </div>
+
+      <button type="submit">Send</button>
       <div id="status">Waiting for submission...</div>
     </form>
   </div>
 
-  <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){
-    document.getElementById('status').innerText = '✅ Message sent! Thank you.';
-    document.getElementById('contact-form').reset();
-    submitted=false;
-  }"></iframe>
+  <iframe
+    name="hidden_iframe"
+    style="display:none;"
+    onload="if(submitted){
+      document.getElementById('status').innerText = '✅ Message sent! Thank you.';
+      document.getElementById('contact-form').reset();
+      submitted=false;
+    }">
+  </iframe>
 
   <script>
-    let submitted = false;
-    let pageLoadTime = Date.now();
+    var submitted = false;
 
-    function validateEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // Generate random token
+    function generateToken(length = 32) {
+      const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let token = '';
+      for (let i = 0; i < length; i++) {
+        token += charset.charAt(Math.floor(Math.random() * charset.length));
+      }
+      return token;
     }
 
-    function onSubmit(token) {
-      const honeypots = ['hiddenTrap', 'fullname', 'contact'];
-      const email = document.getElementById('email').value;
-      const status = document.getElementById('status');
+    // Set the token when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      const tokenField = document.getElementById('formToken');
+      if (tokenField) {
+        tokenField.value = generateToken();
+      }
+    });
 
-      // Honeypot check
-      for (let field of honeypots) {
-        if (document.querySelector(`input[name="${field}"]`).value !== '') {
-          status.style.display = 'block';
-          status.innerText = 'Spam detected.';
-          return;
-        }
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      const recaptcha = grecaptcha.getResponse();
+      const honeypot = document.querySelector('input[name="hiddenTrap"]').value;
+
+      if (!recaptcha) {
+        e.preventDefault();
+        document.getElementById('status').style.display = 'block';
+        document.getElementById('status').innerText = 'Please complete the reCAPTCHA.';
+        return false;
       }
 
-      // Time check
-      if (Date.now() - pageLoadTime < 5000) {
-        status.style.display = 'block';
-        status.innerText = 'Too fast. Are you a bot?';
-        return;
-      }
-
-      // Email format
-      if (!validateEmail(email)) {
-        status.style.display = 'block';
-        status.innerText = 'Invalid email format.';
-        return;
+      if (honeypot !== '') {
+        e.preventDefault();
+        document.getElementById('status').style.display = 'block';
+        document.getElementById('status').innerText = 'Spam detected.';
+        return false;
       }
 
       submitted = true;
-      status.style.display = 'block';
-      status.innerText = '⏳ Sending...';
-      document.getElementById('contact-form').submit();
-    }
+      document.getElementById('status').style.display = 'block';
+      document.getElementById('status').innerText = '⏳ Sending...';
+    });
   </script>
 
 </body>
