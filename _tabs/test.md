@@ -4,6 +4,7 @@ permalink: /test/
 icon: fas fa-envelope
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
